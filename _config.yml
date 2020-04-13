@@ -29,6 +29,14 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: litharge3141
 github_username:  litharge3141
 
+#Site Default Layout
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
 # Build settings
 theme: minima
 plugins:
