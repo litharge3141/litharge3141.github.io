@@ -1,0 +1,188 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[dvipdfmx]{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+
+
+\title{コルモゴロフの拡張定理}
+\author{@litharge3141}
+\date{\today}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+コルモゴロフの拡張定理は種々の確率変数列の構成に必須であり，これがないと独立な確率変数の列があるかという問いにも答えられない．
+このノートでは完備可分距離空間での拡張定理の証明を書くことにする．
+記号や用語の注意などさぼりがちなところがあるので，質問があればTwitterにどしどしお送りください．
+\end{abstract}
+
+\section{拡張定理}
+    \begin{theorem}[Kolmogorovの拡張定理]\label{Kolmogolov extension thm}
+    $S$を完備可分距離空間とし，各$n \in \mathbb{N}$に対して確率空間$(S^n,\mathcal{B}(S^n),\mu_n)$が与えられて，整合条件
+    \begin{align}
+        \forall n \in \mathbb{N},\quad \forall A \in \mathcal{B}(S^n), \quad \mu_{n+1}(A\times S) = \mu_n (A)
+    \end{align}
+    を満たすと仮定する．このとき，$S$の可算無限直積$S\times S\times \cdots $を$S^{\mathbb{N}}$と書くと，$(S^{\mathbb{N}},\mathcal{B}(S^{\mathbb{N}}))$上の確率測度$\mu$で，
+    \begin{align}
+        \forall n \in \mathbb{N}, \quad \forall A \in \mathcal{B}(S^n),\quad \mu (A\times S^{\mathbb{N}}) = \mu_n(A)
+    \end{align}
+    を満たすものが一意に存在する．
+    \end{theorem}
+    
+\subsection{補題}
+    定理$\ref{Kolmogolov extension thm}$を示すためにいくつか補題を準備する．まず完備可分距離空間の可算無限直積がふたたび完備可分距離空間であることを示す．
+    
+    \begin{lemma}\label{prod_metrizible}
+    $((S_n,d_n))_{n=1}^{\infty}$を距離空間の列とする．$(S_n)_{n=1}^{\infty}$の可算無限直積$S_1 \times S_2 \times \cdots$を$S^{\mathbb{N}}$と書き，直積位相を入れる．$S^{\mathbb{N}}$は距離化可能である．
+    \end{lemma}
+    
+    \begin{proof}
+    $S^{\mathbb{N}} \times S^{\mathbb{N}}$上の実数値関数$d$を$x=(x_1,x_2,\ldots)\in S^{\mathbb{N}},y=(y_1,y_2,\ldots)\in S^{\mathbb{N}}$に対して
+    \begin{align}
+        d(x,y) \coloneqq \sum_{n=1}^{\infty} \frac{1}{2^n} \frac{d_n(x_n,y_n)}{1+d_n(x_n,y_n)}
+    \end{align}
+    によって定める.$d$が距離を定めることは簡単に示せるから，$d$の定める距離位相$\mathcal{O}_1$と直積位相$\mathcal{O}_2$が一致することを示す．$x \in S^{\mathbb{N}}$に対して，$\mathcal{O}_1$の基本近傍系は$\{y \in S^{\mathbb{N}} \mid d(x,y) < \epsilon \}$の形をしたもの全体で，$\mathcal{O}_2$の基本近傍系は$\{y \in S^{\mathbb{N}} \mid d_i(x_i,y_i) < \epsilon_i,\quad 1 \leq i \leq n \}$の形をしたもの全体である．$\{y \in S^{\mathbb{N}} \mid d(x,y) < \epsilon \}$を任意に与えられた$\mathcal{O}_1$の基本近傍系の元とする．$\sum_{i=n+1}^{\infty} 2^{-i} < \varepsilon / 2$となるような自然数$n$を取る．すると$\{y \in S^{\mathbb{N}} \mid d_i(x_i,y_i) < \varepsilon /2 ,\quad 1 \leq i \leq n\} \subset \{y \in S^{\mathbb{N}} \mid d(x,y) < \epsilon \}$となる．反対に，$\mathcal{O}_2$の基本近傍系$\{y \in S^{\mathbb{N}} \mid d_i(x_i,y_i) < \epsilon_i,\quad 1 \leq i \leq n \}$が与えられたと仮定する．$\varepsilon = \min_{1\leq i\leq n} \varepsilon_i $と定めると，$\{y \in S^{\mathbb{N}} \mid d(x,y) < \epsilon / 2^n \} \subset \{y \in S^{\mathbb{N}} \mid d_i(x_i,y_i) < \epsilon_i,\quad 1 \leq i \leq n \}$が成立する．以上により，位相が一致することが分かる．
+    \end{proof}
+    
+    
+    \begin{remark}
+    $S^{\mathbb{N}}$から$S_n$への射影を$\pi_n$と書き，$d_n$がノルム$p_n$を用いて定まる距離だとすれば，$d_n(x_n,y_n)=p_n \circ \pi_n (x-y)$と書ける．$p_n \circ \pi_n$は$S^{\mathbb{N}}$上の可算個のセミノルムの族となる．このセミノルムの族から定まる$S^{\mathbb{N}}$上の位相と直積位相が一致することは簡単に分かるので，上の補題は本質的に可算個のセミノルムの族から定まる位相が距離付けできることの証明と同じことをしている．
+    \end{remark}
+    
+    
+    \begin{lemma}\label{prod_sep}
+    $(X_n)_{n=1}^{\infty}$を可分な位相空間の列とする．可算無限直積$X\coloneqq X_1 \times X_2 \times \cdots$に直積位相を入れたものは可分な位相空間である．
+    \end{lemma}
+    
+    
+    \begin{proof}
+    $n \in \mathbb{N}$に対し，$A_n \subset X_n$を稠密な可算集合とする．可算無限直積$A = A_1 \times A_2 \cdots$は再び可算集合である．$A$が$X$の中で稠密であることを示す．$x \in X$が任意に与えられたとし，その任意の開近傍$U_x$が$A$と交わることを示せばよい．$U_x$を小さく取り直して基本近傍系の元としてよい．そこで$U_{x_i} \subset X_i ,\quad 1\leq i \leq n$を$x$の$i$成分$x_i$の開近傍として$U_x = \{y=(y_1,y_2,\ldots)  \mid y_1 \in U_{x_1} \} \cap \{y=(y_1,y_2,\ldots) \mid y_2 \in U_{x_2} \} \cap \cdots \cap \{y=(y_1,y_2,\ldots) \mid y_n \in U_{x_n} \}$と表せる．$U_{x_i} \cap A_i \neq \emptyset, \quad 1\leq i\leq n$が成立するので$U_x \cap A \subset U_x \cap A_1 \times A_2 \times \cdots \times A_n \times X_{n+1} \times X_{n+2} \times \cdots \neq \emptyset$となり，示された．
+    \end{proof}
+    
+    
+    \begin{lemma}\label{prod_complete_met}
+    $(S_n,d_n)_{n=1}^{\infty}$を完備距離空間の列とする．可算無限直積$S^{\mathbb{N}} = S_1 \times S_2 \times \cdots$に直積位相を入れると，$S^{\mathbb{N}}$は距離化可能で，完備距離空間である．
+    \end{lemma}
+    
+    
+    \begin{proof}
+    Lemma$\ref{prod_metrizible}$から距離化可能である．Lemma$\ref{prod_metrizible}$の距離$d$について完備であることを証明する．$(x^m)_{m=1}^{\infty}$を$S^{\mathbb{N}}$のCauchy列とする．すなわち，
+    \begin{align}
+        \forall \varepsilon >0, \quad \exists N \in \mathbb{N},\quad \forall m,n \geq N, \quad d(x^m ,x^n )<\varepsilon
+    \end{align}
+    が成立することを仮定する．$k \in \mathbb{N}$が任意に与えられたとき，$x^n$の$k$成分を取ってきた列$(x_k^n)_{n=1}^{\infty}$が$S_k$のCauchy列であることを示す．$\varepsilon>0$が任意に与えられたとすると，ある$N \in \mathbb{N}$が存在して$n,m \geq N$ならば$d(x^n,x^m)<\varepsilon / 2^k$となる．このとき$d_k(x_k^n,x_k^m)<\varepsilon$が成立するから，示された．そこで各$k \in \mathbb{N}$に対して$S_k$は完備だから$(x_k^n)_{n=1}^{\infty}$の極限$x_k$が存在する．これを並べて$x=(x_1,x_2,\ldots)$とするとき，$(x^n)_{n=1}^{\infty}$が$x$に収束する事を示せば証明が終わる．$\varepsilon >0$が任意に与えられたとする．ある$M \in \mathbb{N}$が存在して，$\sum_{k=M+1}^{\infty} 2^{-k} <\varepsilon/2$が成立する．また，先ほどの議論より各$1\leq k\leq M$に対してある$N_k \in \mathbb{N}$が存在して$n \geq N_k$ならば$d_k(x_k^n,x_k) < \varepsilon /2$が成立する．そこで$N = \max_{1\leq k \leq M} N_k$と置けば$n \geq N$のとき任意の$1\leq k\leq M$に対して$d_k(x_k^n,x_k) < \varepsilon /2$となる．よって$n \geq N$ならば
+    \begin{align*}
+        d(x^n,x) &= \sum_{k=1}^{\infty} \frac{1}{2^k} \frac{d_k(x_k^n,x_k)}{1 + d_k(x_k^n,x_k)} \\
+        &\leq \sum_{k=1}^{M} \frac{1}{2^k} \frac{d_k(x_k^n,x_k)}{1 + d_k(x_k^n,x_k)} + \sum_{k=M+1}^{\infty} \frac{1}{2^k} \frac{d_k(x_k^n,x_k)}{1 + d_k(x_k^n,x_k)} \\
+        &\leq \sum_{k=1}^{M} \frac{1}{2^k} d_k(x_k^n,x_k) + \sum_{k=M+1}^{\infty} \frac{1}{2^k} \\
+        &\leq \varepsilon
+    \end{align*}
+    となり，示された．
+    \end{proof}
+    
+    
+    以上で，完備可分距離空間の可算無限直積は再び完備可分距離空間となる事が示された．最後の準備として，完備可分距離空間上のボレル確率測度が内部正則であることを示す．
+    
+    
+    \begin{lemma}\label{borelprob_radon}
+    $(\mathcal{S},d)$を完備可分距離空間とする．$(\mathcal{S},\mathcal{B}(\mathcal{S}))$上の確率測度$P$は内部正則である．
+    \end{lemma}
+    
+    
+    \begin{proof}
+    いきなりコンパクト集合で近似するのは難しいので，閉集合で内側から近似し，大きなコンパクト集合との合併を取ってコンパクト集合にする．まず大きなコンパクト集合の作り方から示す．任意の$\varepsilon >0$に対して，あるコンパクト集合$K$が存在して，$P(\mathcal{S}\setminus K)<\varepsilon$が成立することを示そう．$\mathcal{S}$は可分だから稠密可算集合が取れる．それを$\{a_1,a_2,\ldots \}$と書くことにする．$n,k \in \N$に対して$a_n$中心で半径が$1/k$の閉球を$B_{nk}$とおくと，任意の$k \in \N$に対して$\mathcal{S} = \bigcup_{n=1}^{\infty} B_{nk}$が成立する．したがって，
+    \begin{align}
+        P(\mathcal{S}) = P\left(\bigcup_{n=1}^{\infty}B_{nk}\right) = \lim_{N \to \infty} P\left(\bigcup_{n=1}^{N} B_{nk}\right)
+    \end{align}
+    となるから，
+    \begin{align}
+        \forall k \in \N,\quad \exists N(k) \in \N,\quad P\left(\mathcal{S} \setminus \bigcup_{n=1}^{N(k)} B_{nk}\right) < \frac{\varepsilon}{2^k}
+    \end{align}
+    となる．そこで$K \coloneqq \cap_{k=1}^{\infty} \bigcup_{n=1}^{N(k)} B_{nk}$とする．作り方から$K$は閉かつ全有界である．$\mathcal{S}$は完備距離空間だから，$K$はコンパクト集合である．
+    \begin{align*}
+        P(\mathcal{S}\setminus K) &= P\left(\bigcup_{k=1}^{\infty}\left(\mathcal{S} \setminus \bigcup_{n=1}^{N(k)} B_{nk}\right)\right) \\
+        &\leq \sum_{k=1}^{\infty} P\left(\mathcal{S} \setminus \bigcup_{n=1}^{N(k)} B_{nk}\right) \\
+        &< \sum_{k=1}^{\infty} \frac{\varepsilon}{2^k} = \varepsilon
+    \end{align*}
+    となり，示された．次に，$\mathcal{B}(\mathcal{S})$の元を閉集合で内側から近似できることを示す．
+    \begin{align*}
+        \mathcal{D} \coloneqq \{A \subset \mathcal{S} \mid \forall \varepsilon>0,\, \exists F:\text{closed},\,\exists G:\text{open},\,F \subset A \subset G,\, P(G\setminus F) <\varepsilon \}
+    \end{align*}
+    と定める．$\mathcal{D}$が開集合をすべて含む$\sigma$-代数であることを示せば，$\mathcal{B}(\mathcal{S}) \subset \mathcal{D}$となり，$\mathcal{B}(\mathcal{S})$の元がすべて内側から閉集合で近似できることが分かる．$\sigma$-代数であることを示す．他の条件は簡単だから，可算和で閉じることだけ示す．$A_1,A_2,\ldots \in \mathcal{D}$が任意に与えられたとする．任意の$n \in N$と任意の$\varepsilon > 0$に対して，$F_n \subset A_n \subset G_n$および$P(G_n \setminus F_n) < \varepsilon / 2^{n+1}$となる閉集合$F_n$と開集合$G_n$を取る．$\bigcup_{n=1}^{\infty} F_n \subset \bigcup_{n=1}^{\infty} A_n \subset \bigcup_{n=1}^{\infty} G_n$となり，また$P(\bigcup_{n=1}^{\infty}G_n \setminus \bigcup_{n=1}^{\infty} F_n ) \leq \sum_{n=1}^{\infty} \varepsilon / 2^{n+1} =  \varepsilon /2$となる．閉集合の可算和は閉集合とは限らないので，$F_n$の和は有限で止める．$B_N \coloneqq \bigcup_{n=1}^{\infty}G_n \setminus \bigcup_{n=1}^{N} F_n$
+    とおくと，$B_N$は$N$について単調減少．よって$\lim_{N\to\infty} P(B_N) = P(\bigcup_{n=1}^{\infty}G_n \setminus \bigcup_{n=1}^{\infty} F_n ) \leq \varepsilon /2$となるから，ある$N$が存在して$P(B_N) \leq \varepsilon$となる．そこで，$F \coloneqq \bigcup_{n=1}^{N} F_n,\, G \coloneqq \bigcup_{n=1}^{\infty} G_n$と置けば$F$は閉集合，$G$は開集合で，$F \subset \bigcup_{n=1}^{\infty} A_n \subset G$かつ$P(G\setminus F)\leq \varepsilon$を満たす．したがって$\bigcup_{n=1}^{\infty} \in \mathcal{D}$であることが示された．次に，開集合$A \subset \mathcal{S}$が任意に与えられたとき，$A \in \mathcal{D}$を示す．$G\coloneqq A$とする．
+    \begin{align*}
+        F_n \coloneqq \{x \in A \mid d(x,A^c) \geq \frac{1}{n} \}
+    \end{align*}
+    とおくと$F_n$は閉集合の増大列で，$A = \bigcup_{n=1}^{\infty} F_n$となる．したがって，$P(G\setminus \bigcup_{n=1}^{\infty} F_n) = P(A\setminus A)=0$だから，適当に途中で打ち切れば$A$を内側から近似する閉集合が得られる．以上により，$A \in \mathcal{D}$である．最後に，任意の$A \in \mathcal{B}(\mathcal{S})$と任意の$\varepsilon>0$に対して，あるコンパクト集合$K_A \subset A$が存在して，$P(\mathcal{S}\setminus A) <\varepsilon$をいたすことを示す．今まで示したことから，閉集合$F \subset A$で$P(A\setminus F) \leq \varepsilon /2$を満たすもの，およびコンパクト集合$K$で$P(\mathcal{S} \setminus K) \leq \varepsilon /2$を満たすものが取れる．$K_A \coloneqq K \cap F$とすると$K_A$はコンパクト集合で，$P(A \setminus K_A) \leq P(A\setminus F) + P(\mathcal{S}\setminus K) \leq \varepsilon$となり，示された
+    ．
+    \end{proof}
+    
+    
+    \begin{remark}
+    閉球の半径を大きくして増大列を取りたいところだが，これがコンパクトになるのはノルム空間なら有限次元であるときに限る．完備可分距離空間なら全有界からコンパクト性が出るので上手くいった．$\sigma$-コンパクトな位相空間でも同様の議論ができる．また，この命題で確率測度空間を完備拡大しても同じ結果が成り立つ．
+    \end{remark}
+    
+    \subsection{定理の証明}
+    準備が出来たのでTheorem$\ref{Kolmogolov extension thm}$の証明に移る．
+    \begin{proof}
+    いきなり$\mathcal{B}(S^{\mathbb{N}})$上で構成するのは難しいので，条件から自然に定まるところで定義しておいて拡張する．$x=(x_1,x_2,\ldots) \in S^{\mathbb{N}}$に対して$(x_1,x_2\ldots,x_n)$を対応させて写像$\Pi_n:S^{\mathbb{N}} \to S^n$を定める．cylinder setの全体$\mathcal{C}$を
+    \begin{align}
+        \mathcal{C} &\coloneqq \{ A \times S\times S\times \cdots \mid A \in \mathcal{B}(S^n),\, n \in \mathbb{N} \} \\
+        &= \{ \Pi_n^{-1}(A) \mid A \in \mathcal{B}(S^n),\, n \in \mathbb{N} \}
+    \end{align}
+    によって定める．$\mathcal{C}$が有限加法族であることは$n \leq m$のとき$\Pi_n^{-1} (A) = \Pi_m^{-1}(A\times S\times \cdots \times S)$が成り立つことに注意すればわかる．$\mathcal{C}$上の関数$\mu$を$\mu(\Pi_n^{-1}(A)) = \mu_n (A)$によって定める．仮定から$\mu_m(A\times S\times \cdots \times S)=\mu_{m-1}(A\times S\times \cdots \times S) = \cdots = \mu_n(A)$が成立するので，$\mu$は$\mathcal{C}$の元を$\Pi_n^{-1}(A)$と表した時の表し方によらずに定まる．$\mu$が$\mathcal{C}$上有限加法的であることも$n \leq m$のとき$\Pi_n^{-1} (A) = \Pi_m^{-1}(A\times S\times \cdots \times S)$が成り立つことに注意すればすぐに分かる．$\mu$が$\mathcal{C}$上完全加法的，すなわち
+    \begin{align}
+        (C_n)_{n=1}^{\infty} \subset \mathcal{C},\quad C_m \cap C_n = \emptyset  (\forall n\neq m \in \mathbb{N}),\quad \bigcup_{i=1}^{\infty} C_n \in \mathcal{C} \Rightarrow  \mu\left(\bigcup_{n=1}^{\infty} C_n\right) = \sum_{n=1}^{\infty} \mu(C_n)
+    \end{align}
+    を示せば$\mu$は$\sigma(\mathcal{C})$上の確率測度へと一意的に拡張される．$\mathcal{C}$上の完全加法性は次と同値である．
+    \begin{align}
+        (C_n)_{n=1}^{\infty} \subset \mathcal{C},\quad  C_{n+1} \subset C_n (\forall n \in N),\quad \cap_{n=1}^{\infty} C_n = \emptyset  \Rightarrow  \lim_{n\to \infty} \mu (C_n) = 0
+    \end{align}
+    これを背理法で示そう．$(C_n)_{n=1}^{\infty} \subset \mathcal{C}, C_{n+1} \subset C_n (\forall n \in N),\cap_{n=1}^{\infty} C_n = \emptyset$となる$(C_n)_{n=1}^{\infty}$が任意に与えられたとする．ある$\varepsilon >0$が存在して，任意の$n \in \mathbb{N}$に対して$\mu (C_n) \geq \varepsilon$が成立すると仮定して矛盾を導く．$C_n \in \mathcal{C}$だから，任意の$n \in \mathbb{N}$に対して，ある$d_n \in \mathbb{N}$と$A_{d_n} \in \mathcal{B}(\mathcal{S}^{d_n})$が存在して，$C_n = \Pi_{d_n}^{-1} (A_{d_n})$となる．必要ならば$A_{d_n}$に$\mathcal{S}$をいくつか直積したもので書き直すことで，$d_n$を単調増加としてよい．$d_0 =0, C_0 = \mathcal{S}^{\mathbb{N}}$として，任意の$n \in \mathbb{N}$に対して$C_n$の前に$d_{n}-d_{n-1}$個の$C_{n-1}$を付け加えた列を考えることで，$C_n = \Pi_n^{-1} (A_n),A_n \in \mathcal{B}(\mathcal{S}^{n})$という形を仮定してもよい．次に，Lemma$\ref{borelprob_radon}$により$\mu_n$は内部正則だから，任意の$n \in \mathbb{N}$に対してコンパクト集合$K_n \subset A_n$で，$\mu_n (A_n \setminus K_n) < \varepsilon / 2^{n+1}$となるものが存在する．$i=1,\ldots,n-1$に対して，$n-i$個の$\mathcal{S}$の直積を$K'_i \coloneqq K_i \times \mathcal{S} \times \cdots \times \mathcal{S}$とし，$K''_n \coloneqq K'_1 \cap  \cdots  \cap K'_{n-1} \cap K_n$とすると，$K''_n$はコンパクト集合かつ$\Pi_n^{-1}(K''_n)$は単調減少で，任意の$n \in \mathbb{N}$に対して
+    \begin{align*}
+        \mu(\Pi_n^{-1}(K''_n)) &= \mu_n(K''_n)\\
+        &= \mu_n(A_n) - \mu_n(A_n \setminus (K'_1 \cap \cdots \cap K'_{n-1} \cap K_n))\\
+        &\geq \mu_n(A_n) - \mu_n(A_n \setminus K_n) - \sum_{i=1}^{n-1}\mu_n(A_n\setminus K'_i) \\
+        &\geq \mu(C_n) - \mu_n(A_n \setminus K_n) - \sum_{i=1}^{n-1}\mu_n(A_i\setminus K_i) \\
+        &\geq \varepsilon - \sum_{i=1}^n \frac{\varepsilon}{2^{i+1}} \\
+        &\geq \frac{\varepsilon}{2}
+    \end{align*}
+    が成立することから$\Pi_n^{-1}(K''_n)$は空ではない．ただしこの不等式評価の途中で，$C_n = \Pi_n^{-1}(A_n)$が単調減少であることから，$i=1,\ldots,n-1$と$n-i$個の$\mathcal{S}$に対して$A_n \subset A_i \times \mathcal{S} \times \cdots \times \mathcal{S}$が成立することを用いた．$\cap_{n=1}^{\infty} \Pi_n^{-1}(K''_n)$が空でないことを示す．任意の$n \in \mathbb{N}$に対して$\Pi_n^{-1}(K''_n)$は空ではないから，元$x^n=(x_1^n,x_2^n,\ldots)$が取れる．$(x_1^n)_{n=1}^{\infty}$は$K''_1$の列で，$K''_1$はコンパクトだから，収束する部分列$(x_1^{n1(k)})_{k=1}^{\infty}$が取れる．必要なら$n1(1)\geq2$となるように取り，極限を$x_{1}$と書く．$(x^{n1(k)})_{k=1}^{\infty}$について，$n1(1)\geq2$だから$(x_2^{n1(k)})_{k=1}^{\infty}$は$K''_2$の列であり，収束部分列$(x_2^{n2(k)})_{k=1}^{\infty}$を持つ．必要なら$n2(1)\geq3$となるように取り，極限を$x_{2}$と書く．以下同様にして$m\in\mathbb{N}$に対して部分列$(x^{nm(k)})_{k=1}^{\infty}$を定める．$(y^k)_{k=1}^{\infty}$を$y_k = x^{nk(k)}$によって定めると，$(y^k)_{k=1}^{\infty}$は$\mathcal{S}^{\mathbb{N}}$において収束し，その極限$y^{\infty}$は任意の$n\in\mathbb{N}$に対して$\Pi_n(y^{\infty})=x_n$を満たす．従って$y^{\infty} \in \cap_{n=1}^{\infty} \Pi_n^{-1}(K''_n)$であり，示された．
+    $\cap_{n=1}^{\infty} \Pi_n^{-1}(K''_n) \subset \cap_{n=1}^{\infty}C_n = \emptyset$より，これは矛盾である．よって，$\mu$は$\sigma(\mathcal{C})$上の確率測度に拡張される．最後に，$\mathcal{B}(\mathcal{S}^{\mathbb{N}}) \subset \sigma(\mathcal{C}) $を証明すれば，$\mu$を$\mathcal{B}(\mathcal{S}^{\mathbb{N}}) $に制限することで求める測度が得られる．$\mathcal{S}^{\mathbb{N}}$もまたLemma$\ref{prod_sep}$とLemma$\ref{prod_complete_met}$により完備可分距離空間で，したがって遺伝的リンデレーフ性を持つ，すなわち，任意の開部分集合に対し，その任意の開被覆が可算部分被覆をもつことに注意する．$\sigma(\mathcal{C})$が$\mathcal{S}^{\mathbb{N}}$の開集合を含むことを示せばよい．まず，$\mathcal{S}^{\mathbb{N}}$の開基は表し方からすべて$\mathcal{C}$に含まれる．次に，任意の$\mathcal{S}^{\mathbb{N}}$の開集合は開基の元の和で書けるが，リンデレーフ性から可算な和に取り直せる．開基の元は$\mathcal{C
+    }$の元だから，その可算和は$\sigma(\mathcal{C})$に含まれる．よって，示された．
+    \end{proof}
+    
+    \begin{remark}
+    証明はcylinder set上の測度が全体に拡張されることと，cylinder setが十分たくさんあってボレル$\sigma$-代数を含むことの二段階に分かれる．両方において完備可分距離空間は本質的な仮定である．前者の証明は結局のところcylinder setとしてはコンパクト集合を射影で引き戻したものだけ考えればよく，そうなれば対角線論法から完全加法性が従うことを言っている．次元を合わせたり($\mathcal{S}$をいくつか直積したのはこのため)，単調性を維持したりしなければならない($K''_n$の定義はこのため)ので，そこをしっかり書こうとすると記述が膨れた．また後者においては，必要がなかったので省略したが，反対側の包含も成り立つ．
+    \end{remark}
+    
+
+
+
+
+\end{document}
