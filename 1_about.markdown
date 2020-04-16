@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 当ブログについて
+title: About
 permalink: /about/
 ---
 
