@@ -1,9 +1,10 @@
 ---
 layout: page
-title: "PDF集"
-permalink: /pdf/
+title: "数学"
+permalink: /math/
 ---
 
+# pdf集
 作ったpdfをまとめます。誤植の指摘をしてくれると直すかもしれない。
 
 [コルモゴロフの拡張定理（pdfリンク）](/blog_pdf/kolmogorov_extension/out/kolmogorov_extension.pdf)<br>

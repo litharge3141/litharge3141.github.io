@@ -34,6 +34,8 @@ defaults:
       path: "" # an empty string here means all files in the project
       type: "posts"
     values:
+      categories: article
+      permalink: /article/:title.html
       layout: "post"
 
 #language
