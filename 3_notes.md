@@ -9,6 +9,12 @@ permalink: /numerical/
 # 数値計算の記事やpdf集
 数値計算についての記事やpdfについてまとめる予定です。
 
+[連立方程式の反復法（pdfリンク）](/blog_pdf/iterative_method/iterative_method.pdf)<br>
+連立一次方程式の数値計算法です。Jacobi法、Gauss-Seidel法、SOR法について、狭義対角優位および既約優対角行列に対しての収束証明が書いてあります。
+
+[共役勾配法（pdfリンク）](/blog_pdf/cg_method/cg_method.pdf)<br>
+共役勾配法についての解説です。対称正定値行列に対する収束の証明が書いてあります。ただ証明がへたくそなのでそのうち書き直すかもしれません。
+
 ---
 # データ同化の記事集
 データ同化(Data Assimilation)をJulia言語を用いて行ってみようという趣旨で書いてます。

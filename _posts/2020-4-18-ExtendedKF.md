@@ -55,7 +55,7 @@ x_1^f &= M(x_0^t + \varepsilon_0^a) \\\
 が$\varepsilon_0^a$の二次以上の項を無視する近似で成立するので、
 
 \begin{align}
-P_1^f = JM_{x_0^a} P_0^a JM_{x_0^a}^{t}
+P_1^f = JM_{x_0^a} P_0^a JM_{x_0^a}^{\top}
 \end{align}
 
 と求まります。
@@ -77,7 +77,7 @@ x_1^a &= x_1^t + \varepsilon_1^f + K_1 (H_1 x_1^t + \varepsilon_1^o - H_1 x_1^t 
 
 となり、$\varepsilon_1^f ,\varepsilon_1^o$の相関が$0$であるという近似のもと
 \begin{align}
-P_1^a = (I - K_1 H_1)P_1^f (I-K_1 H_1)^{t} + K_1 R_1 K_1^{t}
+P_1^a = (I - K_1 H_1)P_1^f (I-K_1 H_1)^{\top} + K_1 R_1 K_1^{\top}
 \end{align}
 
 として求まります。これから$tr(P_1^a)$を$K_1$の関数として微分して$0$になる事を課すと、面倒な計算[^foot]の後に
@@ -85,7 +85,7 @@ P_1^a = (I - K_1 H_1)P_1^f (I-K_1 H_1)^{t} + K_1 R_1 K_1^{t}
 [^foot]: Sherman-Morrisonの公式とか使います。
 
 \begin{align}
-K_1 = P_1^f H_1^{t} (H_1 P_1^f H_1^{t} + R_1)^{-1}
+K_1 = P_1^f H_1^{\top} (H_1 P_1^f H_1^{\top} + R_1)^{-1}
 \end{align}
 として求まります。これを$P_1^a$に代入して計算すると
 \begin{align}
@@ -99,13 +99,13 @@ $x_0^a,P_0^a$を適当に与えておいて、$i=1,2,\ldots$に対して、
 
 \begin{align}
 x_i^f &= M(x_{i-1}^a) \\\
-P_i^f &= JM_{x_{i-1}^a} P_{i-1}^a JM_{x_{i-1}^a}^{t}
+P_i^f &= JM_{x_{i-1}^a} P_{i-1}^a JM_{x_{i-1}^a}^{\top}
 \end{align}
 
 予報値$x_i^f$と観測値$y_i^o$の重み付き平均で最適な推定値を求めるAnalysis Step
 
 \begin{align}
-K_i &= P_i^f H_i^t (H_i P_i^f H_i^t + R_i)^{-1} \\\
+K_i &= P_i^f H_i^{\top} (H_i P_i^f H_i^{\top} + R_i)^{-1} \\\
 x_i^a &= x_i^f + K_i (y_i^o - H_i x_i^f) \\\
 P_i^a &= (I - K_i H_i)P_i^f
 \end{align}
@@ -381,7 +381,7 @@ R = Matrix(1.0I, M, M)
 ## Forecast Step
 \begin{align}
 x_i^f &= M(x_{i-1}^a) \\\
-P_i^f &= JM_{x_{i-1}^a} P_{i-1}^a JM_{x_{i-1}^a}^{t}
+P_i^f &= JM_{x_{i-1}^a} P_{i-1}^a JM_{x_{i-1}^a}^{\top}
 \end{align}
 
 ```Julia:
@@ -402,7 +402,7 @@ P_i^f &= JM_{x_{i-1}^a} P_{i-1}^a JM_{x_{i-1}^a}^{t}
 
 ## Analysis Step
 \begin{align}
-K_i &= P_i^f H_i^t (H_i P_i^f H_i^t + R_i)^{-1} \\\
+K_i &= P_i^f H_i^{\top} (H_i P_i^f H_i^{\top} + R_i)^{-1} \\\
 x_i^a &= x_i^f + K_i (y_i^o - H_i x_i^f) \\\
 P_i^a &= (I - K_i H_i)P_i^f
 \end{align}
