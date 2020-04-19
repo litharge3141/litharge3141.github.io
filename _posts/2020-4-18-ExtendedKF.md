@@ -54,8 +54,9 @@ x_1^f &= M(x_0^t + \varepsilon_0^a) \\\
 
 が$\varepsilon_0^a$の二次以上の項を無視する近似で成立するので、
 
+\begin{align}
 P_1^f = JM_{x_0^a} P_0^a JM_{x_0^a}^{t}
-
+\end{align}
 
 と求まります。
 $x_1^a$は、重み行列$K_1 \in M(N,d)$(Kalman Gain Matrixと言います)を用いて
@@ -366,7 +367,7 @@ R = Matrix(1.0I, M, M)
 
 `H`と`R`は今回の設定では単位行列です。
 
-##初期化
+## 初期化
 
 ```Julia:
    ua = rand(N) .+ F
@@ -382,7 +383,6 @@ R = Matrix(1.0I, M, M)
 x_i^f &= M(x_{i-1}^a) \\\
 P_i^f &= JM_{x_{i-1}^a} P_{i-1}^a JM_{x_{i-1}^a}^{t}
 \end{align}
-```
 
 ```Julia:
 ##forecast step
