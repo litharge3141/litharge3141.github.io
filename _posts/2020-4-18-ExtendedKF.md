@@ -438,6 +438,7 @@ writedlm(output, [(i/40) sqrt(tr(Pa)/N) (norm(u_true[i,2:N+1] - uf)/sqrt(N)) (no
 観測のRMSE(水色)より予報値のRMSE(緑)が下がらないと意味がないのですが、全然下がってません。最初は上手くいってるのに。tracePa(紫)はずっと下がったままなんですが…
 
 実は上手くいかないのはプログラムのミスではなく仕様です。最小分散推定としては上手くいっていることがtracePaが小さいことからも分かるのですが、だからと言ってちゃんと真値の周りに行ってくれるわけではないのです。この現象をFilter Divergence[^filterdiv]と言い、多くのデータ同化手法に付きまといます。原因は予報値をあまりにも信用しすぎていることです。図で説明します。
+
 [^filterdiv]: "Concrete ensemble Kalman filters with rigorous catastrophic filter divergence.", Kelly, Majda AJ, Tong.なんかも参考になると思います
 
 ![2_ExtendedKF](/blog_figure/data_assimilation/ExtendedKF/2_ExtendedKF.jpeg)
