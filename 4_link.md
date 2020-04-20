@@ -1,0 +1,30 @@
+---
+layout: page
+title: リンク集
+permalink: /link/
+---
+
+普段の勉強などの参考にしているリンク集。
+
+---
+# 個人サイトないしブログ
+
+[斎藤宣一](http://www.infsup.jp/saito/)<br>
+東京大学で数値解析の研究をしておられる斎藤宣一先生のページです。<br>
+メモも講義ノートも大変勉強になります。
+
+[日野正訓のホームページ](https://www.math.kyoto-u.ac.jp/~hino/index_j.html)<br>
+京都大学で確率論の研究をしておられる日野正訓先生のページです。<br>
+丁寧で詳しく書かれたルベーグ積分のノートがタダで読めます。すごい。
+
+[Masayuki ASAOKA's Web Page](https://www.math.kyoto-u.ac.jp/~asaoka/)<br>
+京都大学で幾何学の研究をしておられる浅岡正幸先生のページです。<br>
+多様体の基本的な事項が演習問題付きで学べます。すごい。
+
+[はたらく双対性](https://paper3510mm.github.io/)<br>
+代数幾何を研究している友人のページです。リンク集がこっちと比較にならないぐらい充実しています。
+
+---
+# そのほか
+[TeX Wiki](https://texwiki.texjp.org/)<br>
+TeXについては大体なんでも書いてあると思います。Qiitaで検索するより先にここを見たほうが良いです。
