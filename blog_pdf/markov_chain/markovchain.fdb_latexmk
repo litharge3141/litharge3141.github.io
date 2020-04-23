@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1587438771 "markovchain.dvi" "markovchain.pdf" "markovchain" 1587438772
-  "markovchain.dvi" 1587438771 4984 5a53107f2b4d326405315a43b382677c "latex"
+["dvipdf"] 1587612987 "markovchain.dvi" "markovchain.pdf" "markovchain" 1587612988
+  "markovchain.dvi" 1587612987 6632 32f91d589a4bdf88aecae0c2a8ce6e9f "latex"
   (generated)
   "markovchain.pdf"
-["latex"] 1587438771 "d:/litharge3141.github.io/blog_pdf/markov_chain/markovchain.tex" "markovchain.dvi" "markovchain" 1587438772
+["latex"] 1587612986 "d:/litharge3141.github.io/blog_pdf/markov_chain/markovchain.tex" "markovchain.dvi" "markovchain" 1587612988
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1582015620 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1582015620 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -26,6 +26,7 @@
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1582015978 1124 6c73e740cf17375f03eec0ee63599741 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1582015978 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1582015978 1120 8b7d695260f3cff42e636090a8002094 ""
+  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1582015978 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm" 1582017943 536 5f2475e9deb198c23894800d3c5eed00 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
@@ -56,10 +57,10 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/markov_chain/markovchain.tex" 1587438769 3532 9a937151c936712337161ca9a566ac8f ""
-  "markovchain.aux" 1587438771 239 5c35b06125f05a62adbfd6ba21a5fad3 "latex"
-  "markovchain.tex" 1587438769 3532 9a937151c936712337161ca9a566ac8f ""
+  "d:/litharge3141.github.io/blog_pdf/markov_chain/markovchain.tex" 1587612985 4660 2afe93b10c7bbaba0b9f421f929c6e5a ""
+  "markovchain.aux" 1587612987 239 5c35b06125f05a62adbfd6ba21a5fad3 "latex"
+  "markovchain.tex" 1587612985 4660 2afe93b10c7bbaba0b9f421f929c6e5a ""
   (generated)
-  "markovchain.log"
   "markovchain.aux"
   "markovchain.dvi"
+  "markovchain.log"
