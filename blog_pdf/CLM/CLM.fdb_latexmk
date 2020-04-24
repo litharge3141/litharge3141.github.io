@@ -1,9 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1587696347 "markovchain.dvi" "markovchain.pdf" "markovchain" 1587696348
-  "markovchain.dvi" 1587696347 8440 dc316e06505c243591e8489d30b0544a "latex"
+["dvipdf"] 1587699221 "CLM.dvi" "CLM.pdf" "CLM" 1587699222
+  "CLM.dvi" 1587699221 3664 f2ce3155cd0ad51656172630dca69992 "latex"
   (generated)
-  "markovchain.pdf"
-["latex"] 1587696346 "d:/litharge3141.github.io/blog_pdf/markov_chain/markovchain.tex" "markovchain.dvi" "markovchain" 1587696348
+  "CLM.pdf"
+["latex"] 1587699220 "d:/litharge3141.github.io/blog_pdf/CLM/CLM.tex" "CLM.dvi" "CLM" 1587699222
+  "CLM.aux" 1587699221 320 93bc62d3db77a7b9304ee6e7b11412e0 "latex"
+  "CLM.tex" 1587699219 2669 3c611791f2444b8e95e617e107fd9037 ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1582015620 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1582015620 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -13,7 +15,6 @@
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1582015620 908 2921f8a10601f252058503cc6570e581 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1582015620 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1582015620 940 228d6584342e91276bf566bcf9716b83 ""
-  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1582015978 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1582015978 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1582015978 1524 4414a8315f39513458b80dfc63bff03a ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1582015978 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -22,11 +23,12 @@
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1582015978 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1582015978 1300 b62933e007d01cfd073f79b963c01526 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1582015978 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1582015978 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss12.tfm" 1582015978 1324 37b971caf729d7edd9cbb9f9b0ea76eb ""
+  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss9.tfm" 1582015978 1320 49357c421c0d469f88b867dd0c3d10e8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1582015978 1124 6c73e740cf17375f03eec0ee63599741 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1582015978 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1582015978 1120 8b7d695260f3cff42e636090a8002094 ""
-  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1582015978 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm" 1582017943 536 5f2475e9deb198c23894800d3c5eed00 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
@@ -57,10 +59,8 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/markov_chain/markovchain.tex" 1587696345 5916 32a938f274b30d859222d0fede911265 ""
-  "markovchain.aux" 1587696347 239 5c35b06125f05a62adbfd6ba21a5fad3 "latex"
-  "markovchain.tex" 1587696345 5916 32a938f274b30d859222d0fede911265 ""
+  "d:/litharge3141.github.io/blog_pdf/CLM/CLM.tex" 1587699219 2669 3c611791f2444b8e95e617e107fd9037 ""
   (generated)
-  "markovchain.aux"
-  "markovchain.log"
-  "markovchain.dvi"
+  "CLM.log"
+  "CLM.dvi"
+  "CLM.aux"

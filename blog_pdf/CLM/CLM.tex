@@ -1,0 +1,75 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[dvipdfmx]{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+
+
+\begin{document}
+
+\title{Constantin Lax Majda方程式}
+\author{@litharge3141}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+    3次元Euler方程式の時間大域的な弱解の存在は知られておらず，常に有限時間で無限大に
+    爆発すると予想している人も多い．このノートでは，そのような爆発のメカニズムを
+    調べるためのモデル方程式として知られているConstantin-Lax-Majda方程式について
+    解説する．
+\end{abstract}
+
+\section{導出}
+3次元Euler方程式
+\begin{align*}
+   \frac{\partial u}{\partial t} + u \cdot \nabla u &= - \nabla p \\
+   \mathrm{div}u &=0
+\end{align*}
+を考える．$\nabla p$は厄介なので$\mathrm{rot}$を施して消去する．
+両辺に$\mathrm{rot}$を施して十分な滑らかさを仮定すると，$\omega \coloneqq \mathrm{rot} u$として
+\begin{align*}
+    \frac{\partial \omega}{\partial t} + u \cdot \nabla \omega &= \omega \cdot \nabla u \\
+    \mathrm{div}\omega &=0
+\end{align*}
+という$\omega$と$u$の方程式を得る．
+\begin{align*}
+    \omega &= \mathrm{rot} u \\
+    \mathrm{div} u &= 0
+\end{align*}
+から$\mathrm{rot} \omega = - \triangle u$を得る．これはPoisson方程式だから3次元の基本解と
+畳み込んでBiot-Savart積分
+\begin{align*}
+    u(x) = -\frac{1}{4\pi} \int_{\R^3} \frac{(x-y)\times \omega(y)}{{\lvert x-y \rvert}^3} \mathrm{d}x
+\end{align*}
+を得る．これを上述の$\omega$と$u$の方程式に代入したものを渦度方程式という．
+2次元でも同様の操作をすることはできるが，
+3次元との最大の違いは渦の伸長項と呼ばれる$\nabla u \cdot \omega$の有無で，
+この項のために3次元では大域解の存在が証明できていないと考えられる．
+これらを上手く1次元の方程式で真似をして，モデルを構成する．
+\section{厳密解の構成}
+\section{拡張やそのほかの性質}
+    
+
+
+\end{document}
