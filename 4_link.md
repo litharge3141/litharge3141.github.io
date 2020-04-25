@@ -4,7 +4,15 @@ title: リンク集
 permalink: /link/
 ---
 
-普段の勉強などの参考にしているリンク集。
+普段の勉強や作業中に参考にしているリンク集。
+
+---
+# gnuplot
+[シキノート](https://slpr.sakura.ne.jp/qp/)<br>
+アニメーションのところとか大変参考になりました。
+
+[gnuplotスクリプトの解説](http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/index.html)<br>
+米澤進悟先生のページです。こちらも。
 
 ---
 # 個人サイトないしブログ

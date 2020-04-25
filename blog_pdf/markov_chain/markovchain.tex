@@ -45,25 +45,25 @@ $I$は高々可算だから，$I$上の分布はうまく言い換えられる�
 
 
 \begin{definition}
-    写像$\nu : I \to [0,1]$が確率ベクトルであるとは，$\sum_{i\in I} \nu (i)=1$
+    写像$\nu \colon I \to [0,1]$が確率ベクトルであるとは，$\sum_{i\in I} \nu (i)=1$
     が成立することをいう．$\nu$を$(\nu_i)_{i\in I}$ともかき，$\nu(i)$を単に$\nu_i$とかく．
-    写像$A:I\times I \to [0,1]$が確率行列であるとは，任意の$i\in I$に対して，
+    写像$A\colon I\times I \to [0,1]$が確率行列であるとは，任意の$i\in I$に対して，
     $\sum_{j\in I} A(i,j) = 1$が成立することをいう．$A$を$(A_{ij})_{i,j\in I}$ともかき，
     $A(i,j)$を単に$A_{ij}$とかく．
 \end{definition}
 
 
-確率ベクトル$\nu$に対して$P:\mathcal{P}(I) \to [0,1]$を$P(E) \coloneqq \sum_{i \in E} \nu_i$により
+確率ベクトル$\nu$に対して$P\colon\mathcal{P}(I) \to [0,1]$を$P(E) \coloneqq \sum_{i \in E} \nu_i$により
 定めると，$P$は$I$上の確率測度となる．逆に$I$上の確率測度$P$に対して
 $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる．
 したがって，$I$上の確率分布を定めることは，確率ベクトルを定めることと同じである．
 
 
 \begin{theorem}
-    確率ベクトル$\nu$と確率行列$A$の積$\nu A : I \to [0,1]$を$j \in I$に対し
+    確率ベクトル$\nu$と確率行列$A$の積$\nu A \colon I \to [0,1]$を$j \in I$に対し
     $\nu A (j) \coloneqq \sum_{i \in I} \nu_i A_{ij}$によって定めることができ，$\nu A$は
     確率ベクトルになる．
-    確率行列$A,B$の積$AB :I\times I \to [0,1]$を$AB(i,j) = \sum_{k \in I} A_{ik}B_{kj}$
+    確率行列$A,B$の積$AB \colon I\times I \to [0,1]$を$AB(i,j) = \sum_{k \in I} A_{ik}B_{kj}$
     によって定めることができ，$AB$は確率行列になる．
 \end{theorem}
 
@@ -93,7 +93,7 @@ $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる�
 
 この定義は任意の$i \in I$に対して$P(X_{n+1} = i)= \sum_{j \in I} P(X_n = j) A_{ji}$
 が成立すること，と書き換えてもよい．
-この定義は次の定義から導かれる．
+この定義は次の定義を採用すればそれから導かれる．
 
 
 \begin{definition}[Markov連鎖]
@@ -123,8 +123,27 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
 \end{theorem}
 
 \begin{proof}
-    $\R$に埋め込んで拡張定理，追記予定
+    コルモゴロフの拡張定理を使うために，便宜的に$\R^n$上の確率測度を構成する．
+    $I$は高々可算集合，したがって単射$\phi \colon I \to \N$が存在する．
+    $n =1,2,\ldots $に対して写像$\mu_n \colon \mathcal{B}(\R^n) \to \R$
+    を$\mu_n (E) \coloneqq \sum_{(\phi(i_0),\ldots,\phi(i_{n-1}) ) \in E} 
+    \nu_{i_0} A_{i_0 i_1} A_{i_1 i_2} \cdots A_{i_{n-2} i_{n-1}}$
+    と定めると，これは$(\R^n , \mathcal{B}(\R^n))$上の確率測度になる．
+    さらに拡張定理の過程である整合条件$\mu_{n+1}(E\times \R) = \mu_n (E)$
+    が満たされることも示せるので，コルモゴロフの拡張定理から$\R^{\N}$上の
+    確率測度$\mu$で任意の$n=1,2,\ldots$と任意の$A \in \mathcal{B}(\R^n)$に対して
+    $\mu(A\times \R^{\N}) = \mu_n(A)$を満たすものが一意的に存在する．
+    $n=1,2,\ldots$に対して$Z_n \colon\R^{\N} \to \R$を
+    $n$成分への射影$Z_n((x_1,x_2,\ldots))=x_n$によって
+    定めて，$n \in \N$に対して$Y_n \coloneqq Z_{n+1}$とする．
+    $(Y_n)_{n=0}^{\infty}$はほとんどいたるところ$\phi(I)$に値を取る確率変数列で，
+    任意の$n \in \N$と任意の$i_0,\ldots,i_{n} \in I$に対して，
+    $P(Y_{0} = \phi(i_{0}), Y_{1}=\phi(i_{1}),\ldots,Y_n = \phi(i_n)) = 
+    \nu_{i_0} A_{i_0 i_1} A_{i_1 i_2}\cdots A_{i_{n-1} i_n}$
+    を満たす．零集合上の値を修正して$I$値にすれば，
+    求めるマルコフ連鎖$(X_n)_{n=0}^{\infty}$が得られる．
 \end{proof}
 
-
+マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
+これをマルコフ性という．
 \end{document}

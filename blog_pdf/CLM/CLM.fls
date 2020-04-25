@@ -95,6 +95,9 @@ INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-h.tfm
@@ -106,4 +109,8 @@ INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 OUTPUT CLM.dvi
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT CLM.aux
