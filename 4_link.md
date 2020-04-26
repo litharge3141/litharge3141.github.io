@@ -34,7 +34,7 @@ gnuplotで差分法とかできるので宴会芸にでも。
 アニメーションのところとか大変参考になりました。
 
 [gnuplotスクリプトの解説](http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/index.html)<br>
-米澤進悟先生のページです。こちらも。
+米澤進吾先生のページです。こちらも。
 
 ---
 # 個人サイトないしブログ
