@@ -7,7 +7,29 @@ permalink: /link/
 普段の勉強や作業中に参考にしているリンク集。
 
 ---
+# プログラミング
+普段のエディタはVSCodeかAtomを使っています。
+主な使用言語はC++かJulia言語です。最近はJulia言語ばかり使っています。
+
+[The Julia Programming Language](https://julialang.org/)<br>
+Julia言語の公式ページ。結局ここのドキュメントを読むのが一番いい気がします。
+もし日本語で検索するなら「Julia言語」で検索しましょう。
+
+[FreeFem++](http://www3.freefem.org/)<br>
+有限要素法は数学的にも良い手法なのですが、実装が大変という欠点を抱えています。
+FreeFem++を用いるとものすごく簡単に実装することができます。後述の斎藤先生の
+ホームページも参照しましょう。
+
+[Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page)<br>
+C++用の行列計算ライブラリ。
+
+[TeX Wiki](https://texwiki.texjp.org/)<br>
+TeXについては大体なんでも書いてあると思います。Qiitaとかで検索するより先にここを見たほうが良いです。
+
+---
 # gnuplot
+gnuplotで差分法とかできるので宴会芸にでも。
+
 [シキノート](https://slpr.sakura.ne.jp/qp/)<br>
 アニメーションのところとか大変参考になりました。
 
@@ -36,5 +58,13 @@ permalink: /link/
 
 ---
 # そのほか
-[TeX Wiki](https://texwiki.texjp.org/)<br>
-TeXについては大体なんでも書いてあると思います。Qiitaで検索するより先にここを見たほうが良いです。
+主にエンタメ系。
+
+[勇者のクズ](https://kakuyomu.jp/works/4852201425154963487)<br>
+漫画化もされてますがまだ序盤ですね。慎重勇者も結構ウケたみたいだし、こっちもアニメ化しないかなあ。
+
+
+[ギスギスオンライン](https://ncode.syosetu.com/n0776dq/)<br>
+めちゃくちゃ人を選ぶタイプのなろうVRMMOモノです。最初のほうは結構読みづらいんですけど
+42話「大神聖ロリコン宣言」までは読んでほしい…
+

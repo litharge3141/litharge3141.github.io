@@ -12,25 +12,29 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}[section]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\mathtoolsset{showonlyrefs}
 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \renewcommand{\labelenumii}{(\alph{enumii}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\diver}{\mathrm{div} \,}
 \newcommand{\rot}{\mathrm{rot} \,}
+\newcommand{\sgn}{\mathrm{sgn} \,}
 
 
 \begin{document}
 
-\title{Constantin Lax Majda方程式}
+\title{Constantin-Lax-Majda方程式}
 \author{@litharge3141}
 \date{\today}
 \maketitle
@@ -39,7 +43,7 @@
     3次元Euler方程式の時間大域的な弱解の存在は知られておらず，常に有限時間で無限大に
     爆発すると予想している人も多い．このノートでは，そのような爆発のメカニズムを
     調べるためのモデル方程式として知られているConstantin-Lax-Majda方程式について
-    解説する．
+    元論文に基づいて解説する．
 \end{abstract}
 
 \section{導出}
@@ -47,31 +51,33 @@
 Constantin-Lax-Majda方程式（CLMと略す）は3次元渦度方程式の構造を
 1次元で真似をして少しでも理解を前に進めようというものだから，まず
 3次元渦度方程式の導出をする．3次元Euler方程式
-\begin{align*}
-   \frac{\partial u}{\partial t} + u \cdot \nabla u &= - \nabla p \\
-   \diver u &=0
-\end{align*}
+\begin{align}
+    \begin{dcases}
+        \frac{\partial u}{\partial t} + u \cdot \nabla u = - \nabla p \\
+        \diver u =0
+    \end{dcases}
+\end{align}
 を考える．$\nabla p$は厄介なので$\rot$を施して消去する．
 両辺に$\rot$を施して十分な滑らかさを仮定すると，$\omega \coloneqq \rot u$として
-\begin{align*}
-    \frac{\partial \omega}{\partial t} + u \cdot \nabla \omega &= \omega \cdot \nabla u \\
-    \diver\omega &=0
-\end{align*}
+\begin{align}
+    \begin{dcases}
+        \frac{\partial \omega}{\partial t} + u \cdot \nabla \omega = \omega \cdot \nabla u \label{vor1} \\
+        \diver\omega =0
+    \end{dcases}
+\end{align}
 という$\omega$と$u$の方程式を得る．ここで
-\begin{align*}
-    \omega &= \rot u \\
-    \diver u &= 0
-\end{align*}
+\begin{align}
+    \begin{dcases}
+        \omega = \rot u \\
+        \diver u = 0
+    \end{dcases}
+\end{align}
 から$\rot \omega = - \triangle u$を得るが，これはPoisson方程式だから3次元の基本解と
 畳み込んで部分積分するとBiot-Savart積分
-\begin{align*}
+\begin{align}
     u(t,x) = -\frac{1}{4\pi} \int_{\R^3} \frac{(x-y)\times \omega(t,y)}{{\lvert x-y \rvert}^3} \mathrm{d}x
-\end{align*}
-が得られる．これを
-\begin{align*}
-    \frac{\partial \omega}{\partial t} + u \cdot \nabla \omega = \omega \cdot \nabla u 
-\end{align*}
-と連立したものを渦度方程式という．
+\end{align}
+が得られる．これを式$\eqref{vor1}$と連立したものを渦度方程式という．
 2次元でも同様の操作をすることはできるが，
 3次元との最大の違いは渦の伸長項と呼ばれる$\nabla u \cdot \omega$の有無で，
 この項のために3次元では大域解の存在が証明できていないと考えられている．
@@ -86,33 +92,71 @@ Poisson方程式の基本解の微分と$\omega$の畳み込みが現れる．
 を模することにする．爆発解の存在に移流項$u\cdot \nabla \omega$
 は関わらないと考えて，簡単のためこの項を0にする．
 すると1次元Constantin-Lax-Majda方程式
-\begin{align*}
+\begin{align}
     \omega_t = H(\omega)\omega 
-\end{align*}
+\end{align}
 が得られる．
 \section{厳密解の構成}
 \subsection{主定理}
 CLMの$\R$における初期値問題
-\begin{align*}
-    \omega_t &= H(\omega)\omega \\
-    \omega(0,x) &= \omega_0(x)
-\end{align*}
+\begin{align}
+    \begin{dcases}
+        \omega_t = H(\omega)\omega \\
+        \omega(0,x) = \omega_0(x)
+    \end{dcases}
+\end{align}
 を考える．ここで，ヒルベルト変換$H:H^1(\R)\to H^1(\R)$は
-\begin{align*}
+\begin{align}
     H(\omega) \coloneqq \frac{1}{\pi} \mathrm{p.v.} \int_{\R} \frac{\omega(y)}{x-y} \mathrm{d}y
-\end{align*}
+\end{align}
 によって与えられる．
 この時，次が成り立つ．
 \begin{theorem}\label{main_theorem}
     $\omega_0 \in C^{\infty}(\R) \cap H^{1}(\R)$の時，CLMの初期値問題の解は
-    \begin{align*}
+    \begin{align}
         \omega (t,x) = \frac{4\omega_0 (x)}{(2-tH(\omega_0)(x))^2 + t^2 \omega_0^2(x)}
-    \end{align*}
+    \end{align}
     によって与えられる．
 \end{theorem}
 
 \subsection{補題や用いる性質}
 $\mathrm{Theorem} \ref{main_theorem}$の証明中に用いる$H$の性質などをすべて証明する．
+$L^2$におけるフーリエ変換の知識は仮定する．
+特に$H$の合成と積に対する振る舞いが重要である．$H^1$有界性から始める．
+\begin{theorem}[$L^2$有界性]
+    $\delta >0$が与えられたとする．$H_{\delta}$を$f \in L^2 (\R)$に対して
+    \begin{align}
+        H_{\delta} (f) (x) \coloneqq \frac{1}{\pi} \int_{\lvert x-y \rvert > \delta} 
+        \frac{f(y)}{x-y} \mathrm{d}y
+    \end{align}
+    によって定義すると，$H_{\delta}(f) \in L^2(\R)$であり，
+    $\delta \to 0$で$H_{\delta}(f)$は$L^2$収束する．
+\end{theorem}
+
+\begin{proof}
+    フーリエ変換を利用して証明をする．
+    \begin{align}
+        h_{\delta}(x) = 
+        \begin{dcases}
+            0\quad (\lvert x \rvert < \delta) \\
+            \frac{1}{x} \quad (\lvert x \rvert \geq \delta)
+        \end{dcases}
+    \end{align}
+    によって$h_\delta$を定める．$\mathcal{F}(h_\delta)$を複素積分を用いて計算すると，
+    $\mathcal{F}(h_\delta)$は$\delta$によらずに有界であることが分かる．さらに，
+    $\lim_{\delta \to 0} \mathcal{F}(h_\delta) (\xi) = -i \sqrt{\pi / 2} \, \sgn \xi$
+    が成立する．よって畳み込みの性質から
+    \begin{align}
+        \mathcal{F}(H_\delta (f)) &= \mathcal{F} (h_\delta \ast f) \\
+            &= \mathcal{F}(h_\delta) \mathcal{F}(f)
+    \end{align}
+    が成立し，ルベーグの収束定理から$\mathcal{F}(H_\delta (f))$は$\delta\to 0$で
+    $-i \sqrt{\pi / 2} \, \sgn \xi \, \mathcal{F}(f)$に$L^2$収束する．
+    フーリエ変換の$L^2$等長性より，$H_\delta (f)$も$L^2$収束する．
+\end{proof}
+
+定理の証明から$H(f)$のフーリエ変換は$-i \sqrt{\pi / 2} \, \sgn \xi \, \mathcal{F}(f)$
+で与えられる．これはフーリエ掛け算作用素と呼ばれる形をしており，この表示は今後も用いる．
 \section{拡張やそのほかの性質}
     
 

@@ -108,6 +108,8 @@ INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
 OUTPUT CLM.dvi
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
