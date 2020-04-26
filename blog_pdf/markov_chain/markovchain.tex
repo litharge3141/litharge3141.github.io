@@ -12,6 +12,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}[section]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -24,6 +25,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
 
 
 \begin{document}
@@ -58,6 +60,17 @@ $I$は高々可算だから，$I$上の分布はうまく言い換えられる�
 $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる．
 したがって，$I$上の確率分布を定めることは，確率ベクトルを定めることと同じである．
 
+\begin{example}
+    $i \in I$に対して，確率ベクトル$\delta_i$を
+    \begin{align}
+        \delta_i (j) = 
+        \begin{cases}
+            1 \quad (j=i) \\
+            0 \quad (j\neq i)
+        \end{cases}
+    \end{align}
+    によって定めることができる．この記号$\delta_i$は後で用いる．
+\end{example}
 
 \begin{theorem}
     確率ベクトル$\nu$と確率行列$A$の積$\nu A \colon I \to [0,1]$を$j \in I$に対し
@@ -104,7 +117,9 @@ $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる�
     任意の$n \in \N$と任意の$i_0,\ldots,i_{n} \in I$に対して，
     $P(X_{0} = i_{0}, X_{1}=i_{1},\ldots,X_n = i_n) = 
     \nu_{i_0} A_{i_0 i_1} A_{i_1 i_2}\cdots A_{i_{n-1} i_n}$
-    が成立することをいう．
+    が成立することをいう．マルコフ連鎖を初期分布と遷移行列，
+    確率測度との組にして$((X_n)_{n=0}^{\infty},A,\nu,P)$
+    と書き表すこともある．
 \end{definition}
 
 
@@ -129,7 +144,7 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     を$\mu_n (E) \coloneqq \sum_{(\phi(i_0),\ldots,\phi(i_{n-1}) ) \in E} 
     \nu_{i_0} A_{i_0 i_1} A_{i_1 i_2} \cdots A_{i_{n-2} i_{n-1}}$
     と定めると，これは$(\R^n , \mathcal{B}(\R^n))$上の確率測度になる．
-    さらに拡張定理の過程である整合条件$\mu_{n+1}(E\times \R) = \mu_n (E)$
+    さらに拡張定理の仮定である整合条件$\mu_{n+1}(E\times \R) = \mu_n (E)$
     が満たされることも示せるので，コルモゴロフの拡張定理から$\R^{\N}$上の
     確率測度$\mu$で任意の$n=1,2,\ldots$と任意の$A \in \mathcal{B}(\R^n)$に対して
     $\mu(A\times \R^{\N}) = \mu_n(A)$を満たすものが一意的に存在する．
@@ -145,5 +160,38 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
 \end{proof}
 
 マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
-これをマルコフ性という．
+これをマルコフ性という．それを示そう．
+
+\begin{theorem}[マルコフ性1]
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．このとき，
+    任意の$n \in \N$と任意の$i_0,\ldots,i_{n+1} \in I$に対して，
+    $P(X_n = i_n,\ldots,X_0 = i_0) >0$が成り立つならば，
+    $P(X_{n+1} \mid X_n = i_n,\ldots,X_0 = i_0)=A_{i_n i_{n+1}}$が成立する．
+\end{theorem}
+
+\begin{proof}
+    $n \in \N$と$i_0,\ldots,i_{n+1} \in I$が任意に与えられたとすると，
+    $P(X_{n+1}=i_{n+1} \mid X_n = i_n,\ldots,X_0 = i_0)P(X_n = i_n,\ldots,X_0 = i_0) 
+    = P(X_{n+1},X_n = i_n,\ldots,X_0 = i_0)$が成り立つ．$(X_n)_{n=0}^{\infty}$
+    がマルコフ連鎖であるから，$P(X_n = i_n,\ldots,X_0 = i_0) = \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{n-1} i_n}$
+    および$P(X_{n+1},X_n = i_n,\ldots,X_0 = i_0) = \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{n} i_{n+1}}$
+    となる．これを代入して計算をすれば定理を得る．
+\end{proof}
+
+マルコフ性は別の定式化をすることもできる．次の性質も成り立つ．
+\begin{theorem}[マルコフ性2]
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
+    $i \in I$と$m \in \N$が任意に与えられたとすると，
+    $Y_n \coloneqq X_{n+m}$として定めた$(Y_n)_{n=0}^{\infty}$
+    に対して，$((Y_n)_{n=0}^{\infty},A,\delta_i, P(\cdot \mid X_m = i))$
+    はマルコフ連鎖となる．
+\end{theorem}
+
+\begin{proof}
+    追記予定
+\end{proof}
 \end{document}

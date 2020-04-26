@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  25 APR 2020 06:39
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  26 APR 2020 03:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -176,98 +176,99 @@ File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 )
 \c@theorem=\count191
 \c@corollary=\count192
-\c@definition=\count193
+\c@example=\count193
+\c@definition=\count194
  (c:/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
 File: l3backend-dvipdfmx.def 2020-02-03 L3 backend support: dvipdfmx
-\g__graphics_track_int=\count194
+\g__graphics_track_int=\count195
 \l__pdf_internal_box=\box64
-\g__pdf_backend_object_int=\count195
-\g__pdf_backend_annotation_int=\count196
+\g__pdf_backend_object_int=\count196
+\g__pdf_backend_annotation_int=\count197
 ) (./markovchain.aux)
 \openout1 = `markovchain.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 34.
+(Font)              scaled to size 15.9785pt on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 34.
+(Font)              scaled to size 15.9785pt on input line 36.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 34.
+(Font)              scaled to size 11.09619pt on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 34.
+(Font)              scaled to size 11.09619pt on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 34.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+(Font)              scaled to size 5.5481pt on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
  (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
  (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 36.
+(Font)              scaled to size 13.31541pt on input line 38.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 36.
+(Font)              scaled to size 13.31541pt on input line 38.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 36.
+(Font)              scaled to size 13.31541pt on input line 38.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 36.
+(Font)              scaled to size 13.31541pt on input line 38.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 6.47278pt on input line 39.
+(Font)              scaled to size 6.47278pt on input line 41.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 39.
+(Font)              scaled to size 4.62341pt on input line 41.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 41.
+(Font)              scaled to size 11.09619pt on input line 43.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 41.
+(Font)              scaled to size 11.09619pt on input line 43.
 LaTeX Font Info:    Font shape `JT2/mc/b/n' in size <10> not available
-(Font)              Font shape `JT2/mc/bx/n' tried instead on input line 48.
+(Font)              Font shape `JT2/mc/bx/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 48.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 48.
+(Font)              scaled to size 9.24683pt on input line 50.
 LaTeX Font Info:    Font shape `JY2/mc/b/n' in size <10> not available
-(Font)              Font shape `JY2/mc/bx/n' tried instead on input line 48.
+(Font)              Font shape `JY2/mc/bx/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 48.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 48.
+(Font)              scaled to size 9.24683pt on input line 50.
 LaTeX Font Info:    Font shape `JT2/mc/m/it' in size <10> not available
-(Font)              Font shape `JT2/mc/m/n' tried instead on input line 62.
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 62.
+(Font)              scaled to size 9.24683pt on input line 63.
 LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <10> not available
-(Font)              Font shape `JY2/mc/m/n' tried instead on input line 62.
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 62.
+(Font)              scaled to size 9.24683pt on input line 63.
  [1
 
-] [2] (./markovchain.aux) ) 
+] [2] [3] (./markovchain.aux) ) 
 Here is how much of TeX's memory you used:
- 2801 strings out of 481768
- 37935 string characters out of 5934902
- 284434 words of memory out of 5000000
- 18203 multiletter control sequences out of 15000+600000
+ 2807 strings out of 481768
+ 37990 string characters out of 5934902
+ 287501 words of memory out of 5000000
+ 18209 multiletter control sequences out of 15000+600000
  546018 words of font info for 93 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 30i,6n,31p,274b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,14n,31p,274b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on markovchain.dvi (2 pages, 11312 bytes).
+Output written on markovchain.dvi (3 pages, 15064 bytes).
