@@ -107,7 +107,7 @@ CLMの$\R$における初期値問題
 \end{align}
 を考える．ここで，ヒルベルト変換$H:H^1(\R)\to H^1(\R)$は
 \begin{align}
-    H(\omega) \coloneqq \frac{1}{\pi} \mathrm{p.v.} \int_{\R} \frac{\omega(y)}{x-y} \mathrm{d}y
+    H(\omega) \coloneqq \frac{1}{\pi} \, \mathrm{p.v.} \int_{\R} \frac{\omega(y)}{x-y} \mathrm{d}y
 \end{align}
 によって与えられる．
 この時，次が成り立つ．
@@ -121,8 +121,21 @@ CLMの$\R$における初期値問題
 
 \subsection{補題や用いる性質}
 $\mathrm{Theorem} \ref{main_theorem}$の証明中に用いる$H$の性質などをすべて証明する．
-$L^2$におけるフーリエ変換の知識は仮定する．
-特に$H$の合成と積に対する振る舞いが重要である．$H^1$有界性から始める．
+$L^2$におけるフーリエ変換の知識は仮定するが，定数倍の違いによる混乱を避けるために定義だけ載せておく．
+\begin{definition}
+    このノートでは，フーリエ変換$\mathcal{F} :\mathcal{S} \to \mathcal{S}$を
+    \begin{align}
+        \mathcal{F}(f)(\xi) \coloneqq (2\pi)^{-\frac{1}{2}} \int_{\R} f(x)\, \mathrm{e}^{-ix\xi} \mathrm{d}x
+    \end{align}
+    によって定める．また，逆フーリエ変換$\mathcal{F}^{-1} :\mathcal{S} \to \mathcal{S}$を
+    \begin{align}
+        \mathcal{F}^{-1} (f)(x) \coloneqq (2\pi)^{-\frac{1}{2}} \int_{\R} f(\xi)\, \mathrm{e}^{ix\xi} \mathrm{d}\xi
+    \end{align}
+    によって定める．
+\end{definition}
+
+この流儀で行くと畳み込みに対して$\mathcal{F}(f\ast g) = \sqrt{2\pi} \mathcal{F}(f) \mathcal{F}(g)$となる．
+$H$が$H^1$有界な線形作用素であることの証明から始める．
 \begin{theorem}[$L^2$有界性]
     $\delta >0$が与えられたとする．$H_{\delta}$を$f \in L^2 (\R)$に対して
     \begin{align}
@@ -130,7 +143,9 @@ $L^2$におけるフーリエ変換の知識は仮定する．
         \frac{f(y)}{x-y} \mathrm{d}y
     \end{align}
     によって定義すると，$H_{\delta}(f) \in L^2(\R)$であり，
-    $\delta \to 0$で$H_{\delta}(f)$は$L^2$収束する．
+    $\delta \to 0$で$H_{\delta}(f)$は$L^2$収束する．さらに，
+    $H(f) \coloneqq \lim_{\delta \to 0} H_{\delta} (f)$によって
+    $H:L^2(\R) \to L^2(\R)$を定めると$H$は有界である．
 \end{theorem}
 
 \begin{proof}
@@ -143,20 +158,31 @@ $L^2$におけるフーリエ変換の知識は仮定する．
         \end{dcases}
     \end{align}
     によって$h_\delta$を定める．$\mathcal{F}(h_\delta)$を複素積分を用いて計算すると，
-    $\mathcal{F}(h_\delta)$は$\delta$によらずに有界であることが分かる．さらに，
+    $\mathcal{F}(h_\delta)$は$\delta$によらずに有界であり，さらに，
     $\lim_{\delta \to 0} \mathcal{F}(h_\delta) (\xi) = -i \sqrt{\pi / 2} \, \sgn \xi$
-    が成立する．よって畳み込みの性質から
+    が成立することが分かる．よって畳み込みの性質から
     \begin{align}
         \mathcal{F}(H_\delta (f)) &= \mathcal{F} (h_\delta \ast f) \\
-            &= \mathcal{F}(h_\delta) \mathcal{F}(f)
+            &= \sqrt{2\pi} \mathcal{F}(h_\delta) \mathcal{F}(f)
     \end{align}
     が成立し，ルベーグの収束定理から$\mathcal{F}(H_\delta (f))$は$\delta\to 0$で
-    $-i \sqrt{\pi / 2} \, \sgn \xi \, \mathcal{F}(f)$に$L^2$収束する．
+    $-i \pi \, \sgn \xi \, \mathcal{F}(f)$に$L^2$収束する．
     フーリエ変換の$L^2$等長性より，$H_\delta (f)$も$L^2$収束する．
+    $-i \pi \, \sgn \, \xi$は有界だから$H$は有界線形作用素である．
 \end{proof}
 
-定理の証明から$H(f)$のフーリエ変換は$-i \sqrt{\pi / 2} \, \sgn \xi \, \mathcal{F}(f)$
-で与えられる．これはフーリエ掛け算作用素と呼ばれる形をしており，この表示は今後も用いる．
+証明から$H(f)$のフーリエ変換は$-i \pi \, \sgn \xi \, \mathcal{F}(f)$
+で与えられる．これはフーリエ掛け算作用素と呼ばれる形をしており，この表示は
+次の系のほか，このノートを通して用いる．
+
+\begin{corollary}[$H^1$有界性]
+    $f \in H^1(\R)$に対して$H(f) \in H^1(\R)$が成立し，
+    $H$は$H^1(\R) \to H^1(\R)$という有界線形作用素ともみなせる．
+\end{corollary}
+
+\begin{corollary}[恒等式その１]
+    $f \in L^2(\R)$に対して$H(H(f)) = -\pi^2 f$が$L^2(\R)$の等式として成立する．
+\end{corollary}
 \section{拡張やそのほかの性質}
     
 

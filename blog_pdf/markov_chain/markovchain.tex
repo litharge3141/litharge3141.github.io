@@ -20,6 +20,8 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 
+\mathtoolsset{showonlyrefs}
+
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \renewcommand{\labelenumii}{(\alph{enumii}}
 \newcommand{\R}{\mathbb{R}}
@@ -159,6 +161,15 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     求めるマルコフ連鎖$(X_n)_{n=0}^{\infty}$が得られる．
 \end{proof}
 
+$\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$のような形の事象を表すのに
+，このような事象全体で作られる自然な増大情報系という概念を導入しておくと便利である．
+\begin{definition}
+    $(\Omega,\mathcal{F},P)$を確率空間として，$\Omega$から$I$への
+    確率変数列$(X_n)_{n=0}^{\infty}$が与えられたとする．このとき，
+    $\mathcal{F}_n \coloneqq \sigma (X_0,\ldots,X_n)$を$(X_n)_{n=0}^{\infty}$
+    に関する自然な増大情報系という．
+\end{definition}
+
 マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
 これをマルコフ性という．それを示そう．
 
@@ -185,13 +196,31 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     $(\Omega,\mathcal{F},P)$を確率空間として，
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
     遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
-    $i \in I$と$m \in \N$が任意に与えられたとすると，
+    任意の$i \in I$と任意の$m \in \N$に対して，$P(X_m = i) >0$が成立するならば，
     $Y_n \coloneqq X_{n+m}$として定めた$(Y_n)_{n=0}^{\infty}$
     に対して，$((Y_n)_{n=0}^{\infty},A,\delta_i, P(\cdot \mid X_m = i))$
     はマルコフ連鎖となる．
 \end{theorem}
 
 \begin{proof}
-    追記予定
+    $i \in \N$と$i_m,i_{m+1},\ldots,i_{m+n} \in I$が任意に与えられたとする．
+    \begin{align}
+        &P(Y_0 = i_m ,\ldots, Y_n = i_{m+n} \mid X_m = i) \\
+        &= P(X_m = i,X_m = i_m,\ldots,X_{m+n}=i_{m+n}) / P(X_m = i) \\
+        &= \frac{\sum_{i_0,\ldots,i_{m-1} \in I} P(X_0 = i_0,\ldots, 
+        X_{m-1} = i_{m-1},X_m = i,X_m = i_m,\ldots,X_{m+n}=i_{m+n})}{\sum_{j_0,\ldots,j_{m-1} 
+        \in I} P(X_0 = j_0,\ldots, X_{m-1} = j_{m-1},X_m = i)}\\
+        &= \frac{\sum_{i_0,\ldots,i_{m-1} \in I} \delta_{i}(i_m) 
+         \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m+n-1}{i_{m+n}}}}{\sum_{i_0,\ldots,i_{m-1} \in I} 
+         \nu_{j_0} A_{j_0 j_1} \cdots A_{j_{m-1} i}} \\
+        &= \delta_{i}(i_m) A_{i_{m} i_{m+1}} \cdots A_{i_{m+n-1} i_{m+n}} \frac{\sum_{i_0,\ldots,i_{m-1} \in I} 
+        \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i}}{\sum_{i_0,\ldots,i_{m-1} \in I} 
+        \nu_{j_0} A_{j_0 j_1} \cdots A_{j_{m-1} i}} \\
+        &= \delta_{i}(i_m) A_{i_{m} i_{m+1}} \cdots A_{i_{m+n-1} i_{m+n}}
+    \end{align}
+    したがって，示された．
 \end{proof}
+
+マルコフ性の応用として到達確率と差分作用素を扱う．
+
 \end{document}
