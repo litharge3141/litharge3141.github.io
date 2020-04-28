@@ -162,16 +162,16 @@ $H$が$H^1$有界な線形作用素であることの証明から始める．
     $\lim_{\delta \to 0} \mathcal{F}(h_\delta) (\xi) = -i \sqrt{\pi / 2} \, \sgn \xi$
     が成立することが分かる．よって畳み込みの性質から
     \begin{align}
-        \mathcal{F}(H_\delta (f)) &= \mathcal{F} (h_\delta \ast f) \\
-            &= \sqrt{2\pi} \mathcal{F}(h_\delta) \mathcal{F}(f)
+        \mathcal{F}(H_\delta (f)) &= \frac{1}{\pi} \mathcal{F} (h_\delta \ast f) \\
+            &= \sqrt{\frac{2}{\pi}} \mathcal{F}(h_\delta) \mathcal{F}(f)
     \end{align}
-    が成立し，ルベーグの収束定理から$\mathcal{F}(H_\delta (f))$は$\delta\to 0$で
-    $-i \pi \, \sgn \xi \, \mathcal{F}(f)$に$L^2$収束する．
+    が成立することと併せて，ルベーグの収束定理から$\mathcal{F}(H_\delta (f))$は$\delta\to 0$で
+    $-i  \, \sgn \xi \, \mathcal{F}(f)$に$L^2$収束する．
     フーリエ変換の$L^2$等長性より，$H_\delta (f)$も$L^2$収束する．
-    $-i \pi \, \sgn \, \xi$は有界だから$H$は有界線形作用素である．
+    $-i  \, \sgn \, \xi$は有界だから$H$は有界線形作用素である．
 \end{proof}
 
-証明から$H(f)$のフーリエ変換は$-i \pi \, \sgn \xi \, \mathcal{F}(f)$
+証明から$H(f)$のフーリエ変換は$-i  \, \sgn \xi \, \mathcal{F}(f)$
 で与えられる．これはフーリエ掛け算作用素と呼ばれる形をしており，この表示は
 次の系のほか，このノートを通して用いる．
 
@@ -180,9 +180,42 @@ $H$が$H^1$有界な線形作用素であることの証明から始める．
     $H$は$H^1(\R) \to H^1(\R)$という有界線形作用素ともみなせる．
 \end{corollary}
 
+\begin{proof}
+    $f \in H^1(\R)$が任意に与えられたとする．$\langle \xi \rangle^{1/2} \mathcal{F}(H(f))(\xi)$が
+    $L^2(\R)$に入ることを示せばよい．
+    \begin{align}
+        \langle \xi \rangle^{1/2} \mathcal{F}(H(f))(\xi) 
+        &= -i \,\sgn \xi \, \langle \xi \rangle^{1/2} \mathcal{F}(f)(\xi)
+    \end{align}
+    となるが，$f \in H^1(\R)$より，$\langle \xi \rangle^{1/2} \mathcal{F}(f)(\xi) \in L^2(\R)$となる．
+    $-i \,\sgn \xi $は有界だから，示された．
+\end{proof}
+
 \begin{corollary}[恒等式その１]
-    $f \in L^2(\R)$に対して$H(H(f)) = -\pi^2 f$が$L^2(\R)$の等式として成立する．
+    $f \in L^2(\R)$に対して$H(H(f)) = - f$が$L^2(\R)$の等式として成立する．
 \end{corollary}
+
+\begin{proof}
+    容易なので読者に任せる．
+\end{proof}
+
+$H$は$L^1 \to L^1_w$の有界線形作用素であり，
+このことと補間定理（と双対性）を用いると$p>1$に対して$L^p \to L^p$とみて
+有界線形作用素であることが証明できる．
+
+\begin{corollary}[恒等式その２（証明できていない）]
+    $fg \in L^2(\R)$かつ$H(f)H(g) \in L^2(\R)$となるような$f,g \in L^2(\R)$に対して，
+    \begin{align}
+        H(fg) = fH(g) + H(f)g + H(H(f)H(g))
+    \end{align}
+    が成立する．
+\end{corollary}
+
+\begin{proof}
+    そもそもこの形でよいのかを含めて調査中…
+\end{proof}
+
+
 \section{拡張やそのほかの性質}
     
 

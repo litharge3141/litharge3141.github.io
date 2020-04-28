@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  27 APR 2020 03:49
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  28 APR 2020 06:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -259,16 +259,32 @@ LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <10> not available
 (Font)              Font shape `JY2/mc/m/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 9.24683pt on input line 65.
+LaTeX Font Info:    Font shape `JT2/mc/m/it' in size <7> not available
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 105.
+LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <7> not available
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 105.
+LaTeX Font Info:    Font shape `JT2/mc/m/it' in size <5> not available
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 105.
+LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <5> not available
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 105.
  [1
 
-] [2] [3] (./markovchain.aux) ) 
+] [2] [3] [4] (./markovchain.aux) ) 
 Here is how much of TeX's memory you used:
- 2807 strings out of 481768
- 37990 string characters out of 5934902
- 287588 words of memory out of 5000000
- 18209 multiletter control sequences out of 15000+600000
- 546018 words of font info for 93 fonts, out of 8000000 for 9000
+ 2815 strings out of 481768
+ 38089 string characters out of 5934902
+ 288588 words of memory out of 5000000
+ 18216 multiletter control sequences out of 15000+600000
+ 546934 words of font info for 97 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 30i,14n,31p,274b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,16n,31p,274b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on markovchain.dvi (3 pages, 18304 bytes).
+Output written on markovchain.dvi (4 pages, 20140 bytes).

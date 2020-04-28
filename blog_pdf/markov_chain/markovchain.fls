@@ -106,5 +106,9 @@ INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 OUTPUT markovchain.dvi
 INPUT markovchain.aux

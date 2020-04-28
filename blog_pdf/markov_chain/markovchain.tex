@@ -89,7 +89,24 @@ $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる�
 
 
 確率行列は確率ベクトルの変換を定めるが，これは分布の変換を定めているのと
-同じことである．これをもとにしてマルコフ連鎖の定義を与える．
+同じことである．
+
+\begin{example}[破産問題]
+    $I = \Z$とし，$X_n$を$n$回目の試行の後の所持金とする．
+    確率$1/2$で$X_{n+1}=X_{n}+1$とし，確率$1/2$で$X_{n+1}=X_{n}-1$とするような
+    賭けを考える．最初の所持金を$i$とすると，初期分布は$\delta_i$で与えられる．
+    この試行の確率行列は
+    \begin{align}
+        A_{ij} = 
+        \begin{cases}
+            1/2 \quad (j = i \pm 1) \\
+            0 \quad (\text{それ以外}) 
+        \end{cases}
+    \end{align}
+    によって与えられる．
+\end{example}
+
+
 初期分布と時間によらない分布の変換が与えられているとき，
 それにしたがって発展するような分布を持つ確率変数列のことをマルコフ連鎖という．
 素直に数式で表現すると次のようになる．
@@ -161,8 +178,9 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     求めるマルコフ連鎖$(X_n)_{n=0}^{\infty}$が得られる．
 \end{proof}
 
-$\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$のような形の事象を表すのに
-，このような事象全体で作られる自然な増大情報系という概念を導入しておくと便利である．
+しばしば現れてきた$\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$
+のような形の事象を表すのに，このような事象全体で作られる
+自然な増大情報系という概念を導入しておくと便利である．
 \begin{definition}
     $(\Omega,\mathcal{F},P)$を確率空間として，$\Omega$から$I$への
     確率変数列$(X_n)_{n=0}^{\infty}$が与えられたとする．このとき，
@@ -177,8 +195,8 @@ $\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$のような形の
     $(\Omega,\mathcal{F},P)$を確率空間として，
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
     遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．このとき，
+    $P(X_n = i_n,\ldots,X_0 = i_0) >0$が成り立つような
     任意の$n \in \N$と任意の$i_0,\ldots,i_{n+1} \in I$に対して，
-    $P(X_n = i_n,\ldots,X_0 = i_0) >0$が成り立つならば，
     $P(X_{n+1} \mid X_n = i_n,\ldots,X_0 = i_0)=A_{i_n i_{n+1}}$が成立する．
 \end{theorem}
 
@@ -192,13 +210,14 @@ $\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$のような形の
 \end{proof}
 
 マルコフ性は別の定式化をすることもできる．次の性質も成り立つ．
-\begin{theorem}[マルコフ性2]
+\begin{theorem}[マルコフ性2]\label{markov_prop2}
     $(\Omega,\mathcal{F},P)$を確率空間として，
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
     遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
-    任意の$i \in I$と任意の$m \in \N$に対して，$P(X_m = i) >0$が成立するならば，
-    $Y_n \coloneqq X_{n+m}$として定めた$(Y_n)_{n=0}^{\infty}$
-    に対して，$((Y_n)_{n=0}^{\infty},A,\delta_i, P(\cdot \mid X_m = i))$
+    $P(X_m = i) >0$が成り立つような
+    任意の$i \in I$と任意の$m \in \N$に対して，
+    $Y_n \coloneqq X_{n+m}$として$(Y_n)_{n=0}^{\infty}$
+    を定めると，$((Y_n)_{n=0}^{\infty},A,\delta_i, P(\cdot \mid X_m = i))$
     はマルコフ連鎖となる．
 \end{theorem}
 
@@ -221,6 +240,19 @@ $\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$のような形の
     したがって，示された．
 \end{proof}
 
+$\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示すことができる．
+\begin{theorem}[$\mathcal{F}_{m}$との独立性]
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
+    $P(X_m = i) >0$が成り立つような
+    任意の$i \in I$と任意の$m \in \N$に対して，
+    $Y_n \coloneqq X_{n+m}$として$(Y_n)_{n=0}^{\infty}$
+    を定める．このとき，確率空間$(\Omega,\mathcal{F},P(\cdot \mid X_m = i))$
+    の下で$(Y_n)_{n=0}^{\infty}$と$\mathcal{F}_m$は独立である．
+\end{theorem}
+\subsection{到達確率と差分作用素}
 マルコフ性の応用として到達確率と差分作用素を扱う．
+
 
 \end{document}
