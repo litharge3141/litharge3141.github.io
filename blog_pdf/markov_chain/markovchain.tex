@@ -183,10 +183,23 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
 自然な増大情報系という概念を導入しておくと便利である．
 \begin{definition}
     $(\Omega,\mathcal{F},P)$を確率空間として，$\Omega$から$I$への
-    確率変数列$(X_n)_{n=0}^{\infty}$が与えられたとする．このとき，
-    $\mathcal{F}_n \coloneqq \sigma (X_0,\ldots,X_n)$を$(X_n)_{n=0}^{\infty}$
-    に関する自然な増大情報系という．
+    確率変数列$X = (X_n)_{n=0}^{\infty}$が与えられたとする．$n \in \N$
+    に対して$\mathcal{F}$の部分$\sigma$-代数$\mathcal{F}_n$を
+    $\mathcal{F}_n \coloneqq \sigma (X_0,\ldots,X_n)$と定める．
+    $(\mathcal{F}_n)_{n =0}^{\infty}$を$X$に関する自然な増大情報系という．
 \end{definition}
+
+\begin{theorem}
+    $(\Omega,\mathcal{F},P)$を確率空間として，$\Omega$から$I$への
+    確率変数列$X = (X_n)_{n=0}^{\infty}$が与えられたとする．
+    $(\mathcal{F}_n)_{n=0}^{\infty}$を自然な増大情報系とすると，任意の$n \in \N$
+    と$E \in \mathcal{F}_n$に対して，ある$I^n$の部分集合$F$
+    が存在して，
+    \begin{align}
+        P(E) = \sum_{(i_0,\ldots,i_n) \in F} P(X_0 = i_0,\ldots,X_n = i_n)
+    \end{align}
+    が成立する．
+\end{theorem}
 
 マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
 これをマルコフ性という．それを示そう．

@@ -1,11 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1588052443 "CLM.dvi" "CLM.pdf" "CLM" 1588052444
-  "CLM.dvi" 1588052443 13540 0768216b6bbe4ab2bcad07e799937883 "latex"
+["dvipdf"] 1588222524 "CLM.dvi" "CLM.pdf" "CLM" 1588222525
+  "CLM.dvi" 1588222524 13576 7760e8ec7c26f4c283d846f963e15718 "latex"
   (generated)
   "CLM.pdf"
-["latex"] 1588052443 "d:/litharge3141.github.io/blog_pdf/CLM/CLM.tex" "CLM.dvi" "CLM" 1588052444
-  "CLM.aux" 1588052443 828 81c1ccb4f5ea782f9054dd78fd5dd4a1 "latex"
-  "CLM.tex" 1588052440 9461 18fffebe8c7391ff1593ba680ffe628a ""
+["latex"] 1588222523 "d:/litharge3141.github.io/blog_pdf/CLM/CLM.tex" "CLM.dvi" "CLM" 1588222525
+  "CLM.aux" 1588222524 828 81c1ccb4f5ea782f9054dd78fd5dd4a1 "latex"
+  "CLM.tex" 1588222520 9523 583313fd0bdb9073bd192c827d715ddc ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1582015620 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1582015620 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -61,8 +61,8 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/CLM/CLM.tex" 1588052440 9461 18fffebe8c7391ff1593ba680ffe628a ""
+  "d:/litharge3141.github.io/blog_pdf/CLM/CLM.tex" 1588222520 9523 583313fd0bdb9073bd192c827d715ddc ""
   (generated)
   "CLM.log"
-  "CLM.aux"
   "CLM.dvi"
+  "CLM.aux"
