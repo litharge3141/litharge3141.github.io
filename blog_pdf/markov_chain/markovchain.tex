@@ -189,18 +189,6 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     $(\mathcal{F}_n)_{n =0}^{\infty}$を$X$に関する自然な増大情報系という．
 \end{definition}
 
-\begin{theorem}
-    $(\Omega,\mathcal{F},P)$を確率空間として，$\Omega$から$I$への
-    確率変数列$X = (X_n)_{n=0}^{\infty}$が与えられたとする．
-    $(\mathcal{F}_n)_{n=0}^{\infty}$を自然な増大情報系とすると，任意の$n \in \N$
-    と$E \in \mathcal{F}_n$に対して，ある$I^n$の部分集合$F$
-    が存在して，
-    \begin{align}
-        P(E) = \sum_{(i_0,\ldots,i_n) \in F} P(X_0 = i_0,\ldots,X_n = i_n)
-    \end{align}
-    が成立する．
-\end{theorem}
-
 マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
 これをマルコフ性という．それを示そう．
 
@@ -264,6 +252,35 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     を定める．このとき，確率空間$(\Omega,\mathcal{F},P(\cdot \mid X_m = i))$
     の下で$(Y_n)_{n=0}^{\infty}$と$\mathcal{F}_m$は独立である．
 \end{theorem}
+
+\begin{proof}
+    $n \in \N$と$i_0,\ldots,i_m,\ldots,i_{m+n} \in I$が任意に与えられたとする．
+    $E \coloneqq \{X_0 = i_0,\ldots, X_m = i_m\}$とおく．$E \in \mathcal{F}_m$
+    は定義から明らかである．この$E$に対して
+    \begin{align}
+        &P((Y_0=i_m,\ldots,Y_n = i_{m+n})\cap E \mid X_m = i ) \\
+        &= 
+        P(Y_0=i_m,\ldots,Y_n = i_{m+n} \mid X_m = i) P(E \mid X_m = i) \label{Fm_indep_1}
+    \end{align}
+    を示す．$(X_n)_{n=0}^{\infty}$のマルコフ性から
+    \begin{align}
+       &P((Y_0=i_m,\ldots,Y_n = i_{m+n})\cap E \mid X_m = i )\\
+        &=\delta_i(i_m) P(X_{0} = i_{0},\ldots,X_m=i,\ldots,X_{m+n}=i_{m+n}) / P(X_m = i)\\
+        &=\delta_i(i_m) \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i} / P(X_m = i)
+    \end{align}
+    および
+    \begin{align}
+        P(E \mid X_m = i) &= P(X_0=i_0,\ldots,X_{m-1}=i_{m-1},X_m = i) / P(X_m = i)\\
+        &= \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i} / P(X_m = i)
+    \end{align}
+    が得られる．また$\mathrm{Theorem}\ref{markov_prop2}$により，
+    \begin{align}
+        P(Y_0=i_m,\ldots,Y_n = i_{m+n} \mid X_m = i) = 
+        \delta_{i}(i_m) A_{i_m i_{m+1}} \cdots A_{i_{m+n-1} i_{m+n}}
+    \end{align}
+    となる．これらの式から$\eqref{Fm_indep_1}$が得られた．一般の$E \in \mathcal{F}_m$
+    に対して証明するため，上の結果を利用する．
+\end{proof}
 \subsection{到達確率と差分作用素}
 マルコフ性の応用として到達確率と差分作用素を扱う．
 
