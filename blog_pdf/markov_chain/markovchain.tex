@@ -265,13 +265,14 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     を示す．$(X_n)_{n=0}^{\infty}$のマルコフ性から
     \begin{align}
        &P((Y_0=i_m,\ldots,Y_n = i_{m+n})\cap E \mid X_m = i )\\
-        &=\delta_i(i_m) P(X_{0} = i_{0},\ldots,X_m=i,\ldots,X_{m+n}=i_{m+n}) / P(X_m = i)\\
-        &=\delta_i(i_m) \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i} / P(X_m = i)
+        &=\delta_i(i_m) P(X_{0} = i_{0},\ldots,X_{m+n}=i_{m+n}) / P(X_m = i)\\
+        &=\delta_i(i_m) \nu_{i_0} A_{i_0 i_1}  \cdots A_{i_{m+n-1} i_{m+n}} / P(X_m = i)
     \end{align}
     および
     \begin{align}
-        P(E \mid X_m = i) &= P(X_0=i_0,\ldots,X_{m-1}=i_{m-1},X_m = i) / P(X_m = i)\\
-        &= \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i} / P(X_m = i)
+        P(E \mid X_m = i) &= 
+        \delta_i(i_m) P(X_0=i_0,\ldots,X_{m-1}=i_{m-1},X_m = i_m) / P(X_m = i)\\
+        &= \delta_i(i_m) \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i_m} / P(X_m = i)
     \end{align}
     が得られる．また$\mathrm{Theorem}\ref{markov_prop2}$により，
     \begin{align}
