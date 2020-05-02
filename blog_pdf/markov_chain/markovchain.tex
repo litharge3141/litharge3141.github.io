@@ -178,9 +178,11 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     求めるマルコフ連鎖$(X_n)_{n=0}^{\infty}$が得られる．
 \end{proof}
 
+
 しばしば現れてきた$\{ \omega \mid X_0 (\omega)= i_0,\ldots, X_n (\omega)= i_n\}$
-のような形の事象を表すのに，このような事象全体で作られる
-自然な増大情報系という概念を導入しておくと便利である．
+のような形の事象全体で作られる，自然な増大情報系という概念を導入しておくと便利である．
+
+
 \begin{definition}
     $(\Omega,\mathcal{F},P)$を確率空間として，$\Omega$から$I$への
     確率変数列$X = (X_n)_{n=0}^{\infty}$が与えられたとする．$n \in \N$
@@ -188,6 +190,14 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     $\mathcal{F}_n \coloneqq \sigma (X_0,\ldots,X_n)$と定める．
     $(\mathcal{F}_n)_{n =0}^{\infty}$を$X$に関する自然な増大情報系という．
 \end{definition}
+
+
+$I$は高々可算集合なので，$F\subset I^n$に対して
+$E = (X_0,\ldots,X_n)^{-1} (F)$という形でかける$E$は
+$E = \bigcup_{(i_0,\ldots,i_n) \in F} \{X_0 = i_0,\ldots,X_n = i_n\}$
+という交わらない可算和で書き直せる．このような元全体で生成されるのが$\mathcal{F}_n$
+である．各時間$n$において，$X$に関連する事象で確率を計算し得るものは全てここに属する．
+そのような中で最小のもの，というのが自然という言葉の意味である．
 
 マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
 これをマルコフ性という．それを示そう．
@@ -254,8 +264,9 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
 \end{theorem}
 
 \begin{proof}
-    $n \in \N$と$i_0,\ldots,i_m,\ldots,i_{m+n} \in I$が任意に与えられたとする．
-    $E \coloneqq \{X_0 = i_0,\ldots, X_m = i_m\}$とおく．$E \in \mathcal{F}_m$
+    $n \in \N$と$j_0,j_1,\ldots,j_m,i_m,i_{m+1},\ldots,i_{m+n} \in I$
+    が任意に与えられたとする．
+    $E \coloneqq \{X_0 = j_0,\ldots, X_m = j_m\}$とおく．$E \in \mathcal{F}_m$
     は定義から明らかである．この$E$に対して
     \begin{align}
         &P((Y_0=i_m,\ldots,Y_n = i_{m+n})\cap E \mid X_m = i ) \\
@@ -265,14 +276,15 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     を示す．$(X_n)_{n=0}^{\infty}$のマルコフ性から
     \begin{align}
        &P((Y_0=i_m,\ldots,Y_n = i_{m+n})\cap E \mid X_m = i )\\
-        &=\delta_i(i_m) P(X_{0} = i_{0},\ldots,X_{m+n}=i_{m+n}) / P(X_m = i)\\
-        &=\delta_i(i_m) \nu_{i_0} A_{i_0 i_1}  \cdots A_{i_{m+n-1} i_{m+n}} / P(X_m = i)
+        &=\delta_i(i_m) P(X_{0} = j_{0},\ldots,
+        X_m = j_m,X_m = i_m,\ldots, X_{m+n}=i_{m+n}) / P(X_m = i)\\
+        &=\delta_{j_m i_m} \delta_i(i_m) \nu_{j_0} A_{j_0 j_1}  \cdots A_{i_{m+n-1} i_{m+n}} / P(X_m = i)
     \end{align}
     および
     \begin{align}
         P(E \mid X_m = i) &= 
-        \delta_i(i_m) P(X_0=i_0,\ldots,X_{m-1}=i_{m-1},X_m = i_m) / P(X_m = i)\\
-        &= \delta_i(i_m) \nu_{i_0} A_{i_0 i_1} \cdots A_{i_{m-1} i_m} / P(X_m = i)
+        \delta_i(j_m) P(X_0=j_0,\ldots,X_{m-1}=j_{m-1},X_m = j_m) / P(X_m = i)\\
+        &= \delta_i(j_m) \nu_{j_0} A_{j_0 j_1} \cdots A_{j_{m-1} j_m} / P(X_m = i)
     \end{align}
     が得られる．また$\mathrm{Theorem}\ref{markov_prop2}$により，
     \begin{align}
@@ -281,6 +293,17 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     \end{align}
     となる．これらの式から$\eqref{Fm_indep_1}$が得られた．一般の$E \in \mathcal{F}_m$
     に対して証明するため，上の結果を利用する．
+    \begin{align}
+        \mathcal{C} \coloneqq \{E \mid  
+        &\forall n \in \N,\, \forall i_m,\ldots,i_{m+n} \in I,\,\\
+        &P((Y_0=i_m,\ldots,Y_n = i_{m+n})\cap E \mid X_m = i ) \\
+        &= 
+        P(Y_0=i_m,\ldots,Y_n = i_{m+n} \mid X_m = i) P(E \mid X_m = i) \}
+    \end{align}
+    とおく．$E = \{X_0 = j_0,\ldots, X_m = j_m\}$の形で表される$E$の全体は
+    $\mathcal{C}$に含まれるから，$\mathcal{C}$が$\sigma$-代数であることを
+    示せばよいが，それは$P(\cdot \mid X_m = i)$が確率測度であることから
+    直ちにしたがう．よって示された．
 \end{proof}
 \subsection{到達確率と差分作用素}
 マルコフ性の応用として到達確率と差分作用素を扱う．
