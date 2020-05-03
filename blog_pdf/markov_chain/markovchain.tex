@@ -309,4 +309,92 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
 マルコフ性の応用として到達確率と差分作用素を扱う．
 
 
+\begin{definition}
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
+    $E \subset I$に対して，到達時刻$\tau_{E} \colon \Omega \to \N \cup \{\infty \}$を
+    \begin{align}
+        \tau_{E}(\omega) \coloneqq \inf\{n \in \N \mid X_n(\omega) \in E\}
+    \end{align}
+    によって定める．ただし，$\inf \emptyset \coloneqq \infty$とする．
+\end{definition}
+
+
+\begin{theorem}
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
+    任意の$E \subset I$に対して，到達時刻$\tau_{E}$は
+    $\N \cup \{\infty \}$の部分集合全体を$\sigma$-代数として
+    可測であり，さらに任意の$n \in \N$に対して
+    $\{\tau_{E} = n\} \in \mathcal{F}_n$となる．
+\end{theorem}
+
+\begin{proof}
+    $\N \cup \{ \infty\}$は可算集合だから，
+    $\tau_{E}$による一点集合の引き戻しが可測であることを示せば十分である．
+    $\{\tau_{E} = \infty \} = \bigcap_{n\in \N} X_n^{-1} (E^{c})$
+    は明らかに可測集合である．
+    $n \in \N$が任意に与えられたとして，
+    $\{\tau_{E} = n \} \in \mathcal{F}_n$を示す．
+    $E$および$E^c$は高々可算集合だから，値で場合分けをして
+    \begin{align}
+        \{\tau_{E} = n\} &= 
+        \bigcup_{i_0 \in E^{c} ,\ldots, i_{n-1} \in E^{c},i_n \in E}
+        \{X_0 = i_0,\ldots, X_n = i_n\} 
+    \end{align}
+    となる．したがって$\{\tau_{E} = n\} \in \mathcal{F}_n$である．
+\end{proof}
+
+
+\begin{definition}
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
+    $E \subset I$に対して，
+    マルコフ連鎖の$E$への到達確率$e\colon I \to \R$を
+    \begin{align}
+        e(i) \coloneqq
+        \begin{dcases}
+            P(\tau_{E} <\infty \mid X_0=i), \quad \nu_i >0 \\
+            0, \quad \nu_i = 0
+        \end{dcases}
+    \end{align}
+    によって定める．$e(i)$を$e_i$ともかく．
+\end{definition}
+
+$\mathrm{Theorem}\ref{markov_prop2}$から，$P(X_0 = i)=\nu_i >0$である限り
+$(X_n)_{n=0}^{\infty}$を初期分布が$\delta_i$となるように取り直すことができる．
+この定義はこの取り直しを念頭に置いている．
+
+\begin{definition}[差分作用素]
+    確率行列$A$が与えられたとする．
+    任意の$i \in I$に対し$\sum_{j \in I} A_{ij}f(j)$
+    が絶対収束する$f\colon I \to \R$に対し，実数値関数
+    $\mathcal{L}f$を対応させる差分作用素$\mathcal{L}$を
+    $\mathcal{L}f(i) \coloneqq \sum_{j \in I} A_{ij}f(j) - f(i)$
+    によって定める．
+\end{definition}
+
+
+以前に定義した確率ベクトルと確率行列との積は横ベクトルとみてのモノであり，
+この定義に登場するものとは微妙に異なることに注意する．
+次の定理が目標である．
+
+
+\begin{theorem}[境界値問題]
+    $(\Omega,\mathcal{F},P)$を確率空間として，
+    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
+    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
+    $E \subset I$に対して，到達確率$e$は
+    \begin{align}
+        \begin{dcases}
+            \mathcal{L}e(i) = 0, \quad i \notin E \\
+            e(i) = 1, \quad i \in E
+        \end{dcases}
+    \end{align}
+    を満たす最小の非負値実数値関数である．
+\end{theorem}
+
 \end{document}
