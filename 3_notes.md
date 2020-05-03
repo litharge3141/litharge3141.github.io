@@ -26,4 +26,6 @@ permalink: /numerical/
 [Extended Kalman Filter]({% post_url 2020-04-18-ExtendedKF %})<br>
 Extended Kalman Filter（拡張カルマンフィルター）についての解説記事です。
 
-
+[Ensemble Kalman Filter 1]({% post_url 2020-05-03-EnKFSRF %})<br>
+Ensemble Kalman Filter（アンサンブルカルマンフィルター）のうち、
+最も基本的なPO法とSRFの解説です。Localizationについても書いています。
