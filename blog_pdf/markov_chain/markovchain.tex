@@ -364,9 +364,14 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     によって定める．$e(i)$を$e_i$ともかく．
 \end{definition}
 
-$\mathrm{Theorem}\ref{markov_prop2}$から，$P(X_0 = i)=\nu_i >0$である限り
-$(X_n)_{n=0}^{\infty}$を初期分布が$\delta_i$となるように取り直すことができる．
+
+たとえ最初に$P(X_0 = i) = \nu_i = 0$であったとしても，
+$\mathrm{Theorem}\ref{markov_prop2}$から，$P(X_m = i)=\nu_i >0$
+となる$m \in \N$が存在すれば，
+$(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
+初期分布が$\delta_i$となるように取り直すことができる．
 この定義はこの取り直しを念頭に置いている．
+
 
 \begin{definition}[差分作用素]
     確率行列$A$が与えられたとする．
@@ -378,7 +383,7 @@ $(X_n)_{n=0}^{\infty}$を初期分布が$\delta_i$となるように取り直す
 \end{definition}
 
 
-以前に定義した確率ベクトルと確率行列との積は横ベクトルとみてのモノであり，
+以前に定義した確率ベクトルと確率行列との積は横ベクトルとみてのものであり，
 この定義に登場するものとは微妙に異なることに注意する．
 次の定理が目標である．
 
@@ -390,11 +395,54 @@ $(X_n)_{n=0}^{\infty}$を初期分布が$\delta_i$となるように取り直す
     $E \subset I$に対して，到達確率$e$は
     \begin{align}
         \begin{dcases}
-            \mathcal{L}e(i) = 0, \quad i \notin E \\
-            e(i) = 1, \quad i \in E
+            \mathcal{L}e(i) = 0, \quad i \notin E,\nu_{i} >0\\
+            e(i) = 1, \quad i \in E,\nu_{i}>0 \\
+            e(i) = 0, \quad \nu_{i} = 0
         \end{dcases}
     \end{align}
     を満たす最小の非負値実数値関数である．
 \end{theorem}
+
+\begin{proof}
+    まず$e$が方程式を満たすことを示す．定義から$\nu_i =0$の時は明らか．
+    $\nu_i >0$としてよい．
+    $i \in E$のとき$e(i)=1$は
+    明らかだから，$i \notin E$として$\mathcal{L}e(i)=0$を示す．
+    \begin{align}
+        e(i) &= P(\tau_{E}<\infty \mid X_0 = i) \\
+        &= \sum_{n=1}^{\infty} P(\tau_{E} = n \mid X_0 = i) \quad (\because i \notin E)\\
+        &= \sum_{n=1}^{\infty} \sum_{i_0 \notin E,\ldots,i_{n-1}\notin E,i_n\in E} 
+        P(X_0 = i_0,\ldots,X_n = i_n \mid X_0 = i) \\
+        &= \sum_{n=1}^{\infty} \sum_{i_0 \notin E,\ldots,i_{n-1}\notin E,i_n\in E} 
+        \delta_{i}(i_0)  A_{i_0 i_1}\cdots A_{i_{n-1} i_n} \quad 
+        (\because \mathrm{Theorem}\ref{markov_prop2})\\
+        &= \sum_{n=2}^{\infty} \sum_{i_1 \notin E,\ldots,i_{n-1}\notin E,i_n\in E} 
+         A_{i i_1} A_{i_1 i_2}\cdots A_{i_{n-1} i_n} 
+         + \sum_{i_{1} \in E} A_{i i_{1}} \\
+        &= \sum_{n=3}^{\infty} \sum_{i_{1} \notin E} A_{i i_{1}} 
+        \sum_{i_2 \notin E,\ldots,i_{n-1}\notin E,i_n\in E} 
+        \delta_{i_1}(i_1) A_{i_1 i_2}\cdots A_{i_{n-1} i_n} \\
+        &\quad + \sum_{i_{1} \in E} A_{i i_{1}} 
+        + \sum_{i_{1} \notin E,i_{2} \in E} A_{i i_{1}} A_{i_{1} i_{2}}\\
+        &= \sum_{n=3}^{\infty} \sum_{i_{1} \notin E} A_{i i_{1}}
+        \sum_{i_2 \notin E,\ldots,i_{n-1}\notin E,i_n\in E} 
+        P(X_0 = i_1,\ldots,X_{n-1} = i_n \mid X_0 = i_1) 
+        \quad (\because \mathrm{Theorem}\ref{markov_prop2})\\
+        &\quad + \sum_{i_{1} \in E} A_{i i_{1}} P(\tau_{E} <\infty \mid X_0 = i_{1})
+        + \sum_{i_{1} \notin E} A_{i i_{1}} P(\tau_{E} = 1 \mid X_0 = i_{1})\\
+        &= \sum_{n=3}^{\infty} \sum_{i_{1} \notin E} A_{i i_{1}} 
+        P(\tau_{E} = n-1 \mid X_0 = i_1) \\
+        &\quad + \sum_{i_{1} \in E} A_{i i_{1}} P(\tau_{E} <\infty \mid X_0 = i_{1})
+        + \sum_{i_{1} \notin E} A_{i i_{1}} P(\tau_{E} = 1 \mid X_0 = i_{1})\\
+        &= \sum_{i_{1} \notin E} A_{i i_{1}} \sum_{n=2}^{\infty} 
+        P(\tau_{E} = n-1 \mid X_0 = i_1) 
+        + \sum_{i_{1} \in E} A_{i i_{1}} P(\tau_{E} <\infty \mid X_0 = i_{1})\\
+        &= \sum_{i_{1} \notin E} A_{i i_{1}} P(\tau_{E} < \infty \mid X_0 = i_{1})
+        + \sum_{i_{1} \in E} A_{i i_{1}} P(\tau_{E} <\infty \mid X_0 = i_{1})\\
+        &= \sum_{j \in I} A_{i j} P(\tau_{E} < \infty \mid X_0 = j)
+    \end{align}
+    により示された．最小性を示す．
+\end{proof}
+
 
 \end{document}
