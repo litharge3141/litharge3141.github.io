@@ -149,7 +149,7 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
 マルコフ連鎖が常に存在するかは自明ではないので，存在を示す．
 
 
-\begin{theorem}
+\begin{theorem}\label{markov_exist}
     確率ベクトル$\nu$と確率行列$A$が与えられたとする．このとき，
     ある確率空間$(\Omega,\mathcal{F},P)$と
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$が
@@ -349,20 +349,45 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
 
 
 \begin{definition}
-    $(\Omega,\mathcal{F},P)$を確率空間として，
-    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
-    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
-    $E \subset I$に対して，
-    マルコフ連鎖の$E$への到達確率$e\colon I \to \R$を
-    \begin{align}
-        e(i) \coloneqq
-        \begin{dcases}
-            P(\tau_{E} <\infty \mid X_0=i), \quad \nu_i >0 \\
-            0, \quad \nu_i = 0
-        \end{dcases}
-    \end{align}
+    確率行列$A$と$E \subset I$が与えられたとする．
+    マルコフ連鎖の$E$への到達確率$e\colon I \to \R$を，
+    $i \in I$に対して，初期分布$\delta_i$，遷移行列$A$
+    を持つ任意のマルコフ連鎖$(X,A,\delta_{i},P)$を用いて
+    $e(i) \coloneqq P(\tau_{E} <\infty \mid X_0=i)$
     によって定める．$e(i)$を$e_i$ともかく．
 \end{definition}
+
+
+与えられているのは確率行列$A$と初期分布$\delta_i$のみだから，
+$\mathrm{Theorem}\ref{markov_exist}$から，適切な
+確率空間を設定すれば少なくとも一つはマルコフ連鎖が存在する．マルコフ連鎖の
+取り方によらないことを確かめる．
+
+\begin{theorem}
+    この定義はwell-defined，すなわちマルコフ連鎖の取り方には依存しない．
+\end{theorem}
+
+
+\begin{proof}
+    $i\in I$が任意に与えられたとする．$(X,A,\delta_{i},P_0)$および
+    $(Y,A,\delta_{i},P_{1})$をマルコフ連鎖とする．
+    $X$に対する到達時刻を$\tau_{E}^{0}$とかき，到達確率を$e_{0}$とする．
+    $Y$に対する到達確率を$\tau_{E}^{1}$とかき，到達確率を$e_{1}$とする．
+    \begin{align}
+        e_0 (i) &= P_0(\tau_{E}^{0} < \infty \mid X_0 = i) \\
+                &= \sum_{n=0}^{\infty} P_0(\tau_{E}^{0} = n \mid X_0 = i) \\
+                &= \sum_{n=0}^{\infty} \sum_{i_0 \notin E,\ldots, 
+                i_{n-1} \notin E, i_n \in E} P_0(X_0 = i_0,\ldots,X_n = i_n \mid X_0 = i) \\
+                &= \sum_{n=0}^{\infty} \sum_{i_0 \notin E,\ldots, 
+                i_{n-1} \notin E, i_n \in E} \delta_{i}(i_0) A_{i_0 i_1} \cdots A_{i_{n-1} i_{n}} \\
+                &= \sum_{n=0}^{\infty} \sum_{i_0 \notin E,\ldots, 
+                i_{n-1} \notin E, i_n \in E} P_1(Y_0 = i_0,\ldots,Y_n = i_n \mid Y_0 = i) \\
+                &= \sum_{n=0}^{\infty} P_1(\tau_{E}^{1} = n \mid Y_0 = i)\\
+                &= P_1(\tau_{E}^{1} < \infty \mid Y_0 = i) \\
+                &= e_1(i)
+    \end{align}
+    となるから，示された．
+\end{proof}
 
 
 たとえ最初に$P(X_0 = i) = \nu_i = 0$であったとしても，
@@ -389,25 +414,26 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
 
 
 \begin{theorem}[境界値問題]
-    $(\Omega,\mathcal{F},P)$を確率空間として，
-    $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
-    遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖であるとする．
-    $E \subset I$に対して，到達確率$e$は
+    確率行列$A$と$E \subset I$が与えられたとする．
+    このとき，到達確率$e$は
     \begin{align}
         \begin{dcases}
-            \mathcal{L}e(i) = 0, \quad i \notin E,\nu_{i} >0\\
-            e(i) = 1, \quad i \in E,\nu_{i}>0 \\
-            e(i) = 0, \quad \nu_{i} = 0
+            \mathcal{L}e(i) = 0, \quad i \notin E \\
+            e(i) = 1, \quad i \in E 
         \end{dcases}
     \end{align}
-    を満たす最小の非負値実数値関数である．
+    を満たす最小の非負実数値関数である．
 \end{theorem}
 
 \begin{proof}
-    まず$e$が方程式を満たすことを示す．定義から$\nu_i =0$の時は明らか．
-    $\nu_i >0$としてよい．
+    まず$e$が方程式を満たすことを示す．
     $i \in E$のとき$e(i)=1$は
     明らかだから，$i \notin E$として$\mathcal{L}e(i)=0$を示す．
+    以下の式中に出てくる$X$は，初期分布が$\delta_{i}$や$\delta_{i_1}$
+    で，遷移行列$A$を持つような任意のマルコフ連鎖である．
+    確率空間も取り替えている可能性があるので，3行目以前と
+    7行目以降の$P$は同じではないが，分けて書くと
+    あまりに記述が膨れるので仕方なくこうしていることに注意してほしい．
     \begin{align}
         e(i) &= P(\tau_{E}<\infty \mid X_0 = i) \\
         &= \sum_{n=1}^{\infty} P(\tau_{E} = n \mid X_0 = i) \quad (\because i \notin E)\\
