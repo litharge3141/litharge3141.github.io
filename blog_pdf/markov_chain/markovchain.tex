@@ -428,12 +428,9 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
 \begin{proof}
     まず$e$が方程式を満たすことを示す．
     $i \in E$のとき$e(i)=1$は
-    明らかだから，$i \notin E$として$\mathcal{L}e(i)=0$を示す．
+    明らかだから，$i \notin E$とする．
     以下の式中に出てくる$X$は，初期分布が$\delta_{i}$や$\delta_{i_1}$
     で，遷移行列$A$を持つような任意のマルコフ連鎖である．
-    確率空間も取り替えている可能性があるので，3行目以前と
-    7行目以降の$P$は同じではないが，分けて書くと
-    あまりに記述が膨れるので仕方なくこうしていることに注意してほしい．
     \begin{align}
         e(i) &= P(\tau_{E}<\infty \mid X_0 = i) \\
         &= \sum_{n=1}^{\infty} P(\tau_{E} = n \mid X_0 = i) \quad (\because i \notin E)\\
@@ -465,10 +462,50 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
         + \sum_{i_{1} \in E} A_{i i_{1}} P(\tau_{E} <\infty \mid X_0 = i_{1})\\
         &= \sum_{i_{1} \notin E} A_{i i_{1}} P(\tau_{E} < \infty \mid X_0 = i_{1})
         + \sum_{i_{1} \in E} A_{i i_{1}} P(\tau_{E} <\infty \mid X_0 = i_{1})\\
-        &= \sum_{j \in I} A_{i j} P(\tau_{E} < \infty \mid X_0 = j)
+        &= \sum_{j \in I} A_{i j} P(\tau_{E} < \infty \mid X_0 = j)\\
+        &= \sum_{j \in I} A_{ij} e(j)
     \end{align}
-    により示された．最小性を示す．
+    により示された．最小性を示す．$f \colon I \to \R$を非負実数値関数とし，
+    方程式を満たすとする．$e \leq f$を示せばよい．$i \in E$の時は明らかだから，
+    $i \notin E$とする．任意の$n \in \N$に対して
+    \begin{align}
+        f(i) \geq \sum_{k=0}^{n} P(\tau_{E} = k \mid X_0 = i)
+    \end{align}
+    を示す．帰納法で証明する．$n=0$の時は$i \notin E$より
+    $P(\tau_{E} =0\mid X_0 = i) = 0\leq f(i)$となる．$n$までの成立を仮定する．
+    \begin{align}
+        f(i) &= \sum_{j\in I} A_{ij}f(j) \\
+            &\geq \sum_{j \in I} A_{ij} \sum_{k=0}^{n} P(\tau_{E} = k \mid X_0 = j) \\
+            &= \sum_{j \notin E} A_{ij} \sum_{k=1}^{n} P(\tau_{E} = k \mid X_0 = j)\\
+            &\quad + \sum_{j \in E} A_{ij} \sum_{k=0}^{n} P(\tau_{E} = k \mid X_0 = j) \\
+            &= \sum_{j \notin E} \sum_{k=1}^{n} A_{ij}
+            \sum_{i_0 \notin E,\ldots,i_{k-1} \notin E,i_{k} \in E}
+             P(X_0 = i_0,\ldots,X_k = i_k \mid X_0 = j)\\
+            &\quad + \sum_{j \in E} A_{ij}  \\
+            &= \sum_{k = 1}^{n} \sum_{j \notin E}  
+            \sum_{i_0 \notin E,\ldots,i_{k-1} \notin E,i_{k} \in E}
+            A_{ij} \delta_{j}(i_0) A_{i_0 i_1} \cdots A_{i_{k-1} i_{k}} \\
+            &\quad + \sum_{j \in E} P(X_0 = i,X_1 = j \mid X_0 = i)  \\
+            &=\sum_{k = 2}^{n} \sum_{j \notin E,i_1 \notin E,\ldots,i_{k-1} \notin E,i_{k} \in E}
+            A_{ij}  A_{j i_1} \cdots A_{i_{k-1} i_{k}} \\
+            &\quad + \sum_{j \notin E,i_1 \in E} A_{ij} A_{j i_1}
+            + P(\tau_{E}=1\mid X_0 = i)  \\
+            &= \sum_{k = 2}^{n} \sum_{j \notin E,i_1 \notin E,\ldots,i_{k-1} \notin E,i_{k} \in E}
+            P(X_0=i,X_1=j,X_2=i_1,\ldots,X_{k+1}=i_k \mid X_0 =i) \\
+            &\quad + \sum_{j \notin E,i_1 \in E} P(X_0=i,X_1=j,X_2=i_1 \mid X_0=i) 
+            + P(\tau_{E}=1\mid X_0 = i)\\
+            &= \sum_{k = 2}^{n} P(\tau_{E} = k+1\mid X_0 = i) 
+            + P(\tau_{E} = 2 \mid X_0 = i) + P(\tau_{E}=1\mid X_0 = i)\\
+            &= \sum_{k=0}^{n} P(\tau_{E} = k \mid X_0 = i) \quad (\because i \notin E)
+    \end{align}
+    により，示された．$n \to \infty$として，
+    \begin{align}
+        f(i) \geq \sum_{n=0}^{\infty} P(\tau_{E}=n \mid X_0 =i) = e(i)
+    \end{align}
+    となり，示された．
 \end{proof}
 
+この定理により，様々な到達確率を具体的に求めることができる．
+例として，破産問題を扱う．
 
 \end{document}
