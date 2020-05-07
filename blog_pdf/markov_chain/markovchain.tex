@@ -111,6 +111,7 @@ $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる�
 それにしたがって発展するような分布を持つ確率変数列のことをマルコフ連鎖という．
 素直に数式で表現すると次のようになる．
 
+
 \begin{definition}[Markov連鎖っぽいなにか]
     確率ベクトル$\nu$と確率行列$A$が与えられたとする．
     $(\Omega,\mathcal{F},P)$を確率空間として，
@@ -122,6 +123,7 @@ $\nu_i \coloneqq P(\{i\})$と定めると，$\nu$は確率ベクトルになる�
     $P(X_{n+1}\in E)=\sum_{i \in E} \sum_{j \in I} P(X_n = j) A_{ji}$
     が成立することをいう．
 \end{definition}
+
 
 この定義は任意の$i \in I$に対して$P(X_{n+1} = i)= \sum_{j \in I} P(X_n = j) A_{ji}$
 が成立すること，と書き換えてもよい．
@@ -155,6 +157,7 @@ $P(X_{n+1} = i \mid X_n = j)= A_{ji}$が成立すること，と書き換えて�
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$が
     存在して，遷移行列$A$，初期分布$\nu$をもつマルコフ連鎖となる．
 \end{theorem}
+
 
 \begin{proof}
     コルモゴロフの拡張定理を使うために，便宜的に$\R^n$上の確率測度を構成する．
@@ -202,6 +205,7 @@ $E = \bigcup_{(i_0,\ldots,i_n) \in F} \{X_0 = i_0,\ldots,X_n = i_n\}$
 マルコフ連鎖は時刻$n+1$での確率分布が時刻$n$での分布にのみ依存するという性質を持つ．
 これをマルコフ性という．それを示そう．
 
+
 \begin{theorem}[マルコフ性1]
     $(\Omega,\mathcal{F},P)$を確率空間として，
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
@@ -210,6 +214,7 @@ $E = \bigcup_{(i_0,\ldots,i_n) \in F} \{X_0 = i_0,\ldots,X_n = i_n\}$
     任意の$n \in \N$と任意の$i_0,\ldots,i_{n+1} \in I$に対して，
     $P(X_{n+1} \mid X_n = i_n,\ldots,X_0 = i_0)=A_{i_n i_{n+1}}$が成立する．
 \end{theorem}
+
 
 \begin{proof}
     $n \in \N$と$i_0,\ldots,i_{n+1} \in I$が任意に与えられたとすると，
@@ -220,7 +225,10 @@ $E = \bigcup_{(i_0,\ldots,i_n) \in F} \{X_0 = i_0,\ldots,X_n = i_n\}$
     となる．これを代入して計算をすれば定理を得る．
 \end{proof}
 
+
 マルコフ性は別の定式化をすることもできる．次の性質も成り立つ．
+
+
 \begin{theorem}[マルコフ性2]\label{markov_prop2}
     $(\Omega,\mathcal{F},P)$を確率空間として，
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
@@ -231,6 +239,7 @@ $E = \bigcup_{(i_0,\ldots,i_n) \in F} \{X_0 = i_0,\ldots,X_n = i_n\}$
     を定めると，$((Y_n)_{n=0}^{\infty},A,\delta_i, P(\cdot \mid X_m = i))$
     はマルコフ連鎖となる．
 \end{theorem}
+
 
 \begin{proof}
     $i \in \N$と$i_m,i_{m+1},\ldots,i_{m+n} \in I$が任意に与えられたとする．
@@ -251,7 +260,10 @@ $E = \bigcup_{(i_0,\ldots,i_n) \in F} \{X_0 = i_0,\ldots,X_n = i_n\}$
     したがって，示された．
 \end{proof}
 
+
 $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示すことができる．
+
+
 \begin{theorem}[$\mathcal{F}_{m}$との独立性]
     $(\Omega,\mathcal{F},P)$を確率空間として，
     $\Omega$から$I$への確率変数列$(X_n)_{n=0}^{\infty}$は
@@ -262,6 +274,7 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     を定める．このとき，確率空間$(\Omega,\mathcal{F},P(\cdot \mid X_m = i))$
     の下で$(Y_n)_{n=0}^{\infty}$と$\mathcal{F}_m$は独立である．
 \end{theorem}
+
 
 \begin{proof}
     $n \in \N$と$j_0,j_1,\ldots,j_m,i_m,i_{m+1},\ldots,i_{m+n} \in I$
@@ -305,6 +318,8 @@ $\mathrm{Theorem}\ref{markov_prop2}$を使うとより強い次の結果を示�
     示せばよいが，それは$P(\cdot \mid X_m = i)$が確率測度であることから
     直ちにしたがう．よって示された．
 \end{proof}
+
+
 \subsection{到達確率と差分作用素}
 マルコフ性の応用として到達確率と差分作用素を扱う．
 
@@ -413,7 +428,7 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
 次の定理が目標である．
 
 
-\begin{theorem}[境界値問題]
+\begin{theorem}[境界値問題]\label{boundary_problem}
     確率行列$A$と$E \subset I$が与えられたとする．
     このとき，到達確率$e$は
     \begin{align}
@@ -424,6 +439,7 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
     \end{align}
     を満たす最小の非負実数値関数である．
 \end{theorem}
+
 
 \begin{proof}
     まず$e$が方程式を満たすことを示す．
@@ -505,7 +521,141 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
     となり，示された．
 \end{proof}
 
-この定理により，様々な到達確率を具体的に求めることができる．
+
+この定理により，様々な到達確率を求めることができる．
 例として，破産問題を扱う．
 
+
+\begin{example}
+    $I = \Z$とし，$X_n$を$n$回目の試行の後の所持金とする．
+    $p+q=1$となる非負の実数$p,q$に対して，
+    確率$p$で$X_{n+1}=X_{n}+1$とし，確率$q$で$X_{n+1}=X_{n}-1$とするような
+    賭けを考える．最初の所持金を$i \in \Z$とすると，初期分布は$\delta_i$で与えられる．
+    この試行の確率行列は
+    \begin{align}
+        A_{ij} = 
+        \begin{cases}
+            p \quad (j = i + 1) \\
+            q \quad (j = i - 1)\\
+            0 \quad (\text{それ以外}) 
+        \end{cases}
+    \end{align}
+    によって与えられる．所持金が$0$になった時
+    破産したということにして，破産する確率を
+    求めたい．$E \subset \Z$を
+    $E = \{m \in \Z \mid m \leq 0\}$として，
+    $i$から出発して破産する確率は$E$への到達確率$e(i)$で与えられる．
+    $\mathrm{Theorem}\ref{boundary_problem}$により
+    $e$は
+    \begin{align}
+        \begin{dcases}
+            \mathcal{L}e(i) = 0, \quad i \notin E \\
+            e(i) = 1, \quad i \in E 
+        \end{dcases}
+    \end{align}
+    を満たす最小の非負実数値関数である．
+    第一式から$i>0$に対して漸化式
+    $pe(i+1)+qe(i-1) = e(i)$を得る．
+    $e(i+1)-e(i) = (q/p) (e(i) - e(i-1))$と
+    変形するなどして，
+    \begin{align}
+        e(i) =
+        \begin{dcases}
+            C_0 + C_1 i \quad (p=q) \\
+            C_0 + C_1 (q/p)^i \quad (p\neq q)
+        \end{dcases}
+    \end{align}
+    として解くことができる．ここで$C_0,C_1$は定数で，
+    非負実数解として最小になるように定める．
+    $p \neq q$のときを考える．$e(0)=1$より$C_0 + C_1 = 1$
+    であることに注意する．$p <q$ならば，$0 \leq e(i) \leq 1$より
+    $C_1=0$となり，$e(i) = 1$となる．したがってどこから出発しても
+    必ず破産する．$p > q$ならば$i \to \infty$を考えると
+    $e(i) \to C_0 \geq 0$となる．
+    よって最小解となるためには$C_0 = 0$が必要で，
+    $e(i) = (q/p)^i$となる．
+    $p=q$のときは$0 \leq e(i) \leq 1$より$C_1 = 0$となり，$e(i) = 1$
+    となる．したがって必ず破産する．
+    たとえ公平な賭けとしてもこの場合は必ず破産することが分かった．
+\end{example}
+
+
+\subsection{エルゴード性}
+この節では，$I$は有限集合であることを約束する．
+これまで見てきた通り確率行列$A$さえ指定すれば
+$A$を遷移行列とするマルコフ連鎖のほとんどのことはわかるし，
+実際到達確率は遷移行列を用いた方程式で特徴づけられた．
+$A$の性質を見れば極限でどうなるのかも分かる．
+確率行列の積は確率行列だから，$A^n$も確率行列である．
+そこで$A^n$の$i,j$成分を$A_{ij}^n$と書くことにする．
+
+
+\begin{definition}\label{ergodic}
+    $A$を確率行列とする．$A$がエルゴード的とは，ある$n_0 \in \N$が
+    存在して，任意の$i,j \in I$に対して$A_{ij}^{n_0}>0$が
+    成立することをいう．
+    $A$が既約であるとは，任意の$i,j\in I$に対して
+    ある$n_1 = n_1(i,j)  \in \N$が存在して$A_{ij}^{n_1} >0$
+    が成立することをいう．$i \in I$が$A$について非周期的であるとは，
+    ある$n_2= n_2(i) \in \N$が存在して，任意の$n \geq n_2$に対して
+    $A_{ii}^{n} > 0$が成立することをいう．
+\end{definition}
+
+
+エルゴード的な確率行列$A$を特徴づける前に，簡単な補題を示す．
+
+
+\begin{lemma}\label{lem_prod}
+    $A,B$を確率行列とする．任意の$i,j \in I$に対して
+    $B_{ij}>0$となるとき，任意の$i,j \in I$に対して
+    $(AB)_{ij} >0$となる．
+\end{lemma}
+
+
+\begin{proof}
+    $i,j \in I$が任意に与えられたとする．
+    $\sum_{k \in I} A_{ik} = 1$だから，ある$k_0 \in I$が
+    存在して$A_{i k_0}>0$となる．したがって
+    $(AB)_{ij} = \sum_{k \in I} A_{ik} B_{kj} \geq A_{ik_0}B_{k_0 j} > 0$
+    となり，示された．
+\end{proof}
+
+
+確率行列$A$のエルゴード性を特徴づける定理を述べる．
+$I$が有限集合でないと成り立たないことに注意する．
+
+
+\begin{theorem}
+    $A$を確率行列とすると，次は同値．
+    \begin{description}
+        \item[(1)] $A$はエルゴード的である．
+        \item[(2)] $A$は既約，かつ全ての$i \in I$が
+        $A$について非周期的である． 
+        \item[(3)] $A$は既約，かつある$i_0 \in I$が
+        存在して$A$について非周期的である． 
+    \end{description}
+\end{theorem}
+
+
+\begin{proof}
+    $(1)\Rightarrow (2)$を示す．$A$はエルゴード的だから，
+    ある$n_0 \in \N$が存在して，任意の$i,j \in I$に対して$A_{ij}^{n_0}>0$となる．
+    $\mathrm{Lemma}\ref{lem_prod}$を$B = A^{n_0}$
+    として用いれば，$n \geq n_0$のとき，任意の$i,j \in I$に対して$A_{ij}^n >0$である．
+    このことから$(2)$は直ちに従う．
+    $(2)\Rightarrow (3)$は明らかである．$(3) \Rightarrow (1)$を示す．
+    $i_0 \in I$は$A$について非周期的だから，$n_2 = n_2(i_0) \in \N$が存在して
+    $n \geq n_2$ならば$A_{i_{0} i_{0}}^{n}>0$である．$A$は既約だから，任意の
+    $i,j \in I$に対し$n_1(i,i_0),n_1(i_0,j) \in \N$が存在して
+    $A_{i i_0}^{n_1(i,i_0)} > 0$および$A_{i_0 j}^{n_2(i_0 j)}>0$となる．
+    そこで$n_0 \coloneqq \max_{i,j \in I} \{n_1(i,i_0) + n_2(i_0) + n_1(i_0,j)\}$
+    と定める．$\mathrm{Lemma}\ref{lem_prod}$を繰り返し用いると，任意の$i,j \in I$に対して，
+    $n \coloneqq n_0 - n_1(i,i_0) - n_1(i_0,j) \geq n_2(i_0)$とすると
+    $A_{ij}^{n_0} \geq A_{i i_0}^{n_1(i,i_0)} A_{i_0 i_0}^{n} A_{i_0 j}^{n_1(i_0,j)}>0$
+    が成立することが分かる．したがって示された．
+\end{proof}
+
+
+エルゴード的な確率行列に対しては不変分布と呼ばれる分布が一意的に存在することを証明する．
+補題をいくつか準備する．
 \end{document}
