@@ -29,6 +29,9 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}%絶対値
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}%ノルム
+
 
 \begin{document}
 
@@ -585,7 +588,17 @@ $(Y_n)_{n=0}^{\infty}=(X_{n+m})_{n=0}^{\infty}$を
 これまで見てきた通り確率行列$A$さえ指定すれば
 $A$を遷移行列とするマルコフ連鎖のほとんどのことはわかるし，
 実際到達確率は遷移行列を用いた方程式で特徴づけられた．
-$A$の性質を見れば極限でどうなるのかも分かる．
+この節では最初に与えた分布が時間無限大の極限において
+どうなるのかを考える．
+
+最初に与えた分布を確率ベクトル$v$と同一視すると，$v$の
+時間発展は$vA^n$によってあらわされる．もしこの極限が存在するならば，
+$\pi = \lim_{n \to \infty}vA^n$と置くと
+$\pi A = \lim_{n \to \infty} v A^{n+1} = \pi$となる．
+$A$がエルゴード性という条件を満たせばこの極限が存在する．
+このことと，極限が存在する場合に大数の法則が成立することを
+証明する．
+
 確率行列の積は確率行列だから，$A^n$も確率行列である．
 そこで$A^n$の$i,j$成分を$A_{ij}^n$と書くことにする．
 
@@ -656,6 +669,64 @@ $I$が有限集合でないと成り立たないことに注意する．
 \end{proof}
 
 
-エルゴード的な確率行列に対しては不変分布と呼ばれる分布が一意的に存在することを証明する．
-補題をいくつか準備する．
+本節冒頭に書いた$\pi$を不変分布といい，次のように定める．
+
+
+\begin{definition}
+    確率ベクトル$\pi$が確率行列$A$の不変分布であるとは，
+    $\pi A = \pi$が成立することをいう．
+\end{definition}
+
+
+エルゴード的な確率行列に対しては初期分布によらずに
+一意的に存在することを証明する．さらに収束の速さまで分かる．
+いくつか準備をする．次の不動点定理は常微分方程式の
+解の存在定理でも用いるので，知っている人も多いだろう．
+炬燵論法の数値計算のページ（https://litharge3141.github.io/numerical/）
+の連立方程式の反復法（pdfリンク）
+にも本質的に同じ定理の証明を書いているので証明は省略する．
+
+
+\begin{theorem}[Banachの不動点定理]
+    $(X, \lVert \cdot \rVert)$をBanach空間と
+    そのノルムの組とし，線形写像$T \colon X \to X$が
+    縮小条件
+    \begin{align}
+        0 < \exists \gamma < 1,\quad \forall x,y \in X,\quad 
+        \lVert T(x-y)\rVert \leq \gamma \lVert x-y \rVert
+    \end{align}
+    を満たすと仮定する．
+    このとき，ある$T(x) = x$を満たす$x \in X$がただ一つ存在して，
+    任意の$x_0 \in X$に対して$x_n \coloneqq T^n (x_0)$
+    で定めた点列は$x$にノルム収束する．ここで，$T^n$は
+    $T$の$n$回合成である．
+\end{theorem}
+
+
+これを$T=A$として用いれば良いわけだが，Banach空間$X$と
+縮小条件を満たす定数を取らなければならない．$X$は次のようにとる．
+
+
+\begin{definition}
+    $I$上の確率ベクトルの全体のなす集合を$\mathcal{P}(I)$とかき，
+    その上の実数値関数$\norm{\cdot} \colon \mathcal{P}(I) \to \R$
+    を$\nu \in \mathcal{P}(I)$に対して
+    $\norm{\nu} \coloneqq1/2 \sum_{i \in I}\abs{\nu_{i}}$
+    によって定める．
+\end{definition}
+
+
+\begin{theorem}
+    以下が成立する．
+    \begin{description}
+        \item[(1)] $(\mathcal{P}(I),\norm{\cdot})$はBanach空間である．
+        \item[(2)] $\nu,\mu \in \mathcal{P}(I)$に対して$\norm{\nu - \mu} = 
+        1/2 \sum_{i \in I} (\nu_{i} - \mu_{i})^{+}$が成立する．ここで，
+        実数$a$に対して$a^{+} \coloneqq \max\{a,0\}$とする．
+        \item[(3)] $\nu,\mu \in \mathcal{P}(I)$に対して
+        $\norm{\nu - \mu} \leq 1$が成立する．
+    \end{description}
+\end{theorem}
+
+
 \end{document}
