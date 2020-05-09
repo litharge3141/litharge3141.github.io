@@ -680,14 +680,12 @@ $I$が有限集合でないと成り立たないことに注意する．
 
 エルゴード的な確率行列に対しては初期分布によらずに
 一意的に存在することを証明する．さらに収束の速さまで分かる．
-いくつか準備をする．次の不動点定理は常微分方程式の
-解の存在定理でも用いるので，知っている人も多いだろう．
-炬燵論法の数値計算のページ（https://litharge3141.github.io/numerical/）
-の連立方程式の反復法（pdfリンク）
-にも本質的に同じ定理の証明を書いているので証明は省略する．
+いくつか準備をする．まず，不変分布の構成では次の有名な
+不動点定理の証明と本質的に同じことをする．
+直接使うわけではないので，証明は省略する．
 
 
-\begin{theorem}[Banachの不動点定理]
+\begin{theorem}[Banachの不動点定理]\label{Banach_contraction}
     $(X, \lVert \cdot \rVert)$をBanach空間と
     そのノルムの組とし，線形写像$T \colon X \to X$が
     縮小条件
@@ -703,7 +701,7 @@ $I$が有限集合でないと成り立たないことに注意する．
 \end{theorem}
 
 
-これを$T=A$として用いれば良いわけだが，Banach空間$X$と
+$T$として確率行列を右からかける写像を取って用いれば良いわけだが，Banach空間$X$と
 縮小条件を満たす定数を取らなければならない．$X$は次のようにとる．
 
 
@@ -711,22 +709,137 @@ $I$が有限集合でないと成り立たないことに注意する．
     $I$上の確率ベクトルの全体のなす集合を$\mathcal{P}(I)$とかき，
     その上の実数値関数$\norm{\cdot} \colon \mathcal{P}(I) \to \R$
     を$\nu \in \mathcal{P}(I)$に対して
-    $\norm{\nu} \coloneqq1/2 \sum_{i \in I}\abs{\nu_{i}}$
+    $\norm{\nu} \coloneqq \frac{1}{2} \sum_{i \in I}\abs{\nu_{i}}$
     によって定める．
 \end{definition}
 
 
-\begin{theorem}
+\begin{theorem}\label{norm_distribution}
     以下が成立する．
     \begin{description}
         \item[(1)] $(\mathcal{P}(I),\norm{\cdot})$はBanach空間である．
-        \item[(2)] $\nu,\mu \in \mathcal{P}(I)$に対して$\norm{\nu - \mu} = 
-        1/2 \sum_{i \in I} (\nu_{i} - \mu_{i})^{+}$が成立する．ここで，
+        \item[(2)] 任意の$\nu,\mu \in \mathcal{P}(I)$に対して$\norm{\nu - \mu} = 
+         \sum_{i \in I} (\nu_{i} - \mu_{i})^{+}$が成立する．ここで，
         実数$a$に対して$a^{+} \coloneqq \max\{a,0\}$とする．
-        \item[(3)] $\nu,\mu \in \mathcal{P}(I)$に対して
+        \item[(3)] 任意の$\nu,\mu \in \mathcal{P}(I)$に対して
         $\norm{\nu - \mu} \leq 1$が成立する．
     \end{description}
 \end{theorem}
 
+
+\begin{proof}
+    $\R^{\abs{I}}$の部分空間と考えればBanach空間であることは明らかである．
+    $\nu,\mu\in \mathcal{P}(I)$が任意に与えられたとする．
+    実数$a$に対して$a^{-} \coloneqq \min\{a,0\}$とする．
+    \begin{align}
+        2\norm{\nu-\mu} &=  \sum_{i \in I} (\nu_{i} - \mu_{i})^{+} 
+        -  \sum_{i \in I} (\nu_{i} - \mu_{i})^{-}\\
+        &= \sum_{i \in I, \nu_{i} \geq \mu_{i}} (\nu_{i} - \mu_{i}) 
+        - \sum_{i \in I, \nu_{i} \leq \mu_{i}} (\nu_{i} - \mu_{i}) \\
+        &= \sum_{i \in I, \nu_{i} \geq \mu_{i}} (\nu_{i} - \mu_{i}) 
+        - \left(\sum_{i \in I} (\nu_{i} - \mu_{i})  
+        - \sum_{i \in I,\nu_{i} \geq \mu_{i} }(\nu_{i} - \mu_{i}) \right)\\
+        &= 2 \sum_{i \in I, \nu_{i} \geq \mu_{i}} (\nu_{i} - \mu_{i}) \\
+        &= 2 \sum_{i \in I} (\nu_{i} - \mu_{i})^{+}
+    \end{align}
+    により，$(2)$が従う．
+    $\sum_{i \in I} \abs{\nu_{i} - \mu_{i}} \leq \sum_{i \in I} \nu_{i} + \mu_{i} = 2$
+    より，$(3)$も従う．
+\end{proof}
+
+
+縮小条件の定数は次のようにしてとる．
+
+
+\begin{theorem}\label{contraction_ergodic}
+    確率行列$A$が与えられたとする．ある$0 <\gamma<1$が存在して
+    任意の$i,j \in I$に対して$A_{ij} \geq \gamma$となるとき，
+    \begin{align}
+        \forall \nu,\mu \in \mathcal{P}(I),\quad 
+        \norm{(\nu -\mu)A} \leq (1-\gamma)\norm{\nu-\mu}
+    \end{align}
+    が成立する．
+\end{theorem}
+
+
+\begin{proof}
+    $\nu,\mu \in \mathcal{P}(I)$が任意に与えられたとする．
+    $\mathrm{Thoerem}\ref{norm_distribution}$により，
+    $\norm{(\nu -\mu)A} = \sum_{j \in I} \left((\nu - \mu)A\right)_{j}^{+}
+    = \sum_{j \in I} \left(\sum_{i \in I} (\nu_{i} - \mu_{i})A_{ij}\right)^{+}$となる．
+    任意の$j \in I$に対して$\sum_{i \in I}(\nu_{i}-\mu_{i})A_{ij}>0$とすると，
+    $\sum_{j \in I}\sum_{i \in I} (\nu_{i}-\mu_{i})A_{ij} = 
+    \sum_{i \in I} (\nu_{i} - \mu_{i}) = 0$となることに反する．
+    したがってある$j_0 \in I$が存在して$\sum_{i \in I}(\nu_{i}-\mu_{i})A_{ij_{0}}=0$
+    となる．そこで
+    \begin{align}
+        \sum_{j \in I} \left(\sum_{i \in I} (\nu_{i} - \mu_{i})A_{ij}\right)^{+} 
+        &=\sum_{j \neq j_0} \left(\sum_{i \in I} (\nu_{i} - \mu_{i})A_{ij}\right)^{+} \\
+        &\leq \sum_{j \neq j_0} \sum_{i \in I} (\nu_{i} - \mu_{i})^{+} A_{ij} \\
+        &= \sum_{i \in I} (\nu_{i} - \mu_{i})^{+} \sum_{j \neq j_0} A_{ij} \\
+        &= \sum_{i \in I} (\nu_{i} - \mu_{i})^{+} (1-A_{ij_{0}})\\
+        &\leq \sum_{i \in I} (\nu_{i} - \mu_{i})^{+} (1-\gamma)\\
+        &= (1-\gamma)\norm{\nu-\mu}
+    \end{align}
+    として変形できるから，示された．
+\end{proof}
+
+
+以上の準備の下で，次の定理が証明できる．
+
+
+\begin{theorem}
+    確率行列$A$がエルゴード的であるとする．このとき，ある$A$に対する不変分布$\pi$
+    がただ一つ存在して，次が成立する．
+    \begin{description}
+        \item[(1)] 任意の$i,j \in I$に対して，
+        $\lim_{n \to \infty} A_{ij}^n = \pi_j$が成立する．
+        \item[(2)] ある$C>0$とある$0<\lambda < 1$が存在して，
+        任意の$n \in \N$と任意の$i,j \in I$に対して
+        $\abs{A_{ij}^n - \pi_{j}} \leq C\lambda^{n}$が成立する．
+    \end{description}
+\end{theorem}
+
+
+\begin{proof}
+    不変分布の一意存在から証明する．
+    $A$はエルゴード的だから，ある$n_0 \in \N$が存在して
+    任意の$i,j \in I$に対して$A_{ij}^{n_0} >0$となる．
+    そこで$\gamma \coloneqq \min_{i,j \in I} A_{ij}^{n_0}$
+    とおくと$0 < \gamma < 1$であり，$A_{ij}^{n_0}\geq \gamma$となる．
+    $\nu \in \mathcal{P}(I)$
+    が任意に与えられたとして，$\nu_{n} \coloneqq \nu A^n$と定める．
+    $(\nu_n)_{n = 0}^{\infty}$がCauchy列であることを証明する．
+    $\varepsilon>0$が任意に与えられたとする．$(1-\gamma)^{m_0} < \varepsilon$
+    となるように$m_0 \in \N$をとる．$N \coloneqq n_0 m_0$とする．
+    $\mathrm{Theorem}\ref{norm_distribution}$と$\mathrm{Theorem}\ref{contraction_ergodic}$
+    から，$n,m \geq N$に対して，$\norm{\nu_{n} - \nu_{m}} = 
+    \norm{\nu A^{n} - \nu A^{m}} = \norm{(\nu A^{n - N} - \nu A^{m - N})A^N}
+    \leq (1-\gamma)^{m_0} \norm{\nu A^{n-N} - \nu A^{m-N}} < \varepsilon$
+    となり，示された．$\mathcal{P}(I)$の完備性から極限$\pi$が存在する．
+    $\pi A= \lim_{n \to \infty} \nu A^{n+1} = \pi$より$\pi$は不変分布．
+    $\tilde{\pi}$も不変分布とすると，$\norm{\pi - \tilde{\pi}} = 
+    \norm{(\pi - \tilde{\pi})A^{n_0}} \leq (1-\gamma)\norm{\pi - \tilde{\pi}}$
+    となるから，$\norm{\pi - \tilde{\pi}} = 0$となり，不変分布は一意である．
+    $i \in I$に対して$\nu = \delta_{i}$とすると
+    $\lim_{n \to \infty} (\nu A^n)_{j} = \lim_{n \to \infty} A_{ij}^n = \pi_j$
+    となり，$(1)$が示された．$(2)$を証明する．$i,j \in I$と$n \in \N$が
+    任意に与えられたとする．ノルムの定義から
+    $\abs{A_{ij}^n - \pi_{j}} \leq 2\norm{\delta_{i}A^n - \pi}$が成立する．
+    任意の$k \in \N$と$n$を$n_0$で割った商$m \in \N$に対して，
+    $\norm{\delta_{i} A^n - \delta_{i} A^{n+k}} \leq (1-\gamma)^{m}$
+    が成立するから，$k \to \infty$として$\norm{\delta_{i}A^n - \pi} \leq
+    (1-\gamma)^m$を得る．$m \geq (n-n_0)/n_0$だから，
+    $\norm{\delta_{i}A^n - \pi} \leq(1-\gamma)^{(n-n_0)/n_0}$
+    となり，$\lambda \coloneqq (1-\gamma)^{n_0}$として
+    $\abs{A_{ij}^n - \pi_{j}} \leq 2\norm{\delta_{i}A^n - \pi} \leq
+    2\lambda^{n-n_0}$となる．$C = 2/\lambda^{n_0}$として$(2)$が示された．
+\end{proof}
+
+
+以上でエルゴード的な遷移行列をもつマルコフ連鎖は初期分布によらない
+一定の分布に収束すること，
+その収束は$\mathcal{P}(I)$のノルムで指数的な速さであることが分かった．
+この応用として大数の弱法則が成立することを証明する．
 
 \end{document}
