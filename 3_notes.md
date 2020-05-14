@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 数値計算
 permalink: /numerical/
 ---

@@ -18,6 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+#ローカルでビルドするときはコメントアウトを外す
+#pushするときはコメントアウトする
+#github: [metadata]
+
 title: 炬燵論法
 email: 
 description: >- # this means to ignore newlines until "baseurl:"
@@ -36,13 +40,13 @@ defaults:
     values:
       categories: article
       permalink: /article/:title.html
-      layout: "post"
+      layout: "default"
 
 #language
 lng: ja
 
 # Build settings
-theme: minima
+theme: jekyll-theme-leap-day
 plugins:
   - jekyll-feed
 

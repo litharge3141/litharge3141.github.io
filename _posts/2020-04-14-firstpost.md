@@ -1,6 +1,6 @@
 ---
-layout: post
 title:  "ブログを開設しました"
+published: false
 ---
 
 とりあえず作ってみないと始まらないので作ってみました。

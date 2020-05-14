@@ -1,5 +1,4 @@
 ---
-layout: post
 title: データ同化の基礎概念
 ---
 
