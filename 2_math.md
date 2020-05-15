@@ -61,3 +61,6 @@ Euler方程式の爆発のモデルとして知られるCLM方程式の解説。
 [マルコフ連鎖の基本（pdfリンク）](/blog_pdf/markov_chain/markovchain.pdf)<br>
 有限の状態空間において、マルコフ連鎖の不変分布への収束および大数の弱法則を証明しています。
 舟木先生の確率論を参考にして、自分にとってよくわかるように証明や定義を書き直しました。
+
+[Kolmogorov-Centsovの定理（pdfリンク）](/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.pdf)<br>
+確率過程のヘルダー連続性を示すときに使う定理の証明です。執筆中。

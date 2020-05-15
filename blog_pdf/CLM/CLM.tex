@@ -123,6 +123,7 @@ CLMの$\R$における初期値問題
 $\mathrm{Theorem} \ref{main_theorem}$の証明中に用いる$H$の性質などをすべて証明する．
 $L^2$におけるフーリエ変換の知識は仮定するが，定数倍の違いによる混乱を避けるために定義だけ載せておく．
 \begin{definition}
+    空間$1$次元で考える．
     このノートでは，フーリエ変換$\mathcal{F} :\mathcal{S} \to \mathcal{S}$を
     \begin{align}
         \mathcal{F}(f)(\xi) \coloneqq (2\pi)^{-\frac{1}{2}} \int_{\R} f(x)\, \mathrm{e}^{-ix\xi} \mathrm{d}x
@@ -204,7 +205,7 @@ $H$は$L^1 \to L^1_w$の有界線形作用素であり，
 有界線形作用素であることが知られている．
 
 \begin{corollary}[恒等式その２]
-    $p_1,p2>1$で$1/p_1 + 1/p_2 < 1$となるものが与えられたとする．
+    $p_1,p_2>1$で$1/p_1 + 1/p_2 < 1$となるものが与えられたとする．
     任意の$f\in L^{p_1}$と任意の$g \in L^{p_2}$に対して，
     \begin{align}
         H(fg) = fH(g) + H(f)g + H\left(H(f)H(g)\right)

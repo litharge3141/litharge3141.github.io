@@ -1,0 +1,86 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[dvipdfmx]{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\mathtoolsset{showonlyrefs}
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\diver}{\mathrm{div} \,}
+\newcommand{\rot}{\mathrm{rot} \,}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\setmid}{\mathrel{} \middle|\mathrel{}}
+
+
+\begin{document}
+
+\title{Kolmogorov-Centsovの定理}
+\author{@litharge3141}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+    このノートでは，確率過程の$L^p$ノルム評価から
+    ヘルダー連続性を導くKolmogorov-Centsovの定理を証明する．
+    この定理はブラウン運動の構成や，確率微分方程式の解の評価など，
+    種々の確率過程の連続性の証明に広く用いられる．
+\end{abstract}
+
+\section{定理の主張と証明}
+\begin{theorem}[Kolmogorov-Centsovの定理]
+    $(\Omega,\mathcal{F},P)$を確率空間とし，$(B,\norm{\cdot})$
+    をBanach空間とそのノルムの組とする．
+    $X=(X_{t})_{t \in [0,T]}$を$\Omega$から$B$への確率過程とする．
+    \begin{align}
+        \exists C,p,q>0,\quad \forall s,t \in [0,T],
+        \quad E[\norm{X_{t} - X_{s}}^p] \leq C \abs{t-s}^{1+q}
+    \end{align}
+    が成立すると仮定する．このとき，任意の$0 < r < q/p$に対して，
+    ある$\Omega$から$B$への確率過程$\tilde{X}=(\tilde{X}_{t})_{t \in [0,T]}$
+    が存在して，次を満たす．
+    \begin{enumerate}
+        \item 任意の$t \in [0,T]$に対して
+        $X_t = \tilde{X}_t$がほとんどいたるところ成立する．
+        \item ほとんどいたるところ正の値を取るある確率変数$h\colon \Omega \to \R$
+        とある$M>0$が存在して
+        \begin{align}
+            P\left(\omega \setmid 
+            \sup_{\substack{0 < \abs{t-s} < h(\omega) \\ s,t \in [0,T]}}
+            \frac{\norm{\tilde{X}_{t}(\omega) - 
+            \tilde{X}_{s}(\omega)}}{\abs{t-s}^{r}} 
+            \leq M
+            \right)
+        \end{align}
+        が成立する．
+    \end{enumerate}
+    特に，$X$は局所$r$次H\"{o}lder連続な修正$\tilde{X}$を持つ．
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+\section{応用例}
+\end{document}
