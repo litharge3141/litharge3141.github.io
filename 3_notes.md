@@ -6,7 +6,7 @@ permalink: /numerical/
 いろいろな話題について書く予定です。数学科に優しい記事を目指します。
 
 ---
-# 数値計算の記事やpdf集
+## 数値計算の記事やpdf集
 数値計算についての記事やpdfについてまとめる予定です。
 
 [連立方程式の反復法（pdfリンク）](/blog_pdf/iterative_method/iterative_method.pdf)<br>
@@ -15,12 +15,12 @@ permalink: /numerical/
 [共役勾配法（pdfリンク）](/blog_pdf/cg_method/cg_method.pdf)<br>
 共役勾配法についての解説です。対称正定値行列に対する収束の証明が書いてあります。ただ証明がへたくそなのでそのうち書き直すかもしれません。
 
-[SDEの数値解の強収束（pdfリンク）](/blog_pdf/SDEnumercial_strong_converge/SDEnumercial_strong_converge.pdf)<br>
+[SDEの数値解の強収束（pdfリンク）](/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.pdf)<br>
 SDEの数値計算において，数値解が真の解に強収束という意味で収束することの証明です。
 内容の多くはMilsteinの本などに基づきます。
 
 ---
-# データ同化の記事集
+## データ同化の記事集
 データ同化(Data Assimilation)をJulia言語を用いて行ってみようという趣旨で書いてます。
 一口にデータ同化と言ってもたくさんの手法があるので、それらのなかで主要なものを紹介していきたいと思います。
 
