@@ -1,0 +1,113 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[dvipdfmx]{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\mathtoolsset{showonlyrefs}
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\diver}{\mathrm{div} \,}
+\newcommand{\rot}{\mathrm{rot} \,}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+\begin{document}
+
+\title{SDEの数値計算 強収束}
+\author{@litharge3141}
+\date{\today}
+\maketitle
+
+\abstract{}
+SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinのスキームについて，
+その厳密解への強収束と呼ばれる収束について述べる．
+これは数値計算の各時間ステップについて，その厳密解からの分散が
+刻み幅$h$を用いて上から評価できるというものである．
+
+\section{}
+
+\subsection{準備}
+主定理を述べる前に必要な用語などについて述べる．
+数値計算においては確率微分方程式の強解を近似して計算する．
+\begin{definition}
+    $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t \in [0,T]})$を
+    フィルトレーション付き確率空間とし，$(B(t))_{t \in [0,T]}$を
+    $m$次元$\mathcal{F}_t$-ブラウン運動とする．
+    $1\leq i\leq n, 1\leq r \leq m$に対して，Borel可測な函数
+    $a^{i},\sigma_{r}^{i} \colon [0,T] \times \R^{n} \to \R$
+    が与えられているとする．このとき，確率過程$(X(t))_{t \in [0,T]}$が
+    $x \in R^{n}$を出発点とする確率微分方程式
+    \begin{align}
+        dX(t) = a(t,X(t)) dt + \sum_{r=1}^{m} \sigma_{r}(t,X(t)) d B^{r}(t)
+    \end{align}
+    あるいは成分ごとに書いた
+    \begin{align}
+        dX^{i} (t) = a^{i}(t,X(t)) dt + \sum_{r=1}^{m} \sigma_{r}^{i}(t,X(t)) dB^{r}(t)
+    \end{align}
+    の強解であるとは，
+    \begin{enumerate}
+        \item $X(t)$は可測かつ$\mathcal{F}_t$-適合な連続確率過程である．
+        \item 任意の$1\leq i\leq n$と$1\leq r\leq m$に対して，
+        $\sigma_{r}^{i}(t,X(t)) \in \mathcal{L}^2(\mathcal{F}_t)$
+        かつ$a(t,X(t)) \in L^1[0,T]$が満たされる．
+        \item $X(t)$は確率積分方程式
+        \begin{align}
+            X(t) = x + \int_{0}^{t} a(s,X(s))ds + \int_{0}^{t} \sigma_{r}(s,X(s))dB^{r}(s)
+        \end{align}
+        を満たす．
+    \end{enumerate}
+    という条件を満たすことをいう．
+\end{definition}
+
+
+強解の存在と一意性については次の定理がよく知られている．
+証明は省略する．
+
+
+\begin{theorem}
+    係数$a,\sigma_{r}$が以下を満たすと仮定する．
+    \begin{enumerate}
+        \item Lipshitz連続，すなわち，
+        \begin{align}
+            \exists K>0,\quad \forall t \in [0,T],\quad \forall x,y \in \R^{n},\quad
+            \abs{a(t,x)-a(t,y)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x) - (t,y)} 
+            \leq K\abs{x-y}
+        \end{align}
+        を満たす．
+        \item 1次増大条件，すなわち
+        \begin{align}
+            \exists K>0,\quad \forall t \in [0,T],\quad \forall x\in \R^{n},\quad
+            \abs{a(t,x)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x)} \leq K(1+\abs{x})
+        \end{align}
+        を満たす．
+    \end{enumerate}
+    このとき，確率微分方程式の強解$X(t)$で，各成分が$\mathcal{L}^2$に属するものが
+    存在する．さらに
+    $\tilde{X}(t)$も強解ならば，$P(\forall t \geq 0,X(t)=\tilde{X}(t))=1$
+    が成り立つという意味で，解$X(t)$は一意である．
+\end{theorem}
+
+
+\end{document}

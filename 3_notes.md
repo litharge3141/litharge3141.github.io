@@ -15,6 +15,10 @@ permalink: /numerical/
 [共役勾配法（pdfリンク）](/blog_pdf/cg_method/cg_method.pdf)<br>
 共役勾配法についての解説です。対称正定値行列に対する収束の証明が書いてあります。ただ証明がへたくそなのでそのうち書き直すかもしれません。
 
+[SDEの数値解の強収束（pdfリンク）](/blog_pdf/SDEnumercial_strong_converge/SDEnumercial_strong_converge.pdf)<br>
+SDEの数値計算において，数値解が真の解に強収束という意味で収束することの証明です。
+内容の多くはMilsteinの本などに基づきます。
+
 ---
 # データ同化の記事集
 データ同化(Data Assimilation)をJulia言語を用いて行ってみようという趣旨で書いてます。

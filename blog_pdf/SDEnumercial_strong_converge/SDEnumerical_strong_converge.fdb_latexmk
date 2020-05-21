@@ -1,9 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1590054315 "kolmogorov_centsov.dvi" "kolmogorov_centsov.pdf" "kolmogorov_centsov" 1590054316
-  "kolmogorov_centsov.dvi" 1590054315 4300 d705d86d297c3ac383c363c8bdf9391a "latex"
+["dvipdf"] 1590054134 "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge.pdf" "SDEnumerical_strong_converge" 1590054135
+  "SDEnumerical_strong_converge.dvi" 1590054134 5808 7df83c64799f6c715f7b5d078ce00f6e "latex"
   (generated)
-  "kolmogorov_centsov.pdf"
-["latex"] 1590054315 "d:/litharge3141.github.io/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.tex" "kolmogorov_centsov.dvi" "kolmogorov_centsov" 1590054316
+  "SDEnumerical_strong_converge.pdf"
+["latex"] 1590054134 "d:/litharge3141.github.io/blog_pdf/SDEnumercial_strong_converge/SDEnumerical_strong_converge.tex" "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge" 1590054135
+  "SDEnumerical_strong_converge.aux" 1590054134 191 f6a72fb7b886274828c1816fcb46fb7e "latex"
+  "SDEnumerical_strong_converge.tex" 1590054132 4215 335561d432c37300169d110efad204f2 ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1582015620 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1582015620 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -14,7 +16,7 @@
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1582015620 908 2921f8a10601f252058503cc6570e581 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1582015620 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1582015620 940 228d6584342e91276bf566bcf9716b83 ""
-  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1582015978 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm" 1582015978 1328 5442e22a7072966dbaf88ca900acf3f0 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1582015978 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1582015978 1524 4414a8315f39513458b80dfc63bff03a ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1582015978 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -31,7 +33,7 @@
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1582015978 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1582015978 1120 8b7d695260f3cff42e636090a8002094 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1582015978 1116 25a7bf822c58caf309a702ef79f4afbb ""
-  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1582015978 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti9.tfm" 1582015978 1476 cccc6cc4935c18ec3d5623b77ecb8b74 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm" 1582017943 536 5f2475e9deb198c23894800d3c5eed00 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
@@ -62,10 +64,8 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.tex" 1590054313 3117 f1af03bc4394cdc9d9c68cffabe6e07f ""
-  "kolmogorov_centsov.aux" 1590054315 213 056d4dbbadf66b7f856202c7a6814d56 "latex"
-  "kolmogorov_centsov.tex" 1590054313 3117 f1af03bc4394cdc9d9c68cffabe6e07f ""
+  "d:/litharge3141.github.io/blog_pdf/SDEnumercial_strong_converge/SDEnumerical_strong_converge.tex" 1590054132 4215 335561d432c37300169d110efad204f2 ""
   (generated)
-  "kolmogorov_centsov.aux"
-  "kolmogorov_centsov.dvi"
-  "kolmogorov_centsov.log"
+  "SDEnumerical_strong_converge.aux"
+  "SDEnumerical_strong_converge.log"
+  "SDEnumerical_strong_converge.dvi"
