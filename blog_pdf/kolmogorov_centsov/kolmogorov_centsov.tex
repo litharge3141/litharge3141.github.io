@@ -60,7 +60,7 @@
     が成立すると仮定する．このとき，任意の$0 < r < q/p$に対して，
     ある$\Omega$から$B$への確率過程$\tilde{X}=(\tilde{X}_{t})_{t \in [0,T]}$
     が存在して，次を満たす．
-    \begin{enumerate}
+    \begin{itemize}
         \item 任意の$t \in [0,T]$に対して
         $X_t = \tilde{X}_t$がほとんどいたるところ成立する．
         \item ほとんどいたるところ正の値を取るある確率変数$h\colon \Omega \to \R$
@@ -71,17 +71,40 @@
             \frac{\norm{\tilde{X}_{t}(\omega) - 
             \tilde{X}_{s}(\omega)}}{\abs{t-s}^{r}} 
             \leq M
-            \right)
+            \right)=1
         \end{align}
         が成立する．
-    \end{enumerate}
+    \end{itemize}
     特に，$X$は$r$次H\"{o}lder連続な修正$\tilde{X}$を持つ．
 \end{theorem}
 
 \begin{proof}
     $D_{n} \coloneqq \left\{\frac{kT}{2^n} \setmid k=0,1,\ldots,2^{n}\right\}$とし，
-    $D \coloneqq \bigcup_{n=1}^{\infty} D_n$とおく．$D$上で一様連続な確率過程を
-    構成する．
+    $D \coloneqq \bigcup_{n=1}^{\infty} D_n$とおく．
+    \begin{align}
+        P\left(\omega \setmid 
+        \exists n^{*}(\omega)\in \N,\,\forall n \geq n^{*}(\omega),\,
+        \max_{1\leq k\leq 2^{n}} \norm{X_{\frac{k}{2^n}}(\omega) - X_{\frac{k-1}{2^n}}(\omega)}
+        < 2^{-rn}\right) = 1
+    \end{align}
+    を示す．
+    \begin{align}
+        A_{n} \coloneqq \left\{ \omega \setmid 
+        \max_{1\leq k\leq 2^n} \norm{X_{\frac{k}{2^n}}(\omega) - 
+        X_{\frac{k-1}{2^n}}(\omega)} < 2^{-rn}\right\}
+    \end{align}
+    とおくと，$P(\liminf_{n\to\infty} A_{n})=1$を示せばよい．
+    それは$P(\limsup_{n\to\infty}A_{n}^{c})=0$と同値である．
+    さらに，Borel-Canteliの補題から$\sum_{n=1}^{\infty}P(A_{n}^{c})$が収束することを
+    証明すれば十分である．これを示す．
+    $s,t \in [0,T]$に対して，
+    \begin{align}
+        P(\norm{X_{t} - X_{s}} \geq \varepsilon) 
+        &\leq \frac{1}{\varepsilon^{p}} E[\norm{X_{t} - X_{s}}^{p}] 
+        \quad (\because \text{Chebyshevの不等式})\\
+        &\leq  \frac{C\abs{t-s}^{1+q}}{\varepsilon^{p}} \quad (\because \text{仮定})
+    \end{align}
+    を得る．
 \end{proof}
 
 \section{応用例}
