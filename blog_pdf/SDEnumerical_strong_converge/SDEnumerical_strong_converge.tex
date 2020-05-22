@@ -51,7 +51,7 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 \subsection{準備}
 主定理を述べる前に必要な用語などについて述べる．
 数値計算においては確率微分方程式の強解を近似して計算する．
-\begin{definition}
+\begin{definition}\label{strong_solution}
     $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t \in [0,T]})$を
     フィルトレーション付き確率空間とし，$(B(t))_{t \in [0,T]}$を
     $m$次元$\mathcal{F}_t$-ブラウン運動とする．
@@ -66,8 +66,8 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
     \begin{align}
         dX^{i} (t) = a^{i}(t,X(t)) dt + \sum_{r=1}^{m} \sigma_{r}^{i}(t,X(t)) dB^{r}(t)
     \end{align}
-    の強解であるとは，
-    \begin{enumerate}
+    の強解であるとは，以下の条件を満たすことをいう．
+    \begin{itemize}
         \item $X(t)$は可測かつ$\mathcal{F}_t$-適合な連続確率過程である．
         \item 任意の$1\leq i\leq n$と$1\leq r\leq m$に対して，
         $\sigma_{r}^{i}(t,X(t)) \in \mathcal{L}^2(\mathcal{F}_t)$
@@ -76,9 +76,12 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
         \begin{align}
             X(t) = x + \int_{0}^{t} a(s,X(s))ds + \int_{0}^{t} \sigma_{r}(s,X(s))dB^{r}(s)
         \end{align}
+        あるいは成分ごとに書いた
+        \begin{align}
+            X^{i}(t) = x^{i} + \int_{0}^{t} a^{i}(s,X(s))ds + \int_{0}^{t} \sigma_{r}^{i}(s,X(s))dB^{r}(s)
+        \end{align}
         を満たす．
-    \end{enumerate}
-    という条件を満たすことをいう．
+    \end{itemize}
 \end{definition}
 
 
@@ -86,13 +89,13 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 証明は省略する．
 
 
-\begin{theorem}
+\begin{theorem}\label{fundamental_existence}
     係数$a,\sigma_{r}$が以下を満たすと仮定する．
-    \begin{enumerate}
+    \begin{itemize}
         \item Lipshitz連続，すなわち，
         \begin{align}
             \exists K>0,\quad \forall t \in [0,T],\quad \forall x,y \in \R^{n},\quad
-            \abs{a(t,x)-a(t,y)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x) - (t,y)} 
+            \abs{a(t,x)-a(t,y)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x) - \sigma_{r}(t,y)} 
             \leq K\abs{x-y}
         \end{align}
         を満たす．
@@ -102,7 +105,7 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
             \abs{a(t,x)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x)} \leq K(1+\abs{x})
         \end{align}
         を満たす．
-    \end{enumerate}
+    \end{itemize}
     このとき，確率微分方程式の強解$X(t)$で，各成分が$\mathcal{L}^2$に属するものが
     存在する．さらに
     $\tilde{X}(t)$も強解ならば，$P(\forall t \geq 0,X(t)=\tilde{X}(t))=1$
@@ -110,4 +113,99 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 \end{theorem}
 
 
+\subsection{数値スキームの導出}
+以降，$\mathrm{Definition}\ref{strong_solution}$の確率微分方程式が
+与えられ，その係数は$\mathrm{Theorem}\ref{fundamental_existence}$
+の仮定を満たし，かつ十分になめらかであるとする．
+初期値$x \in \R^n$に対して一意存在する強解を$X(t)$とする．
+$0<h(<T)$に対して$t \in [0,T-h]$において
+\begin{align}
+    X(t+h) = X(t) + \int_{t}^{t+h} a(s,X(s))ds + 
+    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
+\end{align}
+が成立するから，適当に積分を近似して数値スキームを導く．
+確率積分の項をどう近似するかで大きく2種類に分かれる．
+
+
+\subsubsection{Euler-Maruyama Scheme}
+Drift項の近似は例えば陽的に
+\begin{align}
+    \int_{t}^{t+h} a(s,X(s))ds \approx a(t,X(t))h
+\end{align}
+とする．確率積分の項を
+\begin{align}
+    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
+    \approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) (B_{r}(t+h) - B_{r}(t))
+\end{align}
+として近似する．これをもとにして，$Nh = T$となるような
+$h>0$と$N \in \N$に対して，$t_{k}\coloneqq  kh$における数値解$X_{k}$
+についての漸化式
+\begin{align}
+    \begin{cases}
+        X_{k+1} = X_{k} + a(t_{k},X_{k})h 
+        + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) (B_{r}(t_{k+1}) - B_{r}(t_{k}))\\
+        X_{0} = x
+    \end{cases}
+\end{align}
+を得る．これを陽的Euler-Maruyamaスキームという．
+$B_{r}(t_{k+1}) - B_{r}(t_{k})$は平均$0$で分散$h$の正規分布だから，
+$\xi_{r}$を標準正規分布に従う確率変数として$B_{r}(t_{k+1}) - B_{r}(t_{k}) = \sqrt{h} \xi_{r}$
+が成り立つ．これを使って書き直すと
+\begin{align}
+    X_{k+1} = X_{k} + a(t_{k},X_{k})h 
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r} \label{Euler_Maruyama}
+\end{align}
+となる．以上と同様にしてDrift陰的Euler-Maruyamaが
+\begin{align}
+    X_{k+1} = X_{k} + a(t_{k+1},X_{k+1})h 
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
+\end{align}
+のように与えられる．また，$\lambda \in (0,1)$に対し混合Euler-Maruyama
+\begin{align}
+    X_{k+1} = X_{k} + \lambda a(t_{k},X_{k})h + (1-\lambda) a(t_{k+1},X_{k+1})h 
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
+\end{align}
+ないし
+\begin{align}
+    X_{k+1} = X_{k} + a(\lambda t_k + (1-\lambda)t_{k+1}, \lambda X_{k} + (1-\lambda)X_{k+1})h
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
+\end{align}
+も与えられる．これらのスキームを比較するには安定性を調べなければならないが，それは別の機会にする．
+\subsubsection{Milstein Scheme}
+Drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が異なる．
+\begin{align}
+    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
+\end{align}
+において，被積分函数に伊藤の公式を適用して，
+\begin{align}
+    \sigma_{r}(s,X(s)) = \sigma_{r}(t,X(t)) 
+    + \int_{t}^{s} \left( \frac{\partial \sigma_{r}}{\partial t}(u,X(u)) 
+        + \frac{1}{2} \triangle \sigma_{r} (u,X(u)) \right)du \\
+    + \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
+        \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
+        \sigma_{l}^{j}(u,X(u)) dB_{l}(u)
+\end{align}
+を得る．通常の積分の項は近似計算するときに$h^2$の項が出てくるので，$0$とみなす．すなわち，
+\begin{align}
+    \sigma_{r}(s,X(s)) \approx \sigma_{r}(t,X(t)) + 
+    \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
+        \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
+        \sigma_{l}^{j}(u,X(u)) dB_{l}(u)
+\end{align}
+とする．これを代入して，
+\begin{align}
+    &\sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s) \\
+    &= \sum_{r=1}^{m} \int_{t}^{t+h} \left( \sigma_{r}(t,X(t)) + 
+    \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
+        \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
+        \sigma_{l}^{j}(u,X(u)) dB_{l}(u)  \right) dB_{r}(s)\\
+    &\approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) h 
+    + \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
+    \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
+    \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)
+\end{align}
+を得る．$\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)$は
+一般的には解析的に計算する方法が今までに知られていない．さらにブラウン運動（正確には像測度を考えたWiener過程）
+の汎函数として通常の広義一様収束位相では連続ではないため，近似計算も難しい．
+ここでは計算ができるような場合を二つ紹介する．
 \end{document}
