@@ -115,4 +115,6 @@ OUTPUT SDEnumerical_strong_converge.dvi
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
 INPUT SDEnumerical_strong_converge.aux

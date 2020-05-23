@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  22 MAY 2020 04:01
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  23 MAY 2020 16:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -272,14 +272,19 @@ LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
 (Font)              scaled to size 9.24683pt on input line 130.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 9.24683pt on input line 130.
- [2] [3] (./SDEnumerical_strong_converge.aux) ) 
+ [2] [3]
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 5.5481pt on input line 230.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 230.
+ [4] [5] (./SDEnumerical_strong_converge.aux) ) 
 Here is how much of TeX's memory you used:
- 2830 strings out of 481768
- 38431 string characters out of 5934902
- 288658 words of memory out of 5000000
- 18224 multiletter control sequences out of 15000+600000
- 548228 words of font info for 101 fonts, out of 8000000 for 9000
+ 2833 strings out of 481768
+ 38482 string characters out of 5934902
+ 291658 words of memory out of 5000000
+ 18227 multiletter control sequences out of 15000+600000
+ 548446 words of font info for 103 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  30i,14n,31p,307b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on SDEnumerical_strong_converge.dvi (3 pages, 15008 bytes).
+Output written on SDEnumerical_strong_converge.dvi (5 pages, 23200 bytes).

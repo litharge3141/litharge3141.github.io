@@ -155,7 +155,7 @@ $\xi_{r}$を標準正規分布に従う確率変数として$B_{r}(t_{k+1}) - B_
     X_{k+1} = X_{k} + a(t_{k},X_{k})h 
     + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r} \label{Euler_Maruyama}
 \end{align}
-となる．以上と同様にしてDrift陰的Euler-Maruyamaが
+となる．以上と同様にしてdrift陰的Euler-Maruyamaが
 \begin{align}
     X_{k+1} = X_{k} + a(t_{k+1},X_{k+1})h 
     + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
@@ -172,7 +172,7 @@ $\xi_{r}$を標準正規分布に従う確率変数として$B_{r}(t_{k+1}) - B_
 \end{align}
 も与えられる．これらのスキームを比較するには安定性を調べなければならないが，それは別の機会にする．
 \subsubsection{Milstein Scheme}
-Drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が異なる．
+drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が異なる．
 \begin{align}
     \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
 \end{align}
@@ -199,13 +199,90 @@ Drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が�
     \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
         \sigma_{l}^{j}(u,X(u)) dB_{l}(u)  \right) dB_{r}(s)\\
-    &\approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) h 
+    &\approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) (B(t+h)-B(t))
     + \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
     \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
     \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)
 \end{align}
-を得る．$\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)$は
-一般的には解析的に計算する方法が今までに知られていない．さらにブラウン運動（正確には像測度を考えたWiener過程）
+を得る．これから，一般の陽的Milstein Schemeを
+\begin{align}
+    X_{k+1} &= X_{k} + a(t_{k},X_{k})h 
+        + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) (B(t+h)-B(t)) \\
+        &\quad + \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
+        \frac{\partial \sigma_{r}}{\partial x_{j}}(t_{k},X_{k}) \sigma_{l}^{j}(t_{k},X_{k}) 
+        \int_{t_{k}}^{t_{k+1}} \int_{t_{k}}^{s} dB_{l}(u) dB_{r}(s) \label{general_Milstein}
+\end{align}
+として導くことができる．$\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)$は
+一般に解析的に計算する方法が知られていない．さらにブラウン運動（正確には像測度を考えたWiener過程）
 の汎函数として通常の広義一様収束位相では連続ではないため，近似計算も難しい．
-ここでは計算ができるような場合を二つ紹介する．
+ここでは解析的に計算ができるような場合を二つ紹介する．
+
+$m=1$の場合．$\sigma_{1}(t,x)$を単に$\sigma(t,x)$とし，
+$B_{1}(t)$を単に$B(t)$と書くことにする．
+問題の項$\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)$は
+\begin{align}
+    \int_{t}^{t+h} \int_{t}^{s} dB(u) dB(s) 
+    &= \int_{t}^{t+h} B(s)-B(t) dB(s) \\
+    &= \int_{t}^{t+h} B(s) dB(s) - B(t)(B(t+h)-B(t)) \\
+    &= \frac{1}{2}\left(B(t+h)^{2} - B(t)^{2} - h\right) - B(t)(B(t+h)-B(t)) \\
+    &= \frac{1}{2}\left((B(t+h)-B(t))^{2} -h\right)
+\end{align}
+として計算ができるので，Milstein Scheme$\eqref{general_Milstein}$は
+\begin{align}
+    X_{k+1} &= X_{k} + a(t_{k},X_{k})h 
+     + \sigma(t_{k},X_{k})\sqrt{h}\xi + \frac{1}{2}
+     \sum_{j=1}^{n} \frac{\partial \sigma}{\partial x_{j}}
+     (t_{k},X_{k})\sigma^{j} (t_{k},X_{k}) (\xi^2 - 1)h
+\end{align}
+となる．ここで，$\xi$は標準正規分布に従う確率変数とした．
+この表式のほうがどちらかというと有名だと思われる．
+
+係数が対称な場合．任意の$1\leq l,r\leq n$に対して
+\begin{align}
+    \sum_{j=1}^{n} \frac{\partial \sigma_{r}}{\partial x_{j}} \sigma_{l}^{j}
+    = \sum_{j=1}^{n} \frac{\partial \sigma_{l}}{\partial x_{j}} \sigma_{r}^{j}
+\end{align}
+という対称性があると仮定する．見やすさのために
+$\Lambda_{r,l}\sigma (t,x) \coloneqq \sum_{j=1}^{n} 
+\frac{\partial \sigma_{r}}{\partial x_{j}} (t,x) \sigma_{l}^{j}(t,x)$とおけば，
+$\Lambda_{r,l}\sigma = \Lambda_{l,r}\sigma$となる．
+このとき，
+\begin{align}
+    & \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
+        \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
+        \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)\\
+    &= \frac{1}{2} \sum_{r,l=1}^{m} \Lambda_{r,l}\sigma(t,X(t))
+    \left(\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s) + 
+    \int_{t}^{t+h} \int_{t}^{s} dB_{r}(u) dB_{l}(s)\right)
+\end{align}
+となる．この確率積分の項は，
+\begin{align}
+    &\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s) + 
+    \int_{t}^{t+h} \int_{t}^{s} dB_{r}(u) dB_{l}(s) \\
+    &= \int_{t}^{t+h} B_{r}(s) dB_{l}(s) + \int_{t}^{t+h} B_{l}(s) dB_{r}(s)
+    - B_{r}(t)\left(B_{l}(t+h)-B_{l}(t)\right) - B_{l}(t)\left(B_{r}(t+h)-B_{r}(t)\right)\\
+    &= B_{r}(t+h)B_{l}(t+h) - B_{r}(t)B_{l}(t)
+    - B_{r}(t)(B_{l}(t+h)-B_{l}(t)) - B_{l}(t)(B_{r}(t+h)-B_{r}(t))\\
+    &= (B_{r}(t+h)-B_{r}(t)) (B_{l}(t+h)-B_{l}(t))
+\end{align}
+として計算できる．以上により，
+\begin{align}
+    &\sum_{r,l=1}^{m} \sum_{j=1}^{n} 
+        \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
+        \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s) \\
+    &= \frac{1}{2} \sum_{r,l=1}^{m} \Lambda_{r,l}\sigma(t,X(t))
+    (B_{r}(t+h)-B_{r}(t)) (B_{l}(t+h)-B_{l}(t))
+\end{align}
+を得る．よって，Milstein Scheme$\eqref{general_Milstein}$は
+\begin{align}
+    X_{k+1} = X_{k} + a(t_{k},X_{k})h 
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k})\sqrt{h}\xi_{r}
+     + \frac{1}{2} \sum_{r,l=1}^{m} \Lambda_{r,l}\sigma(t_{k},X_{k})
+    \xi_{r} \xi_{l} h
+\end{align}
+となる．ただし，$1\leq r\leq m$に対して$\xi_{r}$は標準正規分布に従う確率変数とした．
+drift陰的なスキームや混合スキームも同様にして得られるが，省略する．
+
+\subsection{強収束}
+定理の証明のため，One-Step Approximationを導入する．
 \end{document}
