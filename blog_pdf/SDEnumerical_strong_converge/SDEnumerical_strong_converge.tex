@@ -31,6 +31,7 @@
 \newcommand{\rot}{\mathrm{rot} \,}
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\setmid}{\mathrel{} \middle| \mathrel{}}
 
 
 \begin{document}
@@ -50,6 +51,31 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 
 \subsection{準備}
 主定理を述べる前に必要な用語などについて述べる．
+
+
+\begin{definition}
+    $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t \in [0,T]})$を
+    フィルトレーション付き確率空間とする．この確率空間上の$m$次元
+    ブラウン運動$(B(t))_{t \in [0,T]}$が
+    $\mathcal{F}_t$-ブラウン運動であるとは，以下の条件を満たすことをいう．
+    \begin{itemize}
+        \item $B(t)$は$\mathcal{F}_{t}$適合である．
+        \item 任意の$0\leq s < t\leq T$に対して$B(t)-B(s)$は$\mathcal{F}_{s}$と独立．
+    \end{itemize}
+\end{definition}
+
+
+\begin{definition}
+    $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t \in [0,T]})$を
+    フィルトレーション付き確率空間とする．
+    \begin{align}
+        \mathcal{L}^{2}(\mathcal{F}_{t}) \coloneqq
+        \left\{f \setmid f \in L^{2}([0,T]\otimes \Omega),\,
+        f \text{は}\mathcal{F}_{t}\text{-適合} \right\}
+    \end{align}
+    と定める．
+\end{definition}
+
 数値計算においては確率微分方程式の強解を近似して計算する．
 \begin{definition}\label{strong_solution}
     $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t \in [0,T]})$を
@@ -58,9 +84,9 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
     $1\leq i\leq n, 1\leq r \leq m$に対して，Borel可測な函数
     $a^{i},\sigma_{r}^{i} \colon [0,T] \times \R^{n} \to \R$
     が与えられているとする．このとき，確率過程$(X(t))_{t \in [0,T]}$が
-    $x \in R^{n}$を出発点とする確率微分方程式
+    $x \in \R^{n}$を出発点とする確率微分方程式
     \begin{align}
-        dX(t) = a(t,X(t)) dt + \sum_{r=1}^{m} \sigma_{r}(t,X(t)) d B^{r}(t)
+        dX(t) = a(t,X(t)) dt + \sum_{r=1}^{m} \sigma_{r}(t,X(t)) d B^{r}(t) \label{sde}
     \end{align}
     あるいは成分ごとに書いた
     \begin{align}
@@ -106,7 +132,7 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
         \end{align}
         を満たす．
     \end{itemize}
-    このとき，確率微分方程式の強解$X(t)$で，各成分が$\mathcal{L}^2$に属するものが
+    このとき，確率微分方程式の強解$X(t)$で，各成分が$\mathcal{L}^2 (\mathcal{F}_{t})$に属するものが
     存在する．さらに
     $\tilde{X}(t)$も強解ならば，$P(\forall t \geq 0,X(t)=\tilde{X}(t))=1$
     が成り立つという意味で，解$X(t)$は一意である．
@@ -121,7 +147,7 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 $0<h(<T)$に対して$t \in [0,T-h]$において
 \begin{align}
     X(t+h) = X(t) + \int_{t}^{t+h} a(s,X(s))ds + 
-    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
+    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB^{r}(s)
 \end{align}
 が成立するから，適当に積分を近似して数値スキームを導く．
 確率積分の項をどう近似するかで大きく2種類に分かれる．
@@ -134,8 +160,8 @@ Drift項の近似は例えば陽的に
 \end{align}
 とする．確率積分の項を
 \begin{align}
-    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
-    \approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) (B_{r}(t+h) - B_{r}(t))
+    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB^{r}(s)
+    \approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) (B^{r}(t+h) - B^{r}(t))
 \end{align}
 として近似する．これをもとにして，$Nh = T$となるような
 $h>0$と$N \in \N$に対して，$t_{k}\coloneqq  kh$における数値解$X_{k}$
@@ -143,13 +169,13 @@ $h>0$と$N \in \N$に対して，$t_{k}\coloneqq  kh$における数値解$X_{k}
 \begin{align}
     \begin{cases}
         X_{k+1} = X_{k} + a(t_{k},X_{k})h 
-        + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) (B_{r}(t_{k+1}) - B_{r}(t_{k}))\\
+        + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) (B^{r}(t_{k+1}) - B^{r}(t_{k}))\\
         X_{0} = x
     \end{cases}
 \end{align}
 を得る．これを陽的Euler-Maruyamaスキームという．
-$B_{r}(t_{k+1}) - B_{r}(t_{k})$は平均$0$で分散$h$の正規分布だから，
-$\xi_{r}$を標準正規分布に従う確率変数として$B_{r}(t_{k+1}) - B_{r}(t_{k}) = \sqrt{h} \xi_{r}$
+$B^{r}(t_{k+1}) - B^{r}(t_{k})$は平均$0$で分散$h$の正規分布だから，
+$\xi_{r}$を標準正規分布に従う確率変数として$B^{r}(t_{k+1}) - B^{r}(t_{k}) = \sqrt{h} \xi_{r}$
 が成り立つ．これを使って書き直すと
 \begin{align}
     X_{k+1} = X_{k} + a(t_{k},X_{k})h 
@@ -174,7 +200,7 @@ $\xi_{r}$を標準正規分布に従う確率変数として$B_{r}(t_{k+1}) - B_
 \subsubsection{Milstein Scheme}
 drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が異なる．
 \begin{align}
-    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s)
+    \sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB^{r}(s)
 \end{align}
 において，被積分函数に伊藤の公式を適用して，
 \begin{align}
@@ -183,26 +209,26 @@ drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が�
         + \frac{1}{2} \triangle \sigma_{r} (u,X(u)) \right)du \\
     + \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
-        \sigma_{l}^{j}(u,X(u)) dB_{l}(u)
+        \sigma_{l}^{j}(u,X(u)) dB^{l}(u)
 \end{align}
 を得る．通常の積分の項は近似計算するときに$h^2$の項が出てくるので，$0$とみなす．すなわち，
 \begin{align}
     \sigma_{r}(s,X(s)) \approx \sigma_{r}(t,X(t)) + 
     \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
-        \sigma_{l}^{j}(u,X(u)) dB_{l}(u)
+        \sigma_{l}^{j}(u,X(u)) dB^{l}(u)
 \end{align}
 とする．これを代入して，
 \begin{align}
-    &\sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB_{r}(s) \\
+    &\sum_{r=1}^{m} \int_{t}^{t+h} \sigma_{r}(s,X(s))dB^{r}(s) \\
     &= \sum_{r=1}^{m} \int_{t}^{t+h} \left( \sigma_{r}(t,X(t)) + 
     \sum_{l=1}^{m} \sum_{j=1}^{n} \int_{t}^{s} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(u,X(u)) 
-        \sigma_{l}^{j}(u,X(u)) dB_{l}(u)  \right) dB_{r}(s)\\
+        \sigma_{l}^{j}(u,X(u)) dB^{l}(u)  \right) dB^{r}(s)\\
     &\approx \sum_{r=1}^{m} \sigma_{r}(t,X(t)) (B(t+h)-B(t))
     + \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
     \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
-    \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)
+    \int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s)
 \end{align}
 を得る．これから，一般の陽的Milstein Schemeを
 \begin{align}
@@ -210,16 +236,16 @@ drift項の近似はEuler-Maruyamaと同様である．確率積分の近似が�
         + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) (B(t+h)-B(t)) \\
         &\quad + \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(t_{k},X_{k}) \sigma_{l}^{j}(t_{k},X_{k}) 
-        \int_{t_{k}}^{t_{k+1}} \int_{t_{k}}^{s} dB_{l}(u) dB_{r}(s) \label{general_Milstein}
+        \int_{t_{k}}^{t_{k+1}} \int_{t_{k}}^{s} dB^{l}(u) dB^{r}(s) \label{general_Milstein}
 \end{align}
-として導くことができる．$\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)$は
+として導くことができる．$\int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s)$は
 一般に解析的に計算する方法が知られていない．さらにブラウン運動（正確には像測度を考えたWiener過程）
 の汎函数として通常の広義一様収束位相では連続ではないため，近似計算も難しい．
 ここでは解析的に計算ができるような場合を二つ紹介する．
 
 $m=1$の場合．$\sigma_{1}(t,x)$を単に$\sigma(t,x)$とし，
 $B_{1}(t)$を単に$B(t)$と書くことにする．
-問題の項$\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)$は
+問題の項$\int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s)$は
 \begin{align}
     \int_{t}^{t+h} \int_{t}^{s} dB(u) dB(s) 
     &= \int_{t}^{t+h} B(s)-B(t) dB(s) \\
@@ -250,28 +276,28 @@ $\Lambda_{r,l}\sigma = \Lambda_{l,r}\sigma$となる．
 \begin{align}
     & \sum_{r,l=1}^{m} \sum_{j=1}^{n} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
-        \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s)\\
+        \int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s)\\
     &= \frac{1}{2} \sum_{r,l=1}^{m} \Lambda_{r,l}\sigma(t,X(t))
-    \left(\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s) + 
-    \int_{t}^{t+h} \int_{t}^{s} dB_{r}(u) dB_{l}(s)\right)
+    \left(\int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s) + 
+    \int_{t}^{t+h} \int_{t}^{s} dB^{r}(u) dB^{l}(s)\right)
 \end{align}
 となる．この確率積分の項は，
 \begin{align}
-    &\int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s) + 
-    \int_{t}^{t+h} \int_{t}^{s} dB_{r}(u) dB_{l}(s) \\
-    &= \int_{t}^{t+h} B_{r}(s) dB_{l}(s) + \int_{t}^{t+h} B_{l}(s) dB_{r}(s)
-    - B_{r}(t)\left(B_{l}(t+h)-B_{l}(t)\right) - B_{l}(t)\left(B_{r}(t+h)-B_{r}(t)\right)\\
-    &= B_{r}(t+h)B_{l}(t+h) - B_{r}(t)B_{l}(t)
-    - B_{r}(t)(B_{l}(t+h)-B_{l}(t)) - B_{l}(t)(B_{r}(t+h)-B_{r}(t))\\
-    &= (B_{r}(t+h)-B_{r}(t)) (B_{l}(t+h)-B_{l}(t))
+    &\int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s) + 
+    \int_{t}^{t+h} \int_{t}^{s} dB^{r}(u) dB^{l}(s) \\
+    &= \int_{t}^{t+h} B^{r}(s) dB^{l}(s) + \int_{t}^{t+h} B^{l}(s) dB^{r}(s)\\
+    &\quad - B^{r}(t)(B^{l}(t+h)-B^{l}(t)) - B^{l}(t)(B^{r}(t+h)-B^{r}(t))\\
+    &= B^{r}(t+h)B^{l}(t+h) - B^{r}(t)B^{l}(t) \\
+    &\quad - B^{r}(t)(B^{l}(t+h)-B^{l}(t)) - B^{l}(t)(B^{r}(t+h)-B^{r}(t))\\
+    &= (B^{r}(t+h)-B^{r}(t)) (B^{l}(t+h)-B^{l}(t))
 \end{align}
 として計算できる．以上により，
 \begin{align}
     &\sum_{r,l=1}^{m} \sum_{j=1}^{n} 
         \frac{\partial \sigma_{r}}{\partial x_{j}}(t,X(t)) \sigma_{l}^{j}(t,X(t)) 
-        \int_{t}^{t+h} \int_{t}^{s} dB_{l}(u) dB_{r}(s) \\
+        \int_{t}^{t+h} \int_{t}^{s} dB^{l}(u) dB^{r}(s) \\
     &= \frac{1}{2} \sum_{r,l=1}^{m} \Lambda_{r,l}\sigma(t,X(t))
-    (B_{r}(t+h)-B_{r}(t)) (B_{l}(t+h)-B_{l}(t))
+    (B^{r}(t+h)-B^{r}(t)) (B^{l}(t+h)-B^{l}(t))
 \end{align}
 を得る．よって，Milstein Scheme$\eqref{general_Milstein}$は
 \begin{align}
@@ -284,5 +310,65 @@ $\Lambda_{r,l}\sigma = \Lambda_{l,r}\sigma$となる．
 drift陰的なスキームや混合スキームも同様にして得られるが，省略する．
 
 \subsection{強収束}
-定理の証明のため，One-Step Approximationを導入する．
+数値解の収束の概念を述べる．
+通常の微分方程式とは異なり，モーメントの収束についての定義になる．
+
+
+\begin{definition}
+    数値スキームが$L^p$において$\gamma$次強収束するとは，
+    ある$K>0$が存在して，十分小さい任意の$h>0$と任意の$Nh=T$となる$N \in \N$と
+    任意の$0\leq k\leq N$に対して，確率微分方程式の解$X(t_{k})$と数値解$X_{k}$の評価
+    \begin{align}
+        E[\abs{X(t_{k}) - X_{k}}^{p}]^{\frac{1}{p}} \leq Kh^{\gamma}
+    \end{align}
+    が成り立つことをいう．
+\end{definition}
+
+
+収束定理の主張と証明のため，one-step approximationを導入する．
+\begin{definition}[one-step approximation]
+    $t\in [0,T]$と$x \in \R^{n}$および数値スキームが与えられているとする．
+    このとき，初期条件を$X(t)=x$とする確率微分方程式$\eqref{sde}$の強解$X$の時刻$t+h$での値を
+    $X_{t,x}(t+h)$と書くことにする．また，初期条件を$X(t)=x$とする確率微分方程式$\eqref{sde}$の
+    時刻$t+h$での数値解を$\bar{X}_{t,x}(t+h)$と書くことにする．
+    $\bar{X}_{t,x}(t+h)$を$X_{t,x}(t+h)$のone-step approximationという．
+\end{definition}
+
+
+この定義を用いると陽解法における数値解は次のように書き直せる．
+\begin{align}
+    X_{k+1} &= \bar{X}_{t_{k},X_{k}}(t_{k+1}) \\
+            &= X_{k} + A\left(t_{k},X_{k},B^{r}(\theta)-B^{r}(t_{k})
+            ; 1\leq r\leq m ,t_{k} \leq \theta \leq t_{k+1} \right)
+\end{align}
+ここで$A$は数値スキームによって異なる関数で，陽的Euler-Maruyamaであれば
+\begin{align}
+    A\left(t_{k},X_{k},B^{r}(\theta)-B^{r}(t_{k})
+    ; 1\leq r\leq m ,t_{k} \leq \theta \leq t_{k+1} \right) \\
+    = a(t_{k},X_{k})h + \sum_{r=1}^{m}\sigma_{r}(t_{k},X_{k})(B^{r}(t_{k+1})-B^{r}(t_{k}))
+\end{align}
+となる．目標の定理を述べる．
+
+
+\begin{theorem}
+    確率微分方程式$\eqref{sde}$を初期条件$X(0)=X_{0}$の下で考える．
+    ある$q_{2}\geq 1/2,\, q_{1} \geq q_{2} + 1/2 ,\, 
+    p\geq 1,\, \alpha \geq 1,\, K>0$が存在して，
+    十分小さい任意の$h>0$と任意の$0\leq t\leq T-h,\, x\in \R^{n}$
+    に対してone-step approximationの誤差の評価
+    \begin{align}
+        \abs{E[X_{t,x}(t+h) - \bar{X}_{t,x}(t+h)]} 
+        \leq K(1+\abs{x}^{2})^{\frac{1}{2}} h^{q_{1}} \\
+        E[\abs{X_{t,x}(t+h)- \bar{X}_{t,x}(t+h)}^{2p}]^{\frac{1}{2p}}
+        \leq K(1+\abs{x}^{2p})^{\frac{1}{2p}} h^{q_{2}}
+    \end{align}
+    が成り立つと仮定する．このとき，任意の$Nh=T$となる
+    $N \in \N$と任意の$0\leq k\leq N$に
+    対して，$k,h$によらないある定数$M>0$が存在して，
+    \begin{align}
+        E[\abs{X(t_{k}) - X_{k}}^{2p}]^{\frac{1}{2p}}
+        \leq M(1+E[\abs{X_{0}}^{2p}])^{\frac{1}{2p}} h^{q_{2} - \frac{1}{2}}
+    \end{align}
+    が成り立つ．特に，この数値スキームは$q_{2}-1/2$次の強収束である．
+\end{theorem}
 \end{document}

@@ -1,11 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1590247536 "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge.pdf" "SDEnumerical_strong_converge" 1590247537
-  "SDEnumerical_strong_converge.dvi" 1590247536 23200 b4fe33c0d91e95d1dfb5b91e4058dd6c "latex"
+["dvipdf"] 1590302891 "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge.pdf" "SDEnumerical_strong_converge" 1590302892
+  "SDEnumerical_strong_converge.dvi" 1590302891 29880 4aaf6cb853b1c36090cc4a19b008e161 "latex"
   (generated)
   "SDEnumerical_strong_converge.pdf"
-["latex"] 1590247536 "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge" 1590247537
-  "SDEnumerical_strong_converge.aux" 1590247536 853 75321e69d3d379df9614f816003ace91 "latex"
-  "SDEnumerical_strong_converge.tex" 1590247533 13131 e993ec081616cf2a99f883cca9d7dd01 ""
+["latex"] 1590302890 "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge" 1590302892
+  "SDEnumerical_strong_converge.aux" 1590302891 930 8f8a8711568c077699f392ddf485e425 "latex"
+  "SDEnumerical_strong_converge.tex" 1590302888 17194 99ad536cc064fa366078df13eb0616c4 ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm" 1582016232 1536 c4f439db76ef96a9c53bc437f35ffe20 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcti0900.tfm" 1582016232 2048 c39c5154886a5521006765320aa4d25e ""
@@ -36,6 +36,7 @@
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1582015978 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1582015978 1120 8b7d695260f3cff42e636090a8002094 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1582015978 1116 25a7bf822c58caf309a702ef79f4afbb ""
+  "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti7.tfm" 1582015978 1492 86331993fe614793f5e7e755835c31c5 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti9.tfm" 1582015978 1476 cccc6cc4935c18ec3d5623b77ecb8b74 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm" 1582017943 812 52bd92aa20c58a398601cda6dd62c8d1 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm" 1582017943 536 5f2475e9deb198c23894800d3c5eed00 ""
@@ -67,8 +68,8 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" 1590247533 13131 e993ec081616cf2a99f883cca9d7dd01 ""
+  "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" 1590302888 17194 99ad536cc064fa366078df13eb0616c4 ""
   (generated)
-  "SDEnumerical_strong_converge.log"
-  "SDEnumerical_strong_converge.dvi"
   "SDEnumerical_strong_converge.aux"
+  "SDEnumerical_strong_converge.dvi"
+  "SDEnumerical_strong_converge.log"
