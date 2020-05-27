@@ -47,10 +47,12 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 これは数値計算の各時間ステップについて，その厳密解からの分散が
 刻み幅$h$を用いて上から評価できるというものである．
 
-\section{}
+\section{数値スキームの強収束}
 
 \subsection{準備}
 主定理を述べる前に必要な用語などについて述べる．
+約束事として，この文書を通して，フィルトレーション付き確率空間のフィルトレーションは右連続かつ
+零集合をすべて含むものとする．
 
 
 \begin{definition}
@@ -68,9 +70,11 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
 \begin{definition}
     $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t \in [0,T]})$を
     フィルトレーション付き確率空間とする．
+    $f\colon [0,T]\times \Omega \to \R$が可測であるとは，$f$が
+    $\mathcal{B}([0,T])\otimes \mathcal{F} / \mathcal{B(\R)}$-可測であることをいう．
     \begin{align}
         \mathcal{L}^{2}(\mathcal{F}_{t}) \coloneqq
-        \left\{f \setmid f \in L^{2}([0,T]\otimes \Omega),\,
+        \left\{f \setmid f \in L^{2}([0,T]\times \Omega),\,
         f \text{は}\mathcal{F}_{t}\text{-適合} \right\}
     \end{align}
     と定める．
@@ -138,6 +142,8 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
     が成り立つという意味で，解$X(t)$は一意である．
 \end{theorem}
 
+特に初期値が確率変数の場合，次が知られている．
+
 
 \subsection{数値スキームの導出}
 以降，$\mathrm{Definition}\ref{strong_solution}$の確率微分方程式が
@@ -175,26 +181,26 @@ $h>0$と$N \in \N$に対して，$t_{k}\coloneqq  kh$における数値解$X_{k}
 \end{align}
 を得る．これを陽的Euler-Maruyamaスキームという．
 $B^{r}(t_{k+1}) - B^{r}(t_{k})$は平均$0$で分散$h$の正規分布だから，
-$\xi_{r}$を標準正規分布に従う確率変数として$B^{r}(t_{k+1}) - B^{r}(t_{k}) = \sqrt{h} \xi_{r}$
+$\xi^{r}$を標準正規分布に従う確率変数として$B^{r}(t_{k+1}) - B^{r}(t_{k}) = \sqrt{h} \xi^{r}$
 が成り立つ．これを使って書き直すと
 \begin{align}
     X_{k+1} = X_{k} + a(t_{k},X_{k})h 
-    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r} \label{Euler_Maruyama}
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi^{r} \label{Euler_Maruyama}
 \end{align}
 となる．以上と同様にしてdrift陰的Euler-Maruyamaが
 \begin{align}
     X_{k+1} = X_{k} + a(t_{k+1},X_{k+1})h 
-    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi^{r}
 \end{align}
 のように与えられる．また，$\lambda \in (0,1)$に対し混合Euler-Maruyama
 \begin{align}
     X_{k+1} = X_{k} + \lambda a(t_{k},X_{k})h + (1-\lambda) a(t_{k+1},X_{k+1})h 
-    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi^{r}
 \end{align}
 ないし
 \begin{align}
     X_{k+1} = X_{k} + a(\lambda t_k + (1-\lambda)t_{k+1}, \lambda X_{k} + (1-\lambda)X_{k+1})h
-    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi_{r}
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k}) \sqrt{h} \xi^{r}
 \end{align}
 も与えられる．これらのスキームを比較するには安定性を調べなければならないが，それは別の機会にする．
 \subsubsection{Milstein Scheme}
@@ -302,11 +308,11 @@ $\Lambda_{r,l}\sigma = \Lambda_{l,r}\sigma$となる．
 を得る．よって，Milstein Scheme$\eqref{general_Milstein}$は
 \begin{align}
     X_{k+1} = X_{k} + a(t_{k},X_{k})h 
-    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k})\sqrt{h}\xi_{r}
+    + \sum_{r=1}^{m} \sigma_{r}(t_{k},X_{k})\sqrt{h}\xi^{r}
      + \frac{1}{2} \sum_{r,l=1}^{m} \Lambda_{r,l}\sigma(t_{k},X_{k})
-    \xi_{r} \xi_{l} h
+    \xi^{r} \xi^{l} h
 \end{align}
-となる．ただし，$1\leq r\leq m$に対して$\xi_{r}$は標準正規分布に従う確率変数とした．
+となる．ただし，$1\leq r\leq m$に対して$\xi^{r}$は標準正規分布に従う確率変数とした．
 drift陰的なスキームや混合スキームも同様にして得られるが，省略する．
 
 \subsection{強収束}

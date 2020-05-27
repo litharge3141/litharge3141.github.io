@@ -17,7 +17,7 @@ permalink: /numerical/
 
 [SDEの数値解の強収束（pdfリンク）](/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.pdf)<br>
 SDEの数値計算において，数値解が真の解に強収束という意味で収束することの証明です。
-内容の多くはMilsteinの本などに基づきます。
+内容の多くはMilsteinの本などに基づきます。執筆中。
 
 ---
 ## データ同化の記事集
