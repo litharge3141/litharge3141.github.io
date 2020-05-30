@@ -79,8 +79,9 @@
 \end{theorem}
 
 \begin{proof}
+    $0<r<q/p$が任意に与えられたとする．
     $D_{n} \coloneqq \left\{\frac{kT}{2^n} \setmid k=0,1,\ldots,2^{n}\right\}$とし，
-    $D \coloneqq \bigcup_{n=1}^{\infty} D_n$とおく．
+    $D \coloneqq \bigcup_{n=1}^{\infty} D_n$とおく．$X_{t}$は$D$上一様連続な確率過程であることを示す．
     \begin{align}
         P\left(\omega \setmid 
         \exists n^{*}(\omega)\in \N,\,\forall n \geq n^{*}(\omega),\,
@@ -104,7 +105,22 @@
         \quad (\because \text{Chebyshevの不等式})\\
         &\leq  \frac{C\abs{t-s}^{1+q}}{\varepsilon^{p}} \quad (\because \text{仮定})
     \end{align}
-    を得る．
+    を得る．したがって$t=k/2^{n},s=(k-1)/2^{n},\varepsilon = 2^{-rn}$とすると
+    \begin{align}
+        P\left(\norm{ X_{\frac{k}{2^{n}}} - X_{\frac{k-1}{2^{n}}} } \geq 2^{-rn}\right)
+        \leq C 2^{-n(1+q)}2^{rpn} = C 2^{-n(1+q-pr)}
+    \end{align}
+    となる．したがって
+    \begin{align}
+        P(A_{n}^{c}) &= P\left( \bigcup_{k=1}^{2^{n}} 
+        \norm{ X_{\frac{k}{2^{n}}} - X_{\frac{k-1}{2^{n}}} } \geq 2^{-rn} \right)\\
+        &\leq \sum_{k=1}^{2^{n}} P\left(
+            \norm{ X_{\frac{k}{2^{n}}} - X_{\frac{k-1}{2^{n}}} } \geq 2^{-rn}
+         \right)\\
+         &\leq C2^{-n(q-pr)}
+    \end{align}
+    を得る．$q-pr>0$だから，$\sum_{n=1}^{\infty} P(A_{n}^{c}) < \infty$となる．
+    したがって示された．
 \end{proof}
 
 \section{応用例}

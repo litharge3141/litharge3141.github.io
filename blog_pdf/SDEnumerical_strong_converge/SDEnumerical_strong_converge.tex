@@ -142,11 +142,47 @@ SDEの数値計算の中で最も基本的なEuler-MaruyamaおよびMilsteinの�
     が成り立つという意味で，解$X(t)$は一意である．
 \end{theorem}
 
+
 特に初期値が確率変数の場合，次が知られている．
+数値計算のように確率微分方程式を時間の区間ごとに区切って考えた場合，
+各区間ごとの確率微分方程式の（数値）解を初期値として次の時間ステップの解を
+評価することになるから，この形の定理が必要になる．
+
+
+\begin{theorem}\label{initial_random_existence}
+    $\mathcal{F}_{0}$可測な$\R^{n}$に値を取る確率変数$X_{0}$が与えられ，
+    $E[\abs{X_{0}}^{2}] < \infty$を満たすとする．
+    係数$a,\sigma_{r}$が以下を満たすと仮定する．
+    \begin{itemize}
+        \item Lipshitz連続，すなわち，
+        \begin{align}
+            \exists K>0,\quad \forall t \in [0,T],\quad \forall x,y \in \R^{n},\quad
+            \abs{a(t,x)-a(t,y)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x) - \sigma_{r}(t,y)} 
+            \leq K\abs{x-y}
+        \end{align}
+        を満たす．
+        \item 1次増大条件，すなわち
+        \begin{align}
+            \exists K>0,\quad \forall t \in [0,T],\quad \forall x\in \R^{n},\quad
+            \abs{a(t,x)} + \sum_{r=1}^{m} \abs{\sigma_{r}(t,x)} \leq K(1+\abs{x})
+        \end{align}
+        を満たす．
+    \end{itemize}
+    このとき，確率微分方程式の強解，すなわち各成分が確率積分方程式
+    \begin{align}
+        X^{i}(t) = X_{0}^{i} + \int_{0}^{t} a^{i}(s,X(s))ds +
+         \int_{0}^{t} \sigma_{r}^{i}(s,X(s))dB^{r}(s)
+    \end{align}
+    を満たす確率過程$X(t)$で，$\mathrm{Definition}\ref{strong_solution}$
+    の仮定を満たすものが存在する．
+    さらに，$X(t)$は$\mathcal{L}^2 (\mathcal{F}_{t})$に属していて，
+    $\tilde{X}(t)$も強解ならば，$P(\forall t \geq 0,X(t)=\tilde{X}(t))=1$
+    が成り立つという意味で，一意である．
+\end{theorem}
 
 
 \subsection{数値スキームの導出}
-以降，$\mathrm{Definition}\ref{strong_solution}$の確率微分方程式が
+この節では，$\mathrm{Definition}\ref{strong_solution}$の確率微分方程式が
 与えられ，その係数は$\mathrm{Theorem}\ref{fundamental_existence}$
 の仮定を満たし，かつ十分になめらかであるとする．
 初期値$x \in \R^n$に対して一意存在する強解を$X(t)$とする．
@@ -316,6 +352,10 @@ $\Lambda_{r,l}\sigma = \Lambda_{l,r}\sigma$となる．
 drift陰的なスキームや混合スキームも同様にして得られるが，省略する．
 
 \subsection{強収束}
+この節では，$\mathrm{Definition}\ref{strong_solution}$の確率微分方程式が
+与えられ，$\mathrm{Theorem}\ref{initial_random_existence}$
+の仮定を満たす係数と初期値が与えられ，係数は十分になめらかであるとする．
+初期値$X_{0}$に対して一意存在する強解を$X(t)$とする．
 数値解の収束の概念を述べる．
 通常の微分方程式とは異なり，モーメントの収束についての定義になる．
 
@@ -323,7 +363,8 @@ drift陰的なスキームや混合スキームも同様にして得られるが
 \begin{definition}
     数値スキームが$L^p$において$\gamma$次強収束するとは，
     ある$K>0$が存在して，十分小さい任意の$h>0$と任意の$Nh=T$となる$N \in \N$と
-    任意の$0\leq k\leq N$に対して，確率微分方程式の解$X(t_{k})$と数値解$X_{k}$の評価
+    任意の$0\leq k\leq N$に対して，確率微分方程式の解$X(t_{k})$と
+    $t=t_{k}$における数値解$X_{k}$についての不等式
     \begin{align}
         E[\abs{X(t_{k}) - X_{k}}^{p}]^{\frac{1}{p}} \leq Kh^{\gamma}
     \end{align}
@@ -344,20 +385,22 @@ drift陰的なスキームや混合スキームも同様にして得られるが
 この定義を用いると陽解法における数値解は次のように書き直せる．
 \begin{align}
     X_{k+1} &= \bar{X}_{t_{k},X_{k}}(t_{k+1}) \\
-            &= X_{k} + A\left(t_{k},X_{k},B^{r}(\theta)-B^{r}(t_{k})
+            &= X_{k} + A\left(t_{k},X_{k},h,B^{r}(\theta)-B^{r}(t_{k})
             ; 1\leq r\leq m ,t_{k} \leq \theta \leq t_{k+1} \right)
 \end{align}
 ここで$A$は数値スキームによって異なる関数で，陽的Euler-Maruyamaであれば
 \begin{align}
-    A\left(t_{k},X_{k},B^{r}(\theta)-B^{r}(t_{k})
+    A\left(t_{k},X_{k},h,B^{r}(\theta)-B^{r}(t_{k})
     ; 1\leq r\leq m ,t_{k} \leq \theta \leq t_{k+1} \right) \\
     = a(t_{k},X_{k})h + \sum_{r=1}^{m}\sigma_{r}(t_{k},X_{k})(B^{r}(t_{k+1})-B^{r}(t_{k}))
 \end{align}
-となる．目標の定理を述べる．
+となる．強収束を主張する定理を述べる．
 
 
 \begin{theorem}
-    確率微分方程式$\eqref{sde}$を初期条件$X(0)=X_{0}$の下で考える．
+    確率微分方程式$\eqref{sde}$を$\mathrm{Theorem}\ref{initial_random_existence}$
+    の仮定を満たすような初期条件$X(0)=X_{0}$の下で考える．
+    数値スキームが与えられているとする．
     ある$q_{2}\geq 1/2,\, q_{1} \geq q_{2} + 1/2 ,\, 
     p\geq 1,\, \alpha \geq 1,\, K>0$が存在して，
     十分小さい任意の$h>0$と任意の$0\leq t\leq T-h,\, x\in \R^{n}$
@@ -377,4 +420,104 @@ drift陰的なスキームや混合スキームも同様にして得られるが
     \end{align}
     が成り立つ．特に，この数値スキームは$q_{2}-1/2$次の強収束である．
 \end{theorem}
+
+
+Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求めるには$p=2$
+とすれば十分なので，$p=2$の場合に証明する．補題を3つ準備する．
+
+
+\begin{lemma}[確率微分方程式の初期値に対する安定性]
+    $x,y \in \R^{n}$とする．十分小さい任意の$h>0$と任意の$t \in [0,T-h]$に対する
+    one-step approximationについて，
+    ある確率過程$Z$が存在して，次のように表せる．
+    \begin{align}
+        X_{t,x}(t+h)-X_{t,y}(t+h) = x - y + Z
+    \end{align}
+    さらに，$h$に依存しない定数$K_{1},K_{2}>0$が存在して，次の評価が成り立つ．
+    \begin{align}
+        &E[\abs{X_{t,x}(t+h)-X_{t,y}(t+h)}^{2}] \leq
+        \abs{x-y}^{2} (1+K_{1}h) \\
+        &E[Z^{2}] \leq \abs{x-y}^{2} K_{2}h
+    \end{align}
+\end{lemma}
+
+\begin{proof}
+    伊藤の公式から$0\leq \theta \leq h$に対して
+    \begin{align}
+        &\abs{X_{t,x}(t+\theta)-X_{t,y}(t+\theta)}^{2} \\
+        &= \abs{x-y}^{2} + 
+        2\int_{t}^{t+\theta} (X_{t,x}(s)-X_{t,y}(s))\cdot (a(s,X_{t,x}(s))-a(s,X_{t,y}(s)))ds \\
+        &+ 2\int_{t}^{t+\theta} (X_{t,x}(s)-X_{t,y}(s)) 
+        \cdot \sum_{r=1}^{m} (\sigma_{r}(s,X_{t,x}(s))-\sigma_{r}(s,X_{t,x}(s))) dB^{r}(s)\\
+        &+ \int_{t}^{t+\theta} \sum_{r=1}^{m} 
+        \abs{\sigma_{r}(s,X_{t,x}(s))-\sigma_{r}(s,X_{t,y}(s))}^{2} ds
+    \end{align}
+    を得る．両辺の期待値を取ると確率積分の項が消えて，
+    \begin{align}
+        &E[\abs{X_{t,x}(t+\theta)-X_{t,y}(t+\theta)}^{2}] \\
+        &= \abs{x-y}^{2} + 
+        2E\left[\int_{t}^{t+\theta} (X_{t,x}(s)-X_{t,y}(s))
+        \cdot (a(s,X_{t,x}(s))-a(s,X_{t,y}(s)))ds \right]\\
+        &+ E\left[
+            \int_{t}^{t+\theta} \sum_{r=1}^{m} 
+        \abs{\sigma_{r}(s,X_{t,x}(s))-\sigma_{r}(s,X_{t,y}(s))}^{2} ds
+        \right]
+    \end{align}
+    となる．Schwarzの不等式と係数のLipshitz条件から，$K>0$が存在して
+    \begin{align}
+        &2E\left[\int_{t}^{t+\theta} (X_{t,x}(s)-X_{t,y}(s))
+        \cdot (a(s,X_{t,x}(s))-a(X_{t,y}(s)))ds \right]\\
+        &\leq 2K \int_{t}^{t+\theta} E[\abs{X_{t,x}(s)-X_{t,y}(s)}^{2}]
+    \end{align}
+    および
+    \begin{align}
+        &E\left[
+            \int_{t}^{t+\theta} \sum_{r=1}^{m} 
+        \abs{\sigma_{r}(s,X_{t,x}(s))-\sigma_{r}(s,X_{t,y}(s))}^{2} ds
+        \right]\\
+        &\leq K \int_{t}^{t+\theta} E[\abs{X_{t,x}(s)-X_{t,y}(s)}^{2}]
+    \end{align}
+    を得る．したがって不等式
+    \begin{align}
+        E[\abs{X_{t,x}(t+\theta)-X_{t,y}(t+\theta)}^{2}] \leq
+        \abs{x-y}^{2} + 3K \int_{t}^{t+\theta} E[\abs{X_{t,x}(s)-X_{t,y}(s)}^{2}]
+    \end{align}
+    が得られた．Gronwallの不等式からある$K_{1}>0$に対して
+    \begin{align}
+        E[\abs{X_{t,x}(t+\theta)-X_{t,y}(t+\theta)}^{2}]
+        &\leq \abs{x-y}^{2} e^{3K \theta }\\
+        &\leq \abs{x-y}^{2} (1+K_{1}\theta)
+    \end{align}
+    となり，求める不等式が得られる．
+    \begin{align}
+        Z &= \int_{t}^{t+\theta} a(s,X_{t,x}(s))-a(X_{t,y}(s)) ds \\
+        &+ \int_{t}^{t+\theta} \sum_{r=1}^{m} 
+        \sigma_{r}(s,X_{t,x}(s))-\sigma_{r}(s,X_{t,y}(s)) dB^{r}(s)
+    \end{align}
+    として同様にすれば$Z$についての不等式も得られる．
+\end{proof}
+
+
+\begin{lemma}[数値解の初期値に対する評価]
+    ある$K>0$が存在して，任意の$N \in \N$と任意の$0\leq k\leq N$に対して，
+    \begin{align}
+        E[\abs{X_{k}}^{2}] \leq K(1+E[\abs{X_{0}}^{2}])
+    \end{align}
+    が成立する．
+\end{lemma}
+
+
+\begin{lemma}[離散版Gronwall]
+    非負実数列$u_{k}$がある定数$A,B\geq 0,\,p\geq 1$と
+    任意の$N \in \N$と任意の$0\leq k\leq N$に対して，$h = T/N$として
+    \begin{align}
+        u_{k+1} \leq (1+Ah)u_{k} + Bh^{p}
+    \end{align}
+    を満たすと仮定する．このとき，
+    任意の$0\leq k\leq N$に対して，
+    \begin{align}
+        u_{k} \leq e^{AT}u_{0} + \frac{B}{A}(e^{AT}-1)h^{p-1}
+    \end{align}
+    が成立する．
+\end{lemma}
 \end{document}

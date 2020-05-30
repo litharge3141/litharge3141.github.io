@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  27 MAY 2020 17:05
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  29 MAY 2020 04:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -273,34 +273,34 @@ LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <9> not available
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 8.32214pt on input line 122.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 162.
+(Font)              scaled to size 9.24683pt on input line 198.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 162.
+(Font)              scaled to size 9.24683pt on input line 198.
  [2] [3] [4]
 LaTeX Font Info:    Font shape `JT2/mc/m/it' in size <6> not available
-(Font)              Font shape `JT2/mc/m/n' tried instead on input line 360.
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 401.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 360.
+(Font)              scaled to size 5.5481pt on input line 401.
 LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <6> not available
-(Font)              Font shape `JY2/mc/m/n' tried instead on input line 360.
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 401.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 360.
+(Font)              scaled to size 5.5481pt on input line 401.
 LaTeX Font Info:    Font shape `JT2/mc/m/it' in size <5> not available
-(Font)              Font shape `JT2/mc/m/n' tried instead on input line 360.
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 401.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 360.
+(Font)              scaled to size 4.62341pt on input line 401.
 LaTeX Font Info:    Font shape `JY2/mc/m/it' in size <5> not available
-(Font)              Font shape `JY2/mc/m/n' tried instead on input line 360.
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 401.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 360.
- [5] (./SDEnumerical_strong_converge.aux) ) 
+(Font)              scaled to size 4.62341pt on input line 401.
+ [5] [6] [7] (./SDEnumerical_strong_converge.aux) ) 
 Here is how much of TeX's memory you used:
- 2845 strings out of 481768
- 38607 string characters out of 5934902
- 292670 words of memory out of 5000000
- 18238 multiletter control sequences out of 15000+600000
+ 2846 strings out of 481768
+ 38633 string characters out of 5934902
+ 295670 words of memory out of 5000000
+ 18239 multiletter control sequences out of 15000+600000
  549144 words of font info for 105 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  30i,14n,31p,307b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on SDEnumerical_strong_converge.dvi (5 pages, 30548 bytes).
+Output written on SDEnumerical_strong_converge.dvi (7 pages, 41436 bytes).

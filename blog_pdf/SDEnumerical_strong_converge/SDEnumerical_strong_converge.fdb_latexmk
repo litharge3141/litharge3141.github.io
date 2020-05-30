@@ -1,11 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1590595509 "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge.pdf" "SDEnumerical_strong_converge" 1590595510
-  "SDEnumerical_strong_converge.dvi" 1590595508 30548 f13ef7f1aa4884061633aaedffc66559 "latex"
+["dvipdf"] 1590723490 "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge.pdf" "SDEnumerical_strong_converge" 1590723491
+  "SDEnumerical_strong_converge.dvi" 1590723490 41436 a3c39d9dcf9ecdd49dbe00492099f912 "latex"
   (generated)
   "SDEnumerical_strong_converge.pdf"
-["latex"] 1590595508 "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge" 1590595510
-  "SDEnumerical_strong_converge.aux" 1590595508 960 968685b5b99e4a2d5ac622427d82c58d "latex"
-  "SDEnumerical_strong_converge.tex" 1590595505 17657 55da34a4949f8670f9a4375e5650182a ""
+["latex"] 1590723489 "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" "SDEnumerical_strong_converge.dvi" "SDEnumerical_strong_converge" 1590723491
+  "SDEnumerical_strong_converge.aux" 1590723490 1006 62e86222b33683e6bfb5392432abe869 "latex"
+  "SDEnumerical_strong_converge.tex" 1590723487 24210 d523bcb7c563545c17db603ec2547c38 ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm" 1582016232 1536 c4f439db76ef96a9c53bc437f35ffe20 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcti0900.tfm" 1582016232 2048 c39c5154886a5521006765320aa4d25e ""
@@ -68,8 +68,8 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" 1590595505 17657 55da34a4949f8670f9a4375e5650182a ""
+  "d:/litharge3141.github.io/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.tex" 1590723487 24210 d523bcb7c563545c17db603ec2547c38 ""
   (generated)
+  "SDEnumerical_strong_converge.dvi"
   "SDEnumerical_strong_converge.aux"
   "SDEnumerical_strong_converge.log"
-  "SDEnumerical_strong_converge.dvi"
