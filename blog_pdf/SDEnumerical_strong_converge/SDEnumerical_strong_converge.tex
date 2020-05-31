@@ -397,7 +397,7 @@ drift陰的なスキームや混合スキームも同様にして得られるが
 となる．強収束を主張する定理を述べる．
 
 
-\begin{theorem}
+\begin{theorem}\label{fundamental_thm_for_osa}
     確率微分方程式$\eqref{sde}$を$\mathrm{Theorem}\ref{initial_random_existence}$
     の仮定を満たすような初期条件$X(0)=X_{0}$の下で考える．
     数値スキームが与えられているとする．
@@ -422,11 +422,11 @@ drift陰的なスキームや混合スキームも同様にして得られるが
 \end{theorem}
 
 
-Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求めるには$p=2$
-とすれば十分なので，$p=2$の場合に証明する．補題を3つ準備する．
+Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求めるには$p=1$
+とすれば十分なので，$p=1$の場合に証明する．補題を準備する．
 
 
-\begin{lemma}[確率微分方程式の初期値に対する安定性]
+\begin{lemma}[確率微分方程式の初期値に対する安定性]\label{sde_stability_initial}
     $x,y \in \R^{n}$とする．十分小さい任意の$h>0$と任意の$t \in [0,T-h]$に対する
     one-step approximationについて，
     ある確率過程$Z$が存在して，次のように表せる．
@@ -440,6 +440,7 @@ Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求�
         &E[Z^{2}] \leq \abs{x-y}^{2} K_{2}h
     \end{align}
 \end{lemma}
+
 
 \begin{proof}
     伊藤の公式から$0\leq \theta \leq h$に対して
@@ -498,16 +499,70 @@ Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求�
 \end{proof}
 
 
+\begin{lemma}[conditional estimate]
+    $X,Y$を$\mathcal{F}_{t_{k}}$-可測な確率変数で$E[\abs{X}^{2}]<\infty$
+    および$E[\abs{Y}^{2}]<\infty$が成り立つものとする．
+    $\mathrm{Theorem}\ref{fundamental_thm_for_osa}$の仮定が成り立つとき，
+    \begin{align}
+        E\left[ \abs{ 
+            E [ 
+                X_{t,X}(t+h) - \bar{X}_{t,X}(t+h) \setmid \mathcal{F}_{t_{k}} 
+            ] 
+            } 
+        \right]
+        \leq K(
+            1+E[
+            \abs{X}^{2}
+            ]
+            )^{\frac{1}{2}} h^{q_{1}} \\
+        E\left[ 
+            E[
+                \abs{ X_{t,X}(t+h)- \bar{X}_{t,X}(t+h) }^{2p}
+            \mid \mathcal{F}_{t_{k}}
+        ]
+        \right]^{\frac{1}{2p}}
+        \leq K(1+E[\abs{X}^{2p}])^{\frac{1}{2p}} h^{q_{2}}
+    \end{align}
+    となる．また，$\mathrm{Lemma}\ref{sde_stability_initial}$について
+    \begin{align}
+        &X_{t,X}(t+h) - X_{t,Y}(t+h) = X-Y + Z \\
+        &E\left[
+            E[
+                \abs{
+                    X_{t,X}(t+h) - X_{t,Y}(t+h) 
+                }^{2}
+                \setmid \mathcal{F}_{t_{k}}
+            ]
+        \right]
+        \leq
+        E[
+            \abs{X-Y}^{2}
+        ]
+        (1+K_{1}h) \\
+        &E\left[
+            E[
+                Z^{2} \setmid \mathcal{F}_{t_{k}}
+            ]
+        \right]
+        \leq
+        E[
+            \abs{X-Y}^{2}
+        ] K_{2}h
+    \end{align}
+    が成り立つ．
+\end{lemma}
+
+
 \begin{lemma}[数値解の初期値に対する評価]
     ある$K>0$が存在して，任意の$N \in \N$と任意の$0\leq k\leq N$に対して，
     \begin{align}
-        E[\abs{X_{k}}^{2}] \leq K(1+E[\abs{X_{0}}^{2}])
+        E[\abs{\bar{X}_{k}}^{2}] \leq K(1+E[\abs{X_{0}}^{2}])
     \end{align}
     が成立する．
 \end{lemma}
 
 
-\begin{lemma}[離散版Gronwall]
+\begin{lemma}
     非負実数列$u_{k}$がある定数$A,B\geq 0,\,p\geq 1$と
     任意の$N \in \N$と任意の$0\leq k\leq N$に対して，$h = T/N$として
     \begin{align}
@@ -518,6 +573,27 @@ Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求�
     \begin{align}
         u_{k} \leq e^{AT}u_{0} + \frac{B}{A}(e^{AT}-1)h^{p-1}
     \end{align}
-    が成立する．
+    が成立する．ただし，$A=0$の時は
+    \begin{align}
+        u_{k} \leq u_{0} + \frac{B}Th^{p-1}
+    \end{align}
+    とする．
 \end{lemma}
+
+
+\begin{proof}
+    $A\neq 0$のときに示す．$A=0$のときも同様である．
+    漸化式を繰り返し用いると，$0\leq k\leq N$に対して
+    \begin{align}
+        u_{k} \leq (1+Ah)^{k}u_{0} + Bh^{p} \frac{(1+Ah)^{k}-1}{Ah}
+    \end{align}
+    を得る．$(1+Ah)^{k} \leq (1+Ah)^{N}$であり，$x\geq 0$において
+    $(1+x)^{N} \leq e^{xN}$が成り立つことから$(1+Ah)^{N} \leq e^{AhN} = e^{AT}$
+    が成立する．したがって
+    \begin{align}
+        u_{k} &\leq e^{AT} u_{0} + Bh^{p} \frac{e^{AT}-1}{Ah} \\
+        &\leq e^{AT}u_{0} + \frac{B}{A}(e^{AT}-1)h^{p-1}
+    \end{align}
+    となり，示された．
+\end{proof}
 \end{document}
