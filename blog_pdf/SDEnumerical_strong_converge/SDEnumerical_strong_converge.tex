@@ -491,11 +491,14 @@ Euler-MaruyamaやMilsteinスキームの$L^2$における強収束次数を求�
     \end{align}
     となり，求める不等式が得られる．
     \begin{align}
-        Z &= \int_{t}^{t+\theta} a(s,X_{t,x}(s))-a(X_{t,y}(s)) ds \\
+        Z &= \int_{t}^{t+\theta} a(s,X_{t,x}(s))-a(s,X_{t,y}(s)) ds \\
         &+ \int_{t}^{t+\theta} \sum_{r=1}^{m} 
         \sigma_{r}(s,X_{t,x}(s))-\sigma_{r}(s,X_{t,y}(s)) dB^{r}(s)
     \end{align}
-    として同様にすれば$Z$についての不等式も得られる．
+    とおく．
+    \begin{align}
+        E[\abs{Z}^{2}]
+    \end{align}
 \end{proof}
 
 

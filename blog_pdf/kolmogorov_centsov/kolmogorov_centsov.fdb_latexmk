@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1590805417 "kolmogorov_centsov.dvi" "kolmogorov_centsov.pdf" "kolmogorov_centsov" 1590805418
-  "kolmogorov_centsov.dvi" 1590805417 8196 3334c91a0c7bed57f9b02871e30477ee "latex"
+["dvipdf"] 1592791906 "kolmogorov_centsov.dvi" "kolmogorov_centsov.pdf" "kolmogorov_centsov" 1592791907
+  "kolmogorov_centsov.dvi" 1592791906 12532 b46221dc38848c75e7845daa7336580e "latex"
   (generated)
   "kolmogorov_centsov.pdf"
-["latex"] 1590805417 "d:/litharge3141.github.io/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.tex" "kolmogorov_centsov.dvi" "kolmogorov_centsov" 1590805418
+["latex"] 1592791905 "d:/litharge3141.github.io/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.tex" "kolmogorov_centsov.dvi" "kolmogorov_centsov" 1592791907
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1582016392 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcti1000.tfm" 1582016232 2048 3777f70f4372b17e2d3fda2b5684af05 ""
   "c:/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1582015620 1004 54797486969f23fa377b128694d548df ""
@@ -63,10 +63,10 @@
   "c:/texlive/2019/texmf-dist/web2c/texmf.cnf" 1582016692 39451 6c50cbbc48279cc2d67f72e32ca48ad5 ""
   "c:/texlive/2019/texmf-var/web2c/euptex/uplatex.fmt" 1582018211 10588331 e97081ccdc942ccf7e95ecb2476cf5ea ""
   "c:/texlive/2019/texmf.cnf" 1582018080 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/litharge3141.github.io/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.tex" 1590805415 5097 e46c7e4b94a1e6dbeb5ee9954193cefd ""
-  "kolmogorov_centsov.aux" 1590805417 213 faea6286b0ca642ab03432309d999797 "latex"
-  "kolmogorov_centsov.tex" 1590805415 5097 e46c7e4b94a1e6dbeb5ee9954193cefd ""
+  "d:/litharge3141.github.io/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.tex" 1592791903 7768 2d362189bf88824126eb0c04dfb8d640 ""
+  "kolmogorov_centsov.aux" 1592791906 383 c8cae8b1419707db4aab5555467ef5d3 "latex"
+  "kolmogorov_centsov.tex" 1592791903 7768 2d362189bf88824126eb0c04dfb8d640 ""
   (generated)
+  "kolmogorov_centsov.log"
   "kolmogorov_centsov.dvi"
   "kolmogorov_centsov.aux"
-  "kolmogorov_centsov.log"

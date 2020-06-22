@@ -32,6 +32,7 @@
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\setmid}{\mathrel{} \middle| \mathrel{}}
+\newcommand{\paren}[1]{\left ( #1 \right )}
 
 
 \begin{document}
@@ -82,20 +83,21 @@
     $0<r<q/p$が任意に与えられたとする．
     $D_{n} \coloneqq \left\{\frac{kT}{2^n} \setmid k=0,1,\ldots,2^{n}\right\}$とし，
     $D \coloneqq \bigcup_{n=1}^{\infty} D_n$とおく．$X_{t}$は$D$上一様連続な確率過程であることを示す．
-    \begin{align}
+    そのために，まず最初に
+    \begin{align}\label{step1}
         P\left(\omega \setmid 
         \exists n^{*}(\omega)\in \N,\,\forall n \geq n^{*}(\omega),\,
         \max_{1\leq k\leq 2^{n}} \norm{X_{\frac{k}{2^n}}(\omega) - X_{\frac{k-1}{2^n}}(\omega)}
         < 2^{-rn}\right) = 1
     \end{align}
-    を示す．
+    を示す．そのためには，
     \begin{align}
         A_{n} \coloneqq \left\{ \omega \setmid 
         \max_{1\leq k\leq 2^n} \norm{X_{\frac{k}{2^n}}(\omega) - 
         X_{\frac{k-1}{2^n}}(\omega)} < 2^{-rn}\right\}
     \end{align}
-    とおくと，$P(\liminf_{n\to\infty} A_{n})=1$を示せばよい．
-    それは$P(\limsup_{n\to\infty}A_{n}^{c})=0$と同値である．
+    とおくと，$P(\liminf_{n\to\infty} A_{n})=1$を示せば十分．
+    このことは$P(\limsup_{n\to\infty}A_{n}^{c})=0$と同値である．
     さらに，Borel-Canteliの補題から$\sum_{n=1}^{\infty}P(A_{n}^{c})$が収束することを
     証明すれば十分である．これを示す．
     $s,t \in [0,T]$に対して，
@@ -120,7 +122,50 @@
          &\leq C2^{-n(q-pr)}
     \end{align}
     を得る．$q-pr>0$だから，$\sum_{n=1}^{\infty} P(A_{n}^{c}) < \infty$となる．
-    したがって示された．
+    したがって示された．次に，
+    \begin{align}\label{step2}
+        P(
+            \omega \mid 
+            &\exists n^{*}(\omega)\in \N,\,\forall m > \forall n \geq n^{*}(\omega),\,
+            \forall s,t \in D_{m},\,\\
+            &\abs{s-t} < 2^{-n}\,
+            \Rightarrow \norm{X_{s}(\omega) - X_{t}(\omega)}
+            < 2\sum_{j=n+1}^{m} 2^{-rj}
+        )
+         = 1 
+    \end{align}
+    を示す．$\eqref{step1}$の中身の集合から$\omega$をとる．
+    ある$n^{*}(\omega)$が存在して，任意の$n\geq n^{*}(\omega)$に対して
+    $\max_{1\leq k\leq 2^{n}} \norm{X_{\frac{k}{2^n}}(\omega) - X_{\frac{k-1}{2^n}}(\omega)}
+    < 2^{-rn}$が成立することに注意する．
+    $m$についての帰納法で$\omega$が$\eqref{step2}$の中身の集合に含まれることを
+    証明する．$m = n+1$のとき．$s,t \in D_{m}$に対して$0\leq k_{s},k_{t} \leq 2^{n+1}$
+    を用いて$s = k_{s} / 2^{n+1}$
+    および$t = k_{t} / 2^{n+1}$とおける．
+    $\abs{s-t} < 2^{-n}$ならば$\abs{k_{s} - k_{t}} < 2$であることに注意する．
+    $\max_{1\leq k\leq 2^{n+1}} \norm{X_{\frac{k}{2^{n+1}}}(\omega) - 
+    X_{\frac{k-1}{2^{n+1}}}(\omega)}< 2^{-r(n+1)}$が成り立つから，
+    \begin{align}
+        \norm{X_{s}(\omega) - X_{t}(\omega)} 
+        &= \norm{X_{k_{s} / 2^{n+1}}(\omega) - X_{k_{t} / 2^{n+1}}(\omega)} \\
+        &< 2 \times 2^{-r(n+1)} \quad (\because \abs{k_{s}-k_{t}} < 2)
+    \end{align}
+    となり，示された．$m$での成立を仮定して$m+1$での成立を証明する．
+    $s,t \in D_{m+1}$に対して，$\abs{s-t} < 2^{-n}$が満たされるとする．
+    $s',t' \in D_{m}$で$\abs{s-s'}\leq 2^{-(m+1)}$および$\abs{t-t'} \leq 2^{-(m+1)}$
+    かつ$s\leq s'\leq t'\leq t$を満たすものが$D_{m}$の定め方から存在する．
+    $\abs{s'-t'} \leq 2^{-n}$が成立することに注意すると，
+    \begin{align}
+        \norm{X_{s}(\omega) - X_{t}(\omega)} 
+        &\leq \norm{X_{s}(\omega) - X_{s'}(\omega)} + \norm{X_{s'}(\omega) - X_{t'}(\omega)}
+        + \norm{X_{t'}(\omega) - X_{t}(\omega)}\\
+        &\leq 2^{-r(m+1)} + 2\sum_{j=n+1}^{m}2^{-rj} + 2^{-r(m+1)}
+        \quad (\because \text{帰納法の仮定と}\eqref{step1})\\
+        &= 2\sum_{j=n+1}^{m+1} 2^{-rj}
+    \end{align}
+    となり，$m+1$でも成立する．よって$\omega$は$\eqref{step2}$の中身に含まれ，
+    $\eqref{step1}$よりそのような$\omega$全体は測度$1$だから，$\eqref{step2}$が示された．
+    
 \end{proof}
 
 \section{応用例}
