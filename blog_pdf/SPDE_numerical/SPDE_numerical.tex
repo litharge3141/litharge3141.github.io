@@ -1,0 +1,97 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[dvipdfmx]{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\mathtoolsset{showonlyrefs}
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\diver}{\mathrm{div} \,}
+\newcommand{\rot}{\mathrm{rot} \,}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\setmid}{\mathrel{} \middle| \mathrel{}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\iprod}[1]{\left\langle #1 \right\rangle}
+
+
+\begin{document}
+
+\title{SPDEの数値計算}
+\author{@litharge3141}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+空間一次元の熱方程式を例にして，SPDEの導入をする．
+あらすじとしては，Hilbert空間の完全正規直交系との内積をとって
+係数についてのSDEに帰着できるということであるが，
+無限次元で考えるので収束の問題が常について回ることに注意する．
+まずノイズの定義をする．
+
+
+\begin{definition}[柱状Brown運動]
+$H$を実Hilbert空間，$T>0$として
+$(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t\in [0,T]})$を
+フィルトレーション付き確率空間とする．
+$\norm{\cdot}_{H}$で$H$のノルムを表すことにする．
+$W \colon H  \times [0,T] \times \Omega \to \R$が$H$上の
+柱状Brown運動であるとは，
+\begin{itemize}
+    \item 任意の$\psi \in H$に対して$W(\psi,\cdot,\cdot) / \norm{\psi}_{H}
+    \colon [0,T]\times\Omega  \to \R$は実$\mathcal{F}_{t}$-Brown運動である．
+    \item 任意の$\alpha,\beta \in \R$と任意の$\varphi,\psi \in H$に対して
+    \begin{equation}
+        P\paren{\omega \setmid \forall t \in [0,T],\,
+        W(\alpha\psi + \beta\varphi,t,\omega) = 
+    \alpha W(\psi,t,\omega) + \beta W(\varphi, t, \omega)} =1
+    \end{equation}
+    が成り立つ．
+\end{itemize}
+の二条件が成り立つことをいう．柱状Brown運動$W$に対して，
+$W(\psi,t,\cdot)$を単に$W_{t}(\psi)$と書くこともある．
+\end{definition}
+
+
+\begin{theorem}
+    $(H,\iprod{\cdot,\cdot}_{H})$を可分無限次元実Hilbert空間，
+    $(e_{k})_{k=1}^{\infty}$を$H$の可算な完全正規直交系とする．
+    $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t\in [0,T]})$を
+    フィルトレーション付き確率空間とし，
+    $(B_{t}^{n})_{k=1}^{\infty}$を独立な$\mathcal{F}_{t}$-ブラウン運動の族とする．
+    このとき，$W \colon H \times [0,T]\times \Omega  \to \R$を
+    $W(\psi,t,\omega) \coloneqq \sum_{k=1}^{\infty} B_{t}^{k}(\omega) \iprod{
+    \psi, e_{k}}_{H}$によって定めると$W$はwell-definedで，柱状Brown運動になる．
+\end{theorem}
+
+
+\begin{proof}
+    $n\in\N$に対して
+    $W^{n}(\psi,t,\omega) \coloneqq \sum_{k=1}^{n} B_{t}^{k}(\omega) \iprod{
+    \psi, e_{k}}_{H}$とおく．$(W^{n}(\psi,\cdot,\cdot))_{n=1}^{\infty}$
+    が$L^2([0,T]\times\Omega)$のコーシー列であることを示す．
+\end{proof}
+
+
+\end{document}
