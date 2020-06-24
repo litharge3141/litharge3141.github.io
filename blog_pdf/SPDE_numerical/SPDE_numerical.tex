@@ -59,7 +59,7 @@ $\norm{\cdot}_{H}$で$H$のノルムを表すことにする．
 $W \colon H  \times [0,T] \times \Omega \to \R$が$H$上の
 柱状Brown運動であるとは，
 \begin{itemize}
-    \item 任意の$\psi \in H$に対して$W(\psi,\cdot,\cdot) / \norm{\psi}_{H}
+    \item 任意の$0$でない$\psi \in H$に対して$W(\psi,\cdot,\cdot) / \norm{\psi}_{H}
     \colon [0,T]\times\Omega  \to \R$は実$\mathcal{F}_{t}$-Brown運動である．
     \item 任意の$\alpha,\beta \in \R$と任意の$\varphi,\psi \in H$に対して
     \begin{equation}
@@ -88,10 +88,111 @@ $W(\psi,t,\cdot)$を単に$W_{t}(\psi)$と書くこともある．
 
 \begin{proof}
     $n\in\N$に対して
-    $W^{n}(\psi,t,\omega) \coloneqq \sum_{k=1}^{n} B_{t}^{k}(\omega) \iprod{
+    $W^{n}_{t} (\psi) \coloneqq W^{n}(\psi,t,\omega) \coloneqq \sum_{k=1}^{n} B_{t}^{k}(\omega) \iprod{
     \psi, e_{k}}_{H}$とおく．$(W^{n}(\psi,\cdot,\cdot))_{n=1}^{\infty}$
-    が$L^2([0,T]\times\Omega)$のコーシー列であることを示す．
+    が$M_{T}^{2}$のコーシー列であることを示す．
+    \begin{align}
+        &E\left[\paren{W_{T}^{n}(\psi) - W_{T}^{m}(\psi)}^{2}\right]
+        = E\left[\paren{\sum_{k=m+1}^{n} B_{T}^{k} \iprod{\psi,e_{k}}_{H} }^{2}\right] \\
+        &= \sum_{k=m+1}^{n} E\left[\paren{B_{T}^{k}}^{2}\right] \iprod{\psi,e_{k}}_{H}^{2} 
+        = T\sum_{k=m+1}^{n} \iprod{\psi,e_{k}}_{H}^{2}
+    \end{align}
+    より，$\sum_{k=1}^{\infty} \iprod{\psi,e_{k}}_{H}^{2} = \norm{\psi}_{H}^{2}$
+    であることから従う．したがって$W$はwell-definedで，$W_{t}(\psi) \in M_{T}^{2}$である．
+    次に，$W(\psi)/\norm{\psi}_{H}$が実$\mathcal{F}_{t}$-Brown運動であることを示す．
+    Levyの定理から$\iprod{W(\psi)/\norm{\psi}_{H}}_{t} = t$を示せば十分で，
+    特に$\paren{W_{t}(\psi) / \norm{\psi}_{H}}^{2} - t$がマルチンゲールであることを
+    証明すれば十分である．$0\leq s<t\leq T$が任意に与えられたとする．
+    $\Phi$を$\mathcal{F}_{s}$-可測かつ有界な関数とすると，
+    \begin{align}
+        &E\left[ \paren{W_{t}(\psi)^{2} - W_{s}(\psi)^{2}}\Phi \right]\\
+        &= \lim_{n\to\infty} E\left[\paren{W_{t}^{n}(\psi)^{2} - W_{s}^{n}(\psi)^{2}}\Phi\right]\\
+        &= \lim_{n\to\infty} 
+            E\left[
+                \paren{
+            \paren{
+                \sum_{k=1}^{n} B_{t}^{k} \iprod{\psi,e_{k}}_{H} 
+            }^{2}
+             -
+            \paren{
+                 \sum_{k=1}^{n} B_{s}^{k}\iprod{\psi,e_{k}}_{H} 
+            }^{2}
+                }\Phi
+            \right]\\
+        &= \lim_{n\to\infty} 
+        E\left[
+            \paren{
+        \paren{
+            \sum_{k=1}^{n} (B_{t}^{k}-B_{s}^{k}) \iprod{\psi,e_{k}}_{H} 
+        }^{2}
+         +
+        \paren{
+             2\sum_{k=1}^{n}\sum_{l=1}^{n} (B_{t}^{k} -B_{s}^{k})B_{s}^{l}
+             \iprod{\psi,e_{k}}_{H} \iprod{\psi,e_{l}}_{H}
+        }
+            }\Phi
+        \right]\\
+        &=\lim_{n\to\infty} 
+        \sum_{k=1}^{n} E\left[
+        \paren{
+            B_{t}^{k}-B_{s}^{k}
+        }^{2} 
+        \right]
+        E\left[ \Phi \right]
+        \iprod{\psi,e_{k}}_{H}^{2} 
+         +
+        2\sum_{k=1}^{n}\sum_{l=1}^{n} \iprod{\psi,e_{k}}_{H} \iprod{\psi,e_{l}}_{H}
+        E\left[
+             B_{t}^{k} -B_{s}^{k}
+        \right]
+        E\left[
+            B_{s}^{l}\Phi
+        \right]\\
+        &= (t-s) E\left[\Phi \right] \norm{\psi}_{H}^{2}
+    \end{align}
+    が成り立つ．特に$\Phi$として$\mathcal{F}_{s}$-可測な集合の定義関数をとれば，
+    $\paren{W_{t}(\psi) / \norm{\psi}_{H}}^{2} - t$がマルチンゲールであることが従う．
+    よって示された．最後に線形性を証明する．
+    $\alpha,\beta\in \R$および$\psi,\varphi \in H$が任意に与えられたとする．
+    $t \in [0,T]$の稠密な可算集合$(t_{m})_{m=1}^{\infty}$が与えられたとする．
+    任意の$n \in \N$と任意の$\omega \in \Omega$に対して
+    \begin{equation}
+        W_{t_{m}}^{n}(\alpha \psi + \beta \varphi) 
+        = \alpha W_{t_{m}}^{n}(\psi) + \beta W_{t_{m}}^{n}(\varphi)
+    \end{equation}
+    が成立する．ここで$W_{t_{m}}(\cdot)$は$W_{t_{m}}(\cdot)$に
+    $L^{2}(\Omega)$で収束するので，必要なら部分列を取ることで
+    ある$P(E_{m})=0$となる$E_{m}\in \mathcal{F}$が存在して，
+    $\omega \notin E_{m}$ならば
+    \begin{equation}
+        W_{t_{m}}(\alpha \psi + \beta \varphi) 
+        = \alpha W_{t_{m}}(\psi) + \beta W_{t_{m}}(\varphi)
+    \end{equation}
+    が成立する．$E = \bigcup_{m=1}^{\infty} E_{m}$とすると
+    $P(E) = 0$であり，$\omega \notin E$ならば任意の$m \in \N$に対して
+    \begin{equation}
+        W_{t_{m}}(\alpha \psi + \beta \varphi) 
+        = \alpha W_{t_{m}}(\psi) + \beta W_{t_{m}}(\varphi)
+    \end{equation}
+    が成立する．$W$は$t$について連続で，$(t_{m})_{m=1}^{\infty}$が$[0,T]$で
+    稠密であることから，
+    $\omega \notin E$ならば
+    任意の$t \in [0,T]$に対して
+    \begin{equation}
+        W_{t}(\alpha \psi + \beta \varphi) 
+        = \alpha W_{t}(\psi) + \beta W_{t}(\varphi)
+    \end{equation}
+    が成立する．したがって，線形性も満たされ，証明が終わった．
 \end{proof}
 
-
+$\sum_{k=1}^{\infty} B_{t}^{k} \iprod{\cdot, e_{k}}_{H}$は
+柱状Brown運動であることが分かった．もし$\sum_{k=1}^{\infty} 
+B_{t}^{k}(\omega)e_{k}$が$H$のノルムでほとんどいたるところ収束すれば，
+$\sum_{k=1}^{\infty} B_{t}^{k} \iprod{\cdot, e_{k}}_{H}
+= \iprod{\cdot, \sum_{k=1}^{\infty} B_{t}^{k}(\omega)e_{k}}_{H}$
+がほとんどいたるところ成立するから$H$に値を取る確率過程
+$\sum_{k=1}^{\infty} B_{t}^{k}(\omega)e_{k}$と
+同一視できる．残念ながら$H$の元としては収束しないので，
+このような見方は正当化されない．
+$H$の元と同一視できるような場合として，次のようなノイズを考える．
 \end{document}
