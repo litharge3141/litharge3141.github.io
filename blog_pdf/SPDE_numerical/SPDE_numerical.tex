@@ -49,6 +49,8 @@
 係数についてのSDEに帰着できるということであるが，
 無限次元で考えるので収束の問題が常について回ることに注意する．
 まずノイズの定義をする．
+今後，確率空間$(\Omega,\mathcal{F},P)$の
+フィルトレーションは右連続かつ$P$-零集合をすべて含むとする．
 
 
 \begin{definition}[柱状Brown運動]
@@ -160,7 +162,7 @@ $W(\psi,t,\cdot)$を単に$W_{t}(\psi)$と書くこともある．
         W_{t_{m}}^{n}(\alpha \psi + \beta \varphi) 
         = \alpha W_{t_{m}}^{n}(\psi) + \beta W_{t_{m}}^{n}(\varphi)
     \end{equation}
-    が成立する．ここで$W_{t_{m}}(\cdot)$は$W_{t_{m}}(\cdot)$に
+    が成立する．ここで$W_{t_{m}}^{n} (\cdot)$は$W_{t_{m}}(\cdot)$に
     $L^{2}(\Omega)$で収束するので，必要なら部分列を取ることで
     ある$P(E_{m})=0$となる$E_{m}\in \mathcal{F}$が存在して，
     $\omega \notin E_{m}$ならば
@@ -194,5 +196,84 @@ $\sum_{k=1}^{\infty} B_{t}^{k} \iprod{\cdot, e_{k}}_{H}
 $\sum_{k=1}^{\infty} B_{t}^{k}(\omega)e_{k}$と
 同一視できる．残念ながら$H$の元としては収束しないので，
 このような見方は正当化されない．
-$H$の元と同一視できるような場合として，次のようなノイズを考える．
+$H$の元と同一視できるような場合として，色付きノイズ
+と呼ばれるノイズを考える．まず，
+Hilbert空間に値を取るノイズを考える．
+
+\begin{definition}
+    $(H,\iprod{\cdot,\cdot})$を可分実Hilbert空間とし，
+    $T>0$として
+    $(\Omega,\mathcal{F},P)$を
+    フィルトレーション付き確率空間とする．
+    $M\colon [0,T] \times \Omega \to H$が確率過程であるとは，
+    $\norm{M_{t}(\omega)}_{H}$が実数値の確率過程となることをいう．
+    $H$が可分だから，任意の$\varphi \in H$に対して
+    $\iprod{\varphi, M_{t}(\omega)}_{H}$が実数値確率過程であるとしてもよい．
+\end{definition}
+
+
+このように可測性を定義しておけば$M$のモーメントをBochner積分やDunford積分で
+定めることができる．特に今後必要な$L^2$-連続マルチンゲールを定義する．
+
+
+\begin{definition}
+    $(H,\iprod{\cdot,\cdot})$を可分実Hilbert空間とし，
+    $T>0$として
+    $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t\in [0,T]})$を
+    フィルトレーション付き確率空間とする．
+    確率過程$M\colon [0,T] \times \Omega \to H$が$L^2$-連続マルチンゲールとは，
+    任意の$\varphi \in H$に対して$\iprod{\varphi,M}_{H} \in M_{T}^{2}(\mathcal{F}_{t})$
+    となることをいう．このとき，$M \in M_{T}^{2}(H)$と書く．
+\end{definition}
+
+
+今回はDunford積分で定義したが，Bochner積分で定義しても同じである．
+色付きノイズの定義に入る．
+可分Hilbert空間$H$上のトレースクラス作用素の全体を$C_{1}(H)$
+とかき，Hilbert-Schmidtクラス作用素の全体を$C_{2}(H)$とかく．
+$P \in C_{2}(H)$を取る．$Q = P^{*}P$として$Q$を定めると
+$Q \in C_{1}(H)$であることに注意する．特に
+$(e_{k})_{k=1}^{\infty}$を$H$の完全正規直交系とすると
+$\sum_{k=1}^{\infty} \iprod{Qe_{k},e_{k}}_{H}$は$(e_{k})_{k=1}^{\infty}$
+の取り方によらずに一定値に収束するので，これを$TrQ$と名づけるのであった．
+都合のいい$(e_{k})_{k=1}^{\infty}$を取って
+$P = \sum_{k=1}^{\infty} \sqrt{s_{k}} e_{k} \otimes e_{k}$および
+$Q = \sum_{k=1}^{\infty} s_{k} e_{k} \otimes e_{k}$としてSchmidt展開すると，
+$TrQ = \sum_{k=1}^{\infty} s_{k}  <\infty$となる．
+柱状Brown運動$W = \sum_{k=1}^{\infty} B_{t}^{k} e_{k}$は
+$H$に値をとる確率過程としては意味を持たない．しかし形式的に$P$を作用させて
+\begin{align}
+    PW &= \sum_{k=1}^{\infty} \sqrt{s_{k}} e_{k} \otimes e_{k} W\\
+        &= \sum_{k=1}^{\infty} \sqrt{s_{k}} \iprod{\sum_{l=1}^{\infty} B_{t}^{l} e_{l},e_{k}}_{H} e_{k}\\
+        &= \sum_{k=1}^{\infty} \sqrt{s_{k}} B_{t}^{k} e_{k}
+\end{align}
+として計算すると，一番最後は
+$E[\norm{\sum_{k=1}^{\infty} \sqrt{s_{k}} B_{t}^{k} e_{k}}_{H}^{2}] = 
+\sum_{k=1}^{\infty} s_{k} E[\paren{B_{t}^{k}}^{2}] = tTrQ$
+となってほとんど至るところ$H$で収束し，$H$に値をとる確率過程として意味をもつ．
+これを踏まえて，次のように定義する．
+
+\begin{definition}
+    $(H,\iprod{\cdot,\cdot}_{H})$を可分無限次元実Hilbert空間，
+    $(e_{k})_{k=1}^{\infty}$を$H$の可算な完全正規直交系とする．
+    $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t\in [0,T]})$を
+    フィルトレーション付き確率空間とし，
+    $(B_{t}^{n})_{k=1}^{\infty}$を独立な$\mathcal{F}_{t}$-ブラウン運動の族とする．
+    $(s_{k})_{k=1}^{\infty}$を$\sum_{k=1}^{\infty} s_{k} < \infty$となる非負実数列とするとき，
+    $Q$-Brown運動$W^{Q}\colon [0,T] \times \Omega \to H$を
+    \begin{equation}
+        W^{Q} \coloneqq \sum_{k=1}^{\infty} \sqrt{s_{k}} B_{t}^{k} e_{k}
+    \end{equation}
+    によって定義する．$Q$-Brown運動$W^{Q}$に対して
+    $Q \coloneqq \sum_{k=1}^{\infty} s_{k} e_{k} \otimes e_{k}$と定めると
+    $Q \in C_{1}(H)$であり，$Q$を共分散という．
+\end{definition}
+
+
+特に$H = L^{2}(X,\mu)$として$\sigma$-有限な測度空間上の$L^2$空間となるときは，
+$Q$が定めるHilbert-Schmidt型積分作用素の積分核と同一視して
+$Q(x,y) = \sum_{k=1}^{\infty} s_{k} e_{k}(x)e_{k}(y)$
+のように書くこともある．先に$Q\in C_{1}(H)$を定めてから$W^{Q}$を定める方がスマートだが，
+$Q$のSchmidt展開の仕方によらないことを示すのが大変そうなので，ここでは上のように定義した．
+
 \end{document}
