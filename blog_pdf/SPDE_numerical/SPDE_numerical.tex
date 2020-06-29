@@ -259,7 +259,8 @@ $E[\norm{\sum_{k=1}^{\infty} \sqrt{s_{k}} B_{t}^{k} e_{k}}_{H}^{2}] =
     $(\Omega,\mathcal{F},P,(\mathcal{F}_{t})_{t\in [0,T]})$を
     フィルトレーション付き確率空間とし，
     $(B_{t}^{n})_{k=1}^{\infty}$を独立な$\mathcal{F}_{t}$-ブラウン運動の族とする．
-    $(s_{k})_{k=1}^{\infty}$を$\sum_{k=1}^{\infty} s_{k} < \infty$となる非負実数列とするとき，
+    $(s_{k})_{k=1}^{\infty}$を$\sum_{k=1}^{\infty} s_{k} < \infty$となる非負実数
+    単調減少列とするとき，
     $Q$-Brown運動$W^{Q}\colon [0,T] \times \Omega \to H$を
     \begin{equation}
         W^{Q} \coloneqq \sum_{k=1}^{\infty} \sqrt{s_{k}} B_{t}^{k} e_{k}
@@ -275,5 +276,48 @@ $Q$が定めるHilbert-Schmidt型積分作用素の積分核と同一視して
 $Q(x,y) = \sum_{k=1}^{\infty} s_{k} e_{k}(x)e_{k}(y)$
 のように書くこともある．先に$Q\in C_{1}(H)$を定めてから$W^{Q}$を定める方がスマートだが，
 $Q$のSchmidt展開の仕方によらないことを示すのが大変そうなので，ここでは上のように定義した．
+
+
+\begin{example}[熱方程式]
+    $H = L^{2}[0,2\pi]$とする．
+    以下では解の意味にこだわらず，形式的に計算して解の性質を予想する．
+    \begin{align}
+        &u_{t} = u_{xx} + W^{Q},\quad (t,x) \in (0,\infty)\times (0,2\pi)\\
+        &u(0,x) = u_{0}(x),\quad u(t,0)=u(t,2\pi)
+    \end{align}
+    を考える．ここで$W^{Q}$は$Q$-Brown運動であり，
+    $H$の完全正規直交系$e_{k} = \sqrt{1/\pi} \sin{\paren{kx/2}}$と
+    $\sum_{k=1}^{\infty} q_{k} <\infty$となる減少列$(q_{k})_{k=1}^{\infty}$
+    を用いて$W^{Q} = \sum_{k=1}^{\infty} \sqrt{q_{k}} B_{t}^{k} e_{k}$によって与えられる．
+    $(e_{k})_{k=1}^{\infty}$は$\lambda_{k} \coloneqq k^{2}/4$とすると
+    次を満たすことに注意する．
+    \begin{equation}
+        -\partial_{x}^{2} e_{k} = \lambda_{k} e_{k},\quad e_{k}(0) = e_{k}(2\pi) = 0,\quad
+        k=1,2,\ldots
+    \end{equation}
+    $u=\sum_{k=1}^{\infty} u_{k}(t) e_{k}$の形で解を求める．
+    $W^{Q}$と$u$の展開をもとの式に代入し，$e_{i}$との内積をとると
+    \begin{align}
+        &du_{i}(t) = -\lambda_{i} u_{i}(t)dt + \sqrt{q_{i}} dB_{t}^{i}\\
+        &u_{i}(0) = \iprod{u_{0},e_{i}}_{H}
+    \end{align}
+    という確率微分方程式を得る．$i=1,2,\ldots$に対してこれらを解けばよい．
+    この確率微分方程式自体は簡単にとけて
+    \begin{align}
+        u_{i}(t) = u_{i}(0) e^{-\lambda_{i}t} + 
+        \sqrt{q_{i}} \int_{0}^{t-s} e^{-\lambda_{i}(t-s)}dB_{s}^{i}
+    \end{align}
+    として求まるから，
+    \begin{equation}
+        u(t,x) = \sum_{k=1}^{\infty} 
+        \left[
+        u_{k}(0) e^{-\lambda_{k}t} + 
+        \sqrt{q_{k}} \int_{0}^{t-s} e^{-\lambda_{k}(t-s)}dB_{s}^{k}
+        \right]e_{k}
+    \end{equation}
+    という形で解が求まる．
+    この形で表される関数の性質を調べる．
+
+\end{example}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  28 JUN 2020 05:02
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  29 JUN 2020 04:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -257,7 +257,7 @@ LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 9.24683pt on input line 79.
  [1
 
-] [2] [3] (./SPDE_numerical.aux) ) 
+] [2] [3] [4] (./SPDE_numerical.aux) ) 
 Here is how much of TeX's memory you used:
  2816 strings out of 481768
  38078 string characters out of 5934902
@@ -265,6 +265,6 @@ Here is how much of TeX's memory you used:
  18217 multiletter control sequences out of 15000+600000
  545759 words of font info for 91 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 30i,12n,31p,279b,253s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,12n,31p,279b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on SPDE_numerical.dvi (3 pages, 20092 bytes).
+Output written on SPDE_numerical.dvi (4 pages, 23212 bytes).
