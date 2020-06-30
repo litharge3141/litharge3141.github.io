@@ -305,19 +305,67 @@ $Q$のSchmidt展開の仕方によらないことを示すのが大変そうな�
     この確率微分方程式自体は簡単にとけて
     \begin{align}
         u_{i}(t) = u_{i}(0) e^{-\lambda_{i}t} + 
-        \sqrt{q_{i}} \int_{0}^{t-s} e^{-\lambda_{i}(t-s)}dB_{s}^{i}
+        \sqrt{q_{i}} \int_{0}^{t} e^{-\lambda_{i}(t-s)}dB_{s}^{i}
     \end{align}
     として求まるから，
     \begin{equation}
         u(t,x) = \sum_{k=1}^{\infty} 
         \left[
         u_{k}(0) e^{-\lambda_{k}t} + 
-        \sqrt{q_{k}} \int_{0}^{t-s} e^{-\lambda_{k}(t-s)}dB_{s}^{k}
+        \sqrt{q_{k}} \int_{0}^{t} e^{-\lambda_{k}(t-s)}dB_{s}^{k}
         \right]e_{k}
     \end{equation}
     という形で解が求まる．
-    この形で表される関数の性質を調べる．
-
+    解の性質を調べる．簡単のため$u_{0}=0$とする．あるいは平均からのずれが見たいと思ってもよい.
+    このときは
+    \begin{equation}\label{heat_Ito_calculus}
+        u(t,x) = \sum_{k=1}^{\infty} 
+        \left[
+        \sqrt{q_{k}} \int_{0}^{t} e^{-\lambda_{k}(t-s)}dB_{s}^{k}
+        \right]e_{k}
+    \end{equation}
+    となる．
+    \begin{align}
+        &E[\norm{u(t,x)}_{H}^{2}] = \sum_{k=1}^{\infty} E\left[
+            q_{k} \paren{
+                \int_{0}^{t} e^{-\lambda_{k}(t-s)} dB_{s}^{k}
+            }^{2}
+        \right]\\
+        &= \sum_{k=1}^{\infty} q_{k} \int_{0}^{t} e^{-2\lambda_{k}(t-s)}ds
+        \quad (\because \text{伊藤積分の等長性})\\
+        &= \sum_{k=1}^{\infty} q_{k} \frac{1 - e^{-2\lambda_{k}t}}{2\lambda_{k}}
+        \leq \sum_{k=1}^{\infty}  \frac{q_{k}}{2\lambda_{k}}
+    \end{align}
+    として$u(t,x)$のノルムの評価ができる．$\lambda_{k}$は$k^2$のオーダーで，
+    $q_{k}$は総和が収束するから，$\sum_{k=1}^{\infty}  q_{k} / 2\lambda_{k}$は有限である．
+    特に$q_{k}=1$の場合でも収束するから，表示$\eqref{heat_Ito_calculus}$自体は
+    $q_{k}=1$の場合，すなわちノイズが柱状Brown運動の場合でも意味を持つことが期待できる．
+    $u(t,x)$の$x$についての導関数を考える．一階の導関数は，$e_{k}$の微分から$k$倍
+    が出てくるので，上の評価と同様にして，定数$M>0$を用いて形式的に
+    \begin{equation}
+        E[\norm{u_{x}(t,x)}_{H}^{2}] \leq M \sum_{k=1}^{\infty} \frac{k^{2}q_{k}}{\lambda_{k}}
+    \end{equation}
+    となる．$\sum_{k=1}q_{k}$が収束していないと右辺が有限ではないから，
+    柱状ブラウン運動のときは導関数は通常の関数としての意味を持たないと考えられる．
+    二階の導関数については$-\partial_{x}^{2} e_{k} = \lambda_{k} e_{k}$より
+    \begin{equation}
+        E[\norm{u_{xx}(t,x)}_{H}^{2}] \leq
+         M \sum_{k=1}^{\infty} \frac{\lambda_{k}^{2}q_{k}}{\lambda_{k}}
+         = M\sum_{k=1}^{\infty} \lambda_{k} q_{k}
+    \end{equation}
+    となる．今度は$q_{k}$が$p>3$に対して$k^{-p}$のオーダーでもないと右辺が有限ではない．
+    したがって，柱状Brown運動の場合でも解の表示は意味を持ちそうであること，
+    導関数は意味を持ちそうにないこと，$Q$-Brown運動の場合でも二階の導関数は
+    意味を持つとは限らないことが予想される．
+    数値計算をするにあたっては，導関数が意味を持たないことが話を難しくする．
+    （以下は6/30時点での素人の考察なので真に受けないように）
+    ノイズがブラウン運動の有限和でかけているような場合（退化しているという）には
+    このような問題は生じない可能性があるし，もっと言えばランダムなPDEの
+    計算も盛んに行われている．
+    無限和でないと説明できないような解の性質を出さないとSPDEをモデルとして
+    採用する理由が薄いような気がしないでもない（一般化としての価値はあると思うが）し，
+    そしてそれは必ずあるはずである．
+    今はわからなくても今後そういう性質を理解するのが目標の一つ．
 \end{example}
 
 \end{document}

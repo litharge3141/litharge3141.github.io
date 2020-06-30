@@ -1,0 +1,79 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[dvipdfmx]{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}[section]
+\newtheorem*{prob}{問題}
+\newtheorem*{ans}{解答}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\mathtoolsset{showonlyrefs}
+\allowdisplaybreaks
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\diver}{\mathrm{div} \,}
+\newcommand{\rot}{\mathrm{rot} \,}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\setmid}{\mathrel{} \middle| \mathrel{}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\iprod}[1]{\left\langle #1 \right\rangle}
+
+
+\begin{document}
+
+\title{演習問題解答}
+\author{@litharge3141}
+\date{\today}
+\maketitle
+
+\abstract
+Karatzas-Shreve, Brownian Motion and Stochastic Calculusの
+ExerciseとProblemの解答．問題は載せません．
+
+\section{Chapter1}
+\begin{ans}[1.5 Problem.]
+    右連続性を利用して連続な時間を可算に落とす．
+
+    任意の$t \geq 0$に対して$P(X_{t}=Y_{t})=1$が成立する．
+    $[0,\infty)$の稠密な部分集合$(t_{m})_{m=1}^{\infty}$を取る．
+    任意の$m \in \N$に対してある$P$-零集合$N_{m}$が存在して，
+    $\omega \notin N_{m}$ならば$X_{t_{m}}(\omega) = Y_{t_{m}}(\omega)$が成立する．
+    そこで$N = \bigcup_{m=1}^{\infty} N_{m}$とおくと，
+    $N$は$P$-零集合で，$\omega \notin N$ならば任意の$m\in \N$に対して
+    $X_{t_{m}}(\omega) = Y_{t_{m}}(\omega)$が成立する．
+    すなわち，$P(\forall m\in \N,\, X_{t_{m}} = Y_{t_{m}})=1$となる．
+    $X,Y$はほとんどいたるところ右連続だから，$N_{X},N_{Y}$という$P$-零集合を
+    除いて右連続である．$N \cup N_{X} \cup N_{Y}$を改めて$N$とおく．
+    $N$は$P$-零集合である．$\omega \notin N$とする．
+    任意の$t \geq 0$に対して，$t$に右から収束する$(t_{m})_{m=1}^{\infty}$
+    の部分列$(t_{m(k)})_{k=1}^{\infty}$が稠密性から存在する．
+    任意の$k\in \N$に対して$X_{t_{m(k)}}(\omega) = Y_{t_{m(k)}}(\omega)$
+    が成立することと，右連続性から$X_{t}(\omega) = Y_{t}(\omega)$となる．
+    $t$は任意だったから，$P(\forall t\geq 0,\, X_{t}=Y_{t})=1$となる．
+    以上により示された．
+\end{ans}
+右連続でなく左連続でもできそうな感じがするが，$t=0$のところの処理
+（というか左連続の定義）が若干面倒であるように思われる．
+
+
+\end{document}

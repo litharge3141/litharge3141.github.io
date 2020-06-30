@@ -11,39 +11,11 @@ permalink: /math/
 
 ## 偏微分方程式論
 
-なんでもは書いてないよ。書いてあることだけ。<br>
-[関数空間](#関数空間)<br>
-[偏微分方程式の基礎](#偏微分方程式の基礎)<br>
-[特定の方程式について](#特定の方程式について)<br>
-
----
-
-### 関数空間
-Banach空間一般論というよりは、特定の関数空間の性質やほかの関数空間との関係を書いていきます。
-
----
-
-### 偏微分方程式の基礎
-楕円型ばかりやってんじゃねえぞという気持ちで勉強したことを書いていきます。
-
-#### 楕円型
-
----
-
-### 特定の方程式について
-特に流体系の方程式を中心に書いていきます。
-
-#### Navier-Stokes方程式
-とりあえず作っておいて文献を付け足していく作戦。
-多分解の存在とかをメインにすると思います。
-
-#### Euler方程式
-こちらも付け足していく作戦。
-
-#### そのほかの方程式
-
 [Constantin-Lax-Majda方程式（pdfリンク）](/blog_pdf/CLM/CLM.pdf)<br>
 Euler方程式の爆発のモデルとして知られるCLM方程式の解説。執筆中。
+
+[Evans演習問題解答（pdfリンク）](/blog_pdf/Evans_problems/evans_problems.pdf)<br>
+Evans,Partial Differential Equationsの演習問題の解答．随時更新．
 
 ---
 
@@ -64,3 +36,6 @@ Euler方程式の爆発のモデルとして知られるCLM方程式の解説。
 
 [Kolmogorov-Centsovの定理（pdfリンク）](/blog_pdf/kolmogorov_centsov/kolmogorov_centsov.pdf)<br>
 確率過程のヘルダー連続性を示すときに使う定理の証明です。執筆中。
+
+[Karatzas-Shreve解答（pdfリンク）](/blog_pdf/KS_problems/KS_problems.pdf)<br>
+Karatzas-Shreve,Brownian Motion and Stochastic CalculusのProbemとExerciseの解答．随時更新．
