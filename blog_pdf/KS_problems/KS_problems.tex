@@ -51,11 +51,11 @@ Karatzas-Shreve, Brownian Motion and Stochastic Calculusの
 ExerciseとProblemの解答．問題は載せません．
 
 \section{Chapter1}
-\begin{ans}[1.5 Problem.]
+\begin{ans}[1.5 Problem]
     右連続性を利用して連続な時間を可算に落とす．
 
     任意の$t \geq 0$に対して$P(X_{t}=Y_{t})=1$が成立する．
-    $[0,\infty)$の稠密な部分集合$(t_{m})_{m=1}^{\infty}$を取る．
+    $[0,\infty)$の稠密な可算集合$(t_{m})_{m=1}^{\infty}$を取る．
     任意の$m \in \N$に対してある$P$-零集合$N_{m}$が存在して，
     $\omega \notin N_{m}$ならば$X_{t_{m}}(\omega) = Y_{t_{m}}(\omega)$が成立する．
     そこで$N = \bigcup_{m=1}^{\infty} N_{m}$とおくと，
@@ -74,6 +74,44 @@ ExerciseとProblemの解答．問題は載せません．
 \end{ans}
 右連続でなく左連続でもできそうな感じがするが，$t=0$のところの処理
 （というか左連続の定義）が若干面倒であるように思われる．
+
+
+\begin{ans}[1.7 Exercise]
+    「極限が存在する」という事象を可算な操作で言い換えること，
+    RCLLなら不連続な点は高々可算であることに注目する．
+
+    $t_{0} \in (0,\infty)$が任意に与えられたとする．
+    任意の$\omega \in \Omega$に対して$X(\omega)$はRCLLだから
+    不連続点は高々可算で，$(0,t_{0})$上の
+    不連続点の全体を$(t_{k})_{k=1}^{\infty}$とおける
+    （$\omega$に依存することに注意）．
+    また，$X(\omega)$は右連続だから，$X(\omega)$が$(0,t_{0})$で左連続であることと
+    $(0,t_{0})$で連続であることは同値．したがって
+    \begin{equation}
+        \omega \in A 
+        \Leftrightarrow \forall k \in \N, 
+        \lim_{s \to t_{k}-0} X_{s}(\omega) = X_{t_{k}}(\omega)
+    \end{equation}
+    が成り立つ．
+    $\lim_{s \to t_{k}-0} X_{s}(\omega) = X_{t_{k}}(\omega)$が成り立つことは，
+    任意の$m \in \N$に対してある$N \in \N$が存在して$n \geq N$ならば
+    $\abs{X_{t_{k}-1/n}(\omega) - X_{t_{k}}(\omega)} < 1/m$が成立することと同値．
+    後者は
+    \begin{equation}
+        \omega \in \bigcap_{m=1}^{\infty} \bigcup_{N=1}^{\infty} \bigcap_{n=N}^{\infty}
+        \left\{ \abs{X_{t_{k}-\frac{1}{n}} - X_{t_{k}}} < \frac{1}{m} \right\}
+    \end{equation}
+    と書き直せる．$\{\abs{X_{t_{k}-1/n} - X_{t_{k}}} < 1/m\} \in \mathcal{F}_{t_{k}}^{X}$
+    だから，$\bigcap_{m=1}^{\infty} \bigcup_{N=1}^{\infty} \bigcap_{n=N}^{\infty}
+    \{\abs{X_{t_{k}-1/n} - X_{t_{k}}} < 1/m\} \in \mathcal{F}_{t_{k}}^{X}$である．
+    任意の$k\in \N$に対して$\mathcal{F}_{t_{k}}^{X} \subset \mathcal{F}_{t_{0}}^{X}$
+    となる．したがって
+    \begin{equation}
+        A = \bigcap_{k=1}^{\infty} \bigcap_{m=1}^{\infty} \bigcup_{N=1}^{\infty} \bigcap_{n=N}^{\infty}
+    \{\abs{X_{t_{k}-1/n} - X_{t_{k}}} < 1/m\} \in \mathcal{F}_{t_{0}}^{X}
+    \end{equation}
+    となり，示された．
+\end{ans}
 
 
 \end{document}

@@ -68,8 +68,9 @@ $cu$がなければ解けるので$cu$を非斉次項だと思って定数変化
     $u(t,x) = e^{-ct}g(x-bt)$を得る．
 \end{ans}
 
+
 \subsection{方針と解答}
-公式を導くつもりで成分計算をする．$O$は書きづらいので$U$とかにしてほしかったです．
+公式を導くつもりで成分計算をする．$O$は大文字と小文字の見分けがつかないので$U$とかにしてほしい……
 \begin{ans}
     $O$が直交行列であることから，任意の$1\leq i,j \leq n$に対して
     $\sum_{k=1}^{n} O_{ik} O'_{kj} = \sum_{k=1}^{n} O_{ik} O_{jk} = \delta_{ij}$
@@ -98,6 +99,70 @@ $cu$がなければ解けるので$cu$を非斉次項だと思って定数変化
         &= \sum_{i=1}^{n} u_{x_{i}x_{i}}(Ox) = 0\quad(\because u\text{は調和関数})
     \end{align}
     により結論を得た．
+\end{ans}
+
+
+\subsection{方針と解答}
+示すべき式の右辺は$r$に依存するが左辺はよらないので，右辺の$r$についての
+微分が$0$であることを示した後，$r \to 0$の極限を取る．
+
+\begin{ans}
+    示すべき式の右辺を$\phi(r)$とおく．
+    境界条件と$-\triangle u = f$から
+    \begin{equation}
+        \phi (r) = \frac{1}{n\alpha(n)r^{n-1}} \int_{\partial B(0,r)} u(x)dS(x) 
+        + \frac{1}{n(n-2)\alpha(n)} 
+        \int_{B(0,r)} \paren{ \frac{1}{r^{n-2}} - \frac{1}{\abs{x}^{n-2}} }\triangle udx
+    \end{equation}
+    となる．
+    \begin{equation}
+        \int_{B(0,r)} \frac{\triangle u}{\abs{x}^{n-2}} dx 
+        = \int_{0}^{r} \int_{\partial B(0,s)} \frac{\triangle u}{\abs{x}^{n-2}} dS(x) ds
+        = \int_{0}^{r} \frac{1}{s^{n-2}} \int_{\partial B(0,s)} \triangle u(x) dS(x) ds
+    \end{equation}
+    だから
+    \begin{equation}
+        \frac{d}{dr} \int_{B(0,r)} \frac{\triangle u}{\abs{x}^{n-2}} dx 
+        = \frac{1}{r^{n-2}} \int_{\partial B(0,r)} \triangle u(x) dS(x)
+    \end{equation}
+    となることに注意すれば，
+    \begin{align}
+        \phi'(r) &=
+        \frac{1}{n\alpha(n)r^{n-1}} \int_{B(0,r)} \triangle u(x)dx
+        + \frac{1}{n(n-2)\alpha(n)} \frac{1}{r^{n-2}}
+         \int_{\partial B(0,r)} \triangle u(x) dS(x) \\
+        &\quad + \frac{1}{n(n-2)\alpha(n)} \frac{-(n-2)}{r^{n-1}} 
+        \int_{B(0,r)} \triangle u(x)dx 
+        - \frac{1}{n(n-2)\alpha(n)}\frac{1}{r^{n-2}} \int_{\partial B(0,r)} \triangle u(x) dS(x)\\
+        &=0
+    \end{align}
+    となる．したがって$\phi(r)$は定数である．平均値の公式の導出と同様に
+    \begin{equation}
+        \lim_{r\to 0} \frac{1}{n\alpha(n)r^{n-1}} \int_{\partial B(0,r)} u(x)dS(x) = u(0)
+    \end{equation}
+    となる．
+    \begin{equation}
+        \lim_{r\to 0} \frac{1}{r^{n-2}} \int_{B(0,r)} \triangle u dx 
+        = \lim_{r \to 0} -\frac{\alpha(n)r^{2}}{\alpha(n)r^{n}} \int_{B(0,r)} \triangle f(x) dx 
+        = 0
+    \end{equation}
+    となることも同様にして分かる．
+    \begin{equation}
+        \int_{B(0,r)} \frac{\triangle u}{\abs{x}^{n-2}} dx 
+        = \int_{0}^{r} \frac{1}{s^{n-2}} \int_{\partial B(0,s)} \triangle u(x) dS(x) ds
+        = \int_{0}^{r} \frac{-n\alpha(n)s}{n\alpha(n)s^{n-1}} 
+        \int_{\partial B(0,s)} f(x) dS(x) ds
+    \end{equation}
+    であり，$r$が十分小さければ
+    $\frac{1}{n\alpha(n)s^{n-1}} 
+    \int_{\partial B(0,s)} f(x) dS(x)$は$f(0)$に近づく．
+    したがって
+    \begin{equation}
+        \lim_{r\to 0} \int_{B(0,r)} \frac{\triangle u}{\abs{x}^{n-2}} dx 
+        = \lim_{r\to 0} \int_{0}^{r} -n\alpha(n)s f(0) ds = 0
+    \end{equation}
+    となる．以上により$\lim_{r\to 0} \phi(r) = u(0)$となるから，
+    $\phi(r) = u(0)$である．よって示された．
 \end{ans}
 
 \end{document}

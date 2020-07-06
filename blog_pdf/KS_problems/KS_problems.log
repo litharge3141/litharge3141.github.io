@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  30 JUN 2020 02:32
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.18)  6 JUL 2020 03:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -267,10 +267,10 @@ LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 Here is how much of TeX's memory you used:
  2828 strings out of 481768
  38118 string characters out of 5934902
- 283679 words of memory out of 5000000
+ 286679 words of memory out of 5000000
  18225 multiletter control sequences out of 15000+600000
  546329 words of font info for 93 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  30i,8n,31p,273b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on KS_problems.dvi (1 page, 4012 bytes).
+Output written on KS_problems.dvi (1 page, 7272 bytes).
