@@ -37,3 +37,14 @@ Extended Kalman Filter（拡張カルマンフィルター）についての解�
 [Ensemble Kalman Filter 1]({% post_url 2020-05-03-EnKFSRF %})<br>
 Ensemble Kalman Filter（アンサンブルカルマンフィルター）のうち、
 最も基本的なPO法とSRFの解説です。Localizationについても書いています。
+
+---
+## プログラム置き場
+趣味で書いた数値計算のプログラムと計算結果の置き場所です。
+収束の議論も可能な限りはしたいです。
+
+[SDEの数値計算]({% post_url 2020-08-09-SDENumerical %})<br>
+確率微分方程式の数値計算のJulia言語による実装です。
+結構適当に書いてます。収束の議論については
+[SDEの数値解の強収束（pdfリンク）](/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.pdf)
+を参照してください。ただし、疑似乱数を取ることによる誤差は（いまのところ）扱っていません。
