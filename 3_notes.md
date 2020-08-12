@@ -45,6 +45,6 @@ Ensemble Kalman Filter（アンサンブルカルマンフィルター）のう�
 
 [SDEの数値計算]({% post_url 2020-08-09-SDENumerical %})<br>
 確率微分方程式の数値計算のJulia言語による実装です。
-結構適当に書いてます。収束の議論については
+結構適当に書いてます。スキームの導出や収束の議論については
 [SDEの数値解の強収束（pdfリンク）](/blog_pdf/SDEnumerical_strong_converge/SDEnumerical_strong_converge.pdf)
 を参照してください。ただし、疑似乱数を取ることによる誤差は（いまのところ）扱っていません。

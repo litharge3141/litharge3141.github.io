@@ -113,5 +113,34 @@ ExerciseとProblemの解答．問題は載せません．
     となり，示された．
 \end{ans}
 
+\begin{ans}[1.16 Problem]
+    $X$が直積可測だから，
+    可測集合の$X$による引き戻しはほとんど直積集合の形で書けることを利用する．
+
+    $E$を$X$の行先の任意の可測集合とする．$X_{T}^{-1}(E) \in \mathcal{F}$を
+    示せばよい．
+    \begin{equation}
+        X_{T}^{-1}(E) = \left\{\omega \setmid X_{T(\omega)}(\omega) \in E\right\}
+        = \left\{ \omega \setmid (T(\omega),\omega) \in X^{-1}(E)\right\}
+    \end{equation}
+    となるから，任意の$F\in \mathcal{B}([0,\infty))\otimes \mathcal{F}$に
+    対して$\left\{ \omega \setmid (T(\omega),\omega) \in F\right\} \in \mathcal{F}$
+    が成り立つことを示せば$X$が可測であることから$X_{T}^{-1}(E) \in \mathcal{F}$が従う．
+    \begin{equation}
+        \mathcal{D} \coloneqq 
+        \left\{ F \subset [0,\infty) \times \Omega
+        \setmid \{\omega \setmid (T(\omega),\omega) \in F\}\in \mathcal{F}\right\}
+    \end{equation}
+    とおく．$\mathcal{D}$が$\sigma$-代数であることはやるだけなので省略する．
+    $F = E^{t} \times E^{\Omega}, E^{t} \in \mathcal{B}([0,\infty)),
+    E^{\Omega} \in \mathcal{F}$とすると$T$は可測だから
+    $\left\{\omega \setmid (T(\omega),\omega) \in F\right\}= 
+    E^{\Omega} \cap T^{-1}(E^{t}) \in \mathcal{F}$となり，$F \in \mathcal{D}$
+    となる．したがって直積$\sigma$-代数の定義から
+    $\mathcal{B}([0,\infty))\otimes \mathcal{F} \subset \mathcal{D}$となり，
+    示された．
+
+\end{ans}
+
 
 \end{document}

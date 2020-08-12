@@ -70,7 +70,7 @@ $cu$がなければ解けるので$cu$を非斉次項だと思って定数変化
 
 
 \subsection{方針と解答}
-公式を導くつもりで成分計算をする．$O$は大文字と小文字の見分けがつかないので$U$とかにしてほしい……
+公式を導くつもりで成分計算をする．$O$は大文字と小文字の見分けがつかないので別の記号にしてほしい……
 \begin{ans}
     $O$が直交行列であることから，任意の$1\leq i,j \leq n$に対して
     $\sum_{k=1}^{n} O_{ik} O'_{kj} = \sum_{k=1}^{n} O_{ik} O_{jk} = \delta_{ij}$
@@ -165,4 +165,29 @@ $cu$がなければ解けるので$cu$を非斉次項だと思って定数変化
     $\phi(r) = u(0)$である．よって示された．
 \end{ans}
 
+
+\subsection{方針と解答}
+最大値を達成する点ではヘッシアンが半負定値であることを用いる．
+ヒントの通りにおいてみる．
+
+\begin{ans}
+    $\max_{\bar{U}} u \leq \max_{\partial U} u$を示せば十分である．
+    $\varepsilon>0$に対して
+    $u_{\varepsilon}(x) \coloneqq u(x) + \varepsilon \abs{x}^{2}$とおくと，
+    $\mathrm{Hess} u_{\varepsilon} = \mathrm{Hess} u + 2\varepsilon I$が成り立つ．
+    $u_{\varepsilon}$が$x \in U$で最大値を達成すると仮定すると，
+    $\mathrm{Hess} u_{\varepsilon}(x)$が半負定値であることから，
+    $i$成分が$1$の単位ベクトル$e_{i}$に対して
+    $\iprod{\mathrm{Hess} u_{\varepsilon}(x) e_{i}, e_{i}} 
+    = \frac{\partial^{2}u}{\partial x_{i}^{2}}(x) + 2\varepsilon \leq 0$
+    となるから，$\triangle u (x) + 2n\varepsilon \leq 0$となる．$\triangle u=0$
+    だから，これは矛盾であり，$u_{\varepsilon}$は$U$で最大値を達成することはない．したがって
+    $\max_{\bar{U}} u_{\varepsilon} \leq \max_{\partial U} u_{\varepsilon}$が成り立つ．
+    $M \coloneqq \max_{\bar{U}} \abs{x}^{2}$とおき，$\varepsilon_{n} 
+    \coloneqq 1/nM$とする．
+    $\max_{\bar{U}} u_{\varepsilon_{n}} \leq \max_{\partial U} u_{\varepsilon_{n}}$
+    から
+    $\max_{\bar{U}} u - 1/n \leq \max_{\partial U}u + 1/n$が成り立つ．
+    $n \to \infty$として，示された．
+\end{ans}
 \end{document}
