@@ -6,6 +6,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{stix}
 
 \usepackage[dvipdfmx]{graphicx}
 
@@ -189,5 +190,32 @@ $cu$がなければ解けるので$cu$を非斉次項だと思って定数変化
     から
     $\max_{\bar{U}} u - 1/n \leq \max_{\partial U}u + 1/n$が成り立つ．
     $n \to \infty$として，示された．
+\end{ans}
+
+\subsection{方針と解答}
+問題文のいう通りに計算するだけ．劣調和は大切な性質ではある．
+$U$は連結開集合として解答する．
+
+\begin{ans}
+    (a).$\phi(r) \coloneqq \intbar_{B(x,r)} v dy$とおき，微分する．
+
+    (b).$x \in U$で最大値を取ったと仮定すると，ある$r>0$が存在して
+    $B(x,r)$上$v(y) \leq v(x)$となる．このとき$(a)$から
+    $v(x) \leq \intbar_{B(x,r)} v(y)dy \leq v(x)$となって，
+    $B(x,r)$上$v$は定数．$U$が連結だから$U$全体で定数となって境界上でも定数．
+    結局$\max_{\bar{U}} v = \max_{\partial U} v$となる．
+
+    (c).$\frac{\partial v}{\partial x_{i}} = 
+    \frac{\partial}{\partial x_{i}} \phi(u(x))
+    = \phi'(u(x)) \frac{\partial u}{\partial x_{i}}$および
+    $\frac{\partial^{2} v}{\partial x_{i}^{2}} 
+    = \phi''(u(x)) \paren{\frac{\partial u}{\partial x_{i}}}^{2}
+    + \phi'(u(x)) \frac{\partial^{2} u}{\partial x_{i}^{2}}$
+    から$\triangle v = \sum_{i=1}^{n} \phi''(u(x)) 
+    \paren{\frac{\partial u}{\partial x_{i}}}^{2} \geq 0$となる．
+    最後の不等式で$\phi$の凸性を用いた．
+
+    (d).計算すると$\triangle v(x) = \sum_{i,j=1}^{n} 
+    2\paren{\frac{\partial^{2}u}{\partial x_{i} \partial x_{j}}}^{2} \geq 0$を得る．
 \end{ans}
 \end{document}

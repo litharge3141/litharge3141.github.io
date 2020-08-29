@@ -75,6 +75,27 @@ ExerciseとProblemの解答．問題は載せません．
 右連続でなく左連続でもできそうな感じがするが，$t=0$のところの処理
 （というか左連続の定義）が若干面倒であるように思われる．
 
+次のExerciseで使う定理をひとつ証明しておく．
+\begin{theorem}
+    $X:[0,\infty) \to \R^{d}$がRCLLならば，その不連続点は高々可算である．
+\end{theorem}
+
+\begin{proof}
+    不連続点が非可算個存在したと仮定する．
+    $[0,\infty)\cap \mathbb{Q}$は$[0,\infty)$で稠密だから，
+    ある$t \in [0,\infty)\cap \mathbb{Q}$が存在して$[t-1,t+1]\cap[0,\infty)$に
+    不連続点が少なくとも可算個存在する．このとき，ある$s \in
+    [t-1,t+1]\cap[0,\infty)$が存在して$s$は
+    不連続点の集積点となる．
+    $X$の右連続性から任意の$\varepsilon>0$に対して
+    ある$\delta > 0$が存在して$s<u<s+\delta$ならば
+    $\abs{X(u) - X(s)} < \varepsilon$が成立する．また，$s$における左極限
+    $\lim_{y \uparrow s} X(y)$が存在することから
+    $\delta_{0} >0$が存在して$s - \delta_{0} < u < s$ならば
+    $\abs{X(u) - \lim_{y \uparrow s} X(y)} <\varepsilon$が成り立つ．
+    これらは$s$が不連続点の集積点であることに反する．よって示された．
+\end{proof}
+
 
 \begin{ans}[1.7 Exercise]
     「極限が存在する」という事象を可算な操作で言い換えること，
